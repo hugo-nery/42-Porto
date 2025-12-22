@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rush 42 - Discovery Piscine</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+       <nav class="navbar navbar-expand navbar-dark sticky-top fixed" 
+            style="background-color: rgba(45, 45, 45, 0.6) !important; 
+                    backdrop-filter: blur(15px); 
+                    -webkit-backdrop-filter: blur(15px);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                    z-index: 999; position: fixed; width: 100%;">
+
+            <div class="container-fluid">
+                    <a class="navbar-brand d-flex align-items-center" href="#" >
+                        <img width="60" src="../../assets/42logo.png" alt="Logo" /> 
+                        <span class="ms-3" style="margin-left: 16px;">Rush</span>
+                    </a>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#my_skills">Skills</a>
+                            </li>
+                            <li style="align-content: center;" class="nav-item">
+                                <div class="dropdown show">
+                                    <a onmouseout="this.style.opacity='0.5'" onmousein="this.style.opacity='0.7'" class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Contacts
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a href="../../profile/hugo/index_hg.html" target="_blank" class="dropdown-item" href="#">Hugo Nery</a>
+                                        <a href="../../profile/wagner/index_wg.html" target="_blank" class="dropdown-item" href="#">Wagner Vieira</a>
+                                    </div>
+                                    </div>
+                                <!-- <a class="nav-link" href="#my_contact">Contact</a> -->
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+
+    <div id="my_home" class="parallax" style="background-image: url(../../assets/piscine.jpg);">
+        <h2>
+            <h1 style="font-size: 50px;">42 Discovery Piscine</h1>
+            <div id="profiles">
+                <a href="../../profile/hugo/index_hg.html"><img src="https://avatars.githubusercontent.com/u/32653710?v=4" alt=""></a>
+                <a href="../../profile/wagner/index_wg.html"><img src="https://avatars.githubusercontent.com/u/65842719?v=4" alt=""></a>
+            </div>
+        </h2>
+        
+    </div>
+
+    
+
+    <div id="my_skills">
+
+        <div id="my_details">
+
+            <h2>Web Development</h2>
+
+            <div class="bd-example">
+                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="..." class="d-block w-300" alt=""> <!-- leave if for formatation  -->
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>HTML</h5>
+                                <p>HyperText Markup Language <br> The standard language for creating web pages</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="..." class="d-block w-300" alt=""> <!-- leave if for formatation  -->
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>CSS</h5>
+                                <p>Cascading Style Sheets <br> The code language for styling websites </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="..." class="d-block w-300" alt="">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Javascript</h5>
+                                <p>Scripting language used to create and control dynamic website content</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+    </div>
+
+
+    </div>
+
+    <!-- <div id="my_contact" class="parallax" style="background-image: url(../../assets/ocean.jpeg);">
+
+        <div>
+            <h1>Contact</h1>
+            <p>+351 999 999 999 | hugo@42porto.com</p>
+        </div>
+
+        <div>
+
+            <a href="https://www.linkedin.com/in/hugo-nery/" target="_blank"><img src="../../assets/linkedin-logo.png" alt="linkedin-logo"></a>
+            <a href="https://github.com/hugo-nery" target="_blank"><img src="../../assets/github-logo.png" alt="github-logo"></a>
+
+        </div>
+    </div> -->
+
+    <div id="logoContainer" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer; z-index: 1000;">
+        <img id="rushLogo" src="../../assets/42logo.png" width="80" style="transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+ 
+
+<script>
+$(document).ready(function() {
+    const $logo = $('#rushLogo');
+
+    let clicks = 0;
+
+    $('#logoContainer').on('click', function() {
+        clicks++;
+        
+        $logo.css('transform', 'scale(2.5) ');
+
+        
+        const hue = clicks * 120 
+        $logo.css('filter', `drop-shadow(0 0 15px rgba(255,255,255,0.8))`);
+
+       if (clicks % 1 === 0) {
+        $logo.parent().css('box-shadow', 'none')
+            // Desenhando o 4 de baixo
+            .animate({ bottom: '1%', right: '50%' }, 500)  
+            .animate({ bottom: '20%', right: '50%' }, 500)  
+            .animate({ bottom: '20%', right: '80%' }, 500)  
+            .animate({ bottom: '70%', right: '50%' }, 500)  
+
+            // mudando para o 2
+        .animate({ bottom: '70%', right: '30%' }, 500)  
+
+
+            // inicio 2
+        .animate({ bottom: '20%', right: '45%' }, 500)  
+        .animate({ bottom: '20%', right: '25%' }, 500)  
+
+
+            .animate({ bottom: '20px', right: '20px' }, 800) 
+
+        $logo.css('transform', 'scale(1) rotate(0deg)');
+        clicks = 0;
+    }
+            
+        
+        // Reset suave após o clique
+        setTimeout(() => {
+            if (clicks % 5 !== 0) $logo.css('transform', 'scale(1) rotate(' + (clicks * 45) + 'deg)');
+        }, 500);
+    });
+
+    // Efeito hover (lembrando o mouseleave do seu balão)
+    $('#logoContainer').hover(
+        function() { $logo.css('transform', 'scale(1.1)'); },
+        function() { $logo.css('transform', 'scale(1)'); }
+    );
+});
+</script>
+
+</body>
+</html>

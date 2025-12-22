@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+td {
+    border: black solid 1px;
+    width: 50%;
+    margin-right: 0px;
+    height: 50px;
+    padding: 5px;
+}
+
+.a {
+    background-color: darkolivegreen;
+}
+
+.b {
+    background-color: rosybrown;
+}

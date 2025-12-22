@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over 9000 - Calc</title>
+</head>
+
+<style>
+
+    body {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        /* background-color: lightgreen; */
+        text-align: center;
+        align-content: center;
+        width: 100%;
+        height: 100vh;
+        /* padding: 100px; */
+    }
+
+    table {
+        display: inline-block;
+    }
+
+
+    #result {
+        height: 50px;
+        width: 300px;
+        display: inline-block;
+        padding: 5px;
+        margin-right: 20px;
+        background-color: blue;
+
+        color: yellow;
+        text-align: right;
+        align-content: center;
+        font-size: 20px;
+    }
+
+    #keypad {
+        height: 100px;
+        width: 300px;
+        padding: 5px;
+        background-color: gray;
+    }
+
+    input, select {
+        appearance: none;
+        padding: 5px;
+        border: none;
+        margin: 10px;
+    }
+
+    select, td, tr {
+        text-align: center;
+    }
+
+    td tr button {
+        /* text-align: right; */
+        float: right;
+        margin-right: 10px;
+
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input[type=number] {
+        width: 75%;
+        
+    }
+
+    button {
+        border: none;
+        padding: 5px;
+        font-size: 15px;
+    }
+
+    button:hover {
+        background-color: lightgrey;
+    }
+
+    p {
+        margin-right: 13px;
+    }
+
+    #clear {
+        color: red;
+        float: left;
+        margin-left: 11px;
+    }
+
+</style>
+
+<body>
+    <table>
+        <tr>
+            <th>
+                <div id="result"><p id="res">0</p></div>
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                <div id="keypad">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="number" name="left" id="left">
+                            </td>
+                            <td>
+                                <select name="operator" id="operator">
+                                    <!-- <option value="" hidden></option> -->
+                                    <option value="+">+</option>
+                                    <option value="-">-</option>
+                                    <option value="*">*</option>
+                                    <option value="/">/</option>
+                                    <option value="%">%</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="number" name="right" id="right">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button id="bt_result" onclick="calculate()">Try me!</button>
+                                <button id="clear" onclick="func_clear()">C</button>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    
+</body>
+
+<script>
+
+    setInterval(function () {window.alert("Please, use me...");}, 30000);
+
+    function calculate() {
+
+        let left = document.getElementById("left").value;
+        let right = document.getElementById("right").value;
+
+        const operator = document.getElementById("operator").value;
+
+        // document.getElementById("res").innerHTML = typeof Number(left);
+
+        if (left == "" || operator == "" || right == "" || Number(left) < 0 || Number(right) < 0) {
+            document.getElementById("res").innerHTML = "Error :(";
+            
+            console.log("Error :(");
+            window.alert("Error :(");
+        
+        } else {
+
+            left = Number(left);
+            right = Number(right);
+
+            if (left == 0 && (operator == "/" || operator == "%")) {
+                document.getElementById("res").innerHTML = "It’s over 9000!";
+
+                console.log("It’s over 9000!");
+                window.alert("It’s over 9000!");
+            
+            } else {
+
+                var res = result (left, operator, right)
+
+                document.getElementById("res").innerHTML = res;
+                
+                document.getElementById("left").value = res;
+                
+                console.log(res);
+                window.alert(res);
+            }
+
+            
+        }
+
+        function result (left, operator, right) {
+            var result = 0;
+            switch (operator) {
+                case "+":
+                    result = left + right;
+                    break;
+                
+                case "-":
+                    result = left - right;
+                    break;
+
+                case "*":
+                    result = left * right;
+                    break;
+                
+                case "/":
+                    result = left / right;
+                    break;
+                
+                case "%":
+                    result = left % right;
+                    break;
+            }
+            return result;
+        }
+    }
+
+    function func_clear() {
+
+        document.getElementById("res").innerHTML = "0";
+
+        document.getElementById("left").value = "";
+        document.getElementById("right").value = "";
+        document.getElementById("operator").value = "+";
+    }
+
+    setTimeout(use_me,1000)
+
+    let timeout;
+    document.onmousemove = function(){
+        clearTimeout(timeout);
+        timeout = setTimeout(function(){window.alert("Please, use me... mouse");}, 30000);
+    }
+
+    document.onkeypress = function(){
+        clearTimeout(timeout);
+        timeout = setTimeout(function(){window.alert("Please, use me...");}, 30000);
+    }
+    
+</script>
+
+</html>

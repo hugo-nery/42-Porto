@@ -1,0 +1,82 @@
+html {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+.nav_bar {
+    height: 50px;
+    padding: 0 10px;
+    background-color: lightblue;
+}
+
+.menu_bar {
+    align-content: center;
+    width: 45%;
+    height: 100%;
+    float: left;
+    font-weight: bold;
+}
+
+.search {
+    align-content: center;
+    float: right;
+    text-align: right;
+    width: 45%;
+    height: 100%;
+}
+
+form {
+    width: fit-content;
+    display: inline;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+a { 
+    margin: 0 5px;
+    padding-top: 10px;
+    text-decoration: none;
+    color: brown;
+}
+
+a:hover {
+    color: darkolivegreen;
+}
+
+p {
+    margin-top: 50px;
+}
+
+.destinations {
+    width: 100%;
+    text-align: center;
+}
+
+img {
+    height: 200px;
+}
+
+.lyon_wraper {
+    overflow: hidden;
+    width: 295.50px;
+}
+
+.to_from {
+    display: inline;
+    font-size: 30px;
+}
+
+br {
+    margin-bottom: 50px;
+}

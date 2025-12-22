@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bye Bye Balloon</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+<style>
+
+    body {
+        width: 100%;
+        height: 100vh;
+        /* background-color: green; */
+        text-align: center;
+        align-content: center;
+    }
+
+    #id_balloon {
+        height: 200px;
+        width: 200px;
+        background-color: red;
+        display: inline-block;
+        border-radius: 50%;
+    }
+
+</style>
+
+<body>
+
+    <div id="id_balloon"></div>
+
+</body>
+
+<script>
+
+    let count = 1;
+
+    $(document).ready(function() {
+        $("#id_balloon").on("click", function() {
+
+            let b_height = ($("#id_balloon").height() + 10);
+            let b_width = ($("#id_balloon").width() + 10);
+
+            // console.log(b_height);
+
+            if (Number(b_height) < 420) {
+                $("#id_balloon").height(b_height);
+                $("#id_balloon").width(b_height);
+
+                if (count == 1 ) {
+                    $("#id_balloon").css("backgroundColor", "green");
+                
+                } else if (count == 2) {
+                    $("#id_balloon").css("backgroundColor", "blue");
+
+                } else {
+                    $("#id_balloon").css("backgroundColor", "red");
+                    count = 0;
+                }
+            
+            } else {
+                $("#id_balloon").height(200);
+                $("#id_balloon").width(200);
+                $("#id_balloon").css("backgroundColor", "red");
+                count = 0;
+
+            }
+            count += 1;
+            console.log(count);
+
+        });
+    });
+
+    $(document).ready(function() {
+        $("#id_balloon").on("mouseleave", function() {
+
+            let b_height = ($("#id_balloon").height() - 5);
+            let b_width = ($("#id_balloon").width() - 5);
+
+            // console.log(b_height);
+
+            if (Number(b_height) > 200) {
+                $("#id_balloon").height(b_height);
+                $("#id_balloon").width(b_height);
+                
+                console.log(count);
+
+                if (count == 1 ) {
+                    $("#id_balloon").css("backgroundColor", "blue");
+                
+                } else if (count == 2) {
+                    $("#id_balloon").css("backgroundColor", "red");
+
+                } else {
+                    $("#id_balloon").css("backgroundColor", "green");
+                    count = 0;
+                }
+            
+            } 
+            // else {
+            //     $("#id_balloon").height(200);
+            //     $("#id_balloon").width(200);
+            //     // $("#id_balloon").css("backgroundColor", "red");
+            //     // count -= 1;
+            // }
+
+            count += 1;
+            //ify color
+
+        });
+    });
+
+</script>
+</html>

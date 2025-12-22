@@ -1,0 +1,49 @@
+html {
+    background-color: pink;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.main {
+    /* border: red solid 5px; */
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.img_left, .img_right {
+    width: 50%;
+    text-align: center;
+}
+
+.img_left {
+    float: left;
+}
+
+.img_right {
+    float: right;
+}
+
+img {
+    height: 150px;
+    margin-bottom: 5px;
+}
+
+a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin-bottom: 20px;
+}
+
+a:hover {
+    color: blanchedalmond;
+}
+
+.right_side {
+    float: right;
+    font-family: monospace;
+    font-style: italic;
+}

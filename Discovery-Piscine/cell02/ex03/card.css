@@ -1,0 +1,78 @@
+html {
+    background-color: rgb(206, 238, 237);
+    padding: 5%;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.porto {
+    text-align: left;
+    padding-top: 20px;
+}
+
+.porto img {
+    border-radius: 0;
+    height: 35px;
+    margin-left: -20px;
+}
+
+body {
+    margin: 0;
+    width: min-content;
+}
+
+.img_login {
+    padding: 20px 0;
+    background-color: white;
+    margin: 0 20px;
+    /* border-radius: 5% 0; */
+}
+
+table {
+    border-radius: 3%;
+    background-color: #4B9DA9;
+    text-align: center;
+    padding: 0 20px;
+}
+
+tr {
+    width: min-content;
+    height: 50px;
+}
+
+img {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    height: 250px;
+}
+
+.login, h3 {
+    display: inline;
+    padding-bottom: 20px;
+}
+
+.social_net img{
+    height: 70px;
+
+}
+
+/* input {
+    margin-top: -20px;
+    float: right;
+} */
+
+.button {
+    background-color: white;
+    border: none;
+    height: 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    /* border-radius: 10% 0; */
+    font-size: 1.2em;
+
+}
+
+.button:hover {
+    background-color: rgb(206, 238, 237);
+}

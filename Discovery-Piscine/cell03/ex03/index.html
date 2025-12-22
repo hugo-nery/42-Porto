@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do or Not to do</title>
+    <script type="text/javascript" src="todo.js"></script>
+</head>    
+<style>
+
+    html, body{
+        font-family: monospace;
+    }
+
+    .my_main {
+        background-color: bisque;
+        width: fit-content;
+        padding: 10px 20px;
+    }
+
+    h2 {
+        display: inline-block;
+    }
+
+    button {
+        float: right;
+        margin: 13px 0 0 50px;
+        font-size: 15px;
+        padding: 5px 8px;
+        border: none;
+        background-color: white;
+    }
+
+    #ft_list div:hover, button:hover {
+        /* font-weight: bold; */
+        opacity: 70%;
+    }
+
+    #ft_list {
+        margin-bottom: 10px;
+    }
+
+    #ft_list div {
+        /* border: white solid 2px; */
+        align-content: center;
+        background-color: aquamarine;
+        height: 40px;
+        padding-left: 10px;
+    }
+
+    #ft_list div:nth-of-type(even) {
+        /* border: white solid 1px 5px; */
+        background-color: rgb(84, 188, 192);
+    }
+
+</style>
+<body>
+
+    <div class="my_main">
+        <h2>To Do List</h2>
+        <button onclick="checkinsert()">New</button>
+        
+        <div id="ft_list"></div>
+        
+    </div>
+
+    
+    
+</body>
+
+</html>
