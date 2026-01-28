@@ -1,0 +1,13 @@
+/***************
+
+Porto 42 --s-a -efw S
+hde-albu
+
+
+*/
+
+
+void ft_putchar(char c) {
+    write(1, &c, 1);
+}
+
