@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:57:42 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 19:04:10 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/01/29 09:45:20 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/01/29 19:27:48 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+// #include <stdio.h>
 
-// void ft_putchar(char c);
-
+// void ft_print_numbers(void);
 // int main () {
-
-//     ft_putchar('H');
-
+// 	ft_print_numbers();
 //     return 0;
 // }
 
-void	ft_putchar(char c)
+void	ft_print_numbers(void)
 {
-	write(1, &c, 1);
+	char	c;
+
+	c = 48;
+	do {
+		write (1, &c, 1);
+	c++;
+}
+while
+(c <= 57);
+
 }
 
 //cc  -Wall -Wextra -Werror 

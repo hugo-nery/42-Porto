@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:57:42 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 19:04:10 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/01/29 19:03:38 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/01/29 21:07:15 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// void ft_putchar(char c);
+// #include <stdio.h>
+
+// void ft_swap(int *a, int *b);
 
 // int main () {
-
-//     ft_putchar('H');
-
+// 	int my_a = 0;
+// 	int my_b = 5;
+// 	printf("a = %d, \tb = %d\n", my_a, my_b);
+// 	ft_swap(&my_a, &my_b);
+// 	printf("a = %d, \tb = %d\n", my_a, my_b);
 //     return 0;
 // }
 
-void	ft_putchar(char c)
+void	ft_swap(int *a, int *b)
 {
-	write(1, &c, 1);
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
-//cc  -Wall -Wextra -Werror 
+// cc -Wall -Wextra -Werror 

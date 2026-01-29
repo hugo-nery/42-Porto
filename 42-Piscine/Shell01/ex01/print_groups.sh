@@ -1,2 +1,2 @@
-#!/bin/shell
-groups | tr " " ","
+#!/bin/sh
+id --groups --name | tr " " "," | tr -d "\n"

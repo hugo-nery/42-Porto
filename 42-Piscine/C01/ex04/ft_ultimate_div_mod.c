@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:57:42 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 19:04:10 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/01/29 21:21:50 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/01/29 21:39:23 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// void ft_putchar(char c);
+// #include <stdio.h>
+
+// void ft_ultimate_div_mod(int *a, int *b);
 
 // int main () {
 
-//     ft_putchar('H');
+//     int a = 10;
+//     int b = 7;
+
+//     printf("a = %d \nb = %d\n\n", a, b);
+
+//     ft_ultimate_div_mod(&a, &b);
+
+//     printf("div = %d \nmod = %d\n\n", a, b);
 
 //     return 0;
 // }
 
-void	ft_putchar(char c)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	write(1, &c, 1);
+	int	temp_a;
+
+	temp_a = *a;
+	*a = *a / *b;
+	*b = temp_a % *b;
 }
 
-//cc  -Wall -Wextra -Werror 
+// cc  -Wall -Wextra -Werror

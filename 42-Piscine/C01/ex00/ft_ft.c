@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:57:42 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 19:04:10 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/01/29 13:25:39 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/01/29 19:05:08 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+// #include <stdio.h>
 
-// void ft_putchar(char c);
+// void ft_ft(int *nbr);
 
 // int main () {
-
-//     ft_putchar('H');
-
+//     int my_int = 0;
+//     ft_ft(&my_int);
+//     printf("%d", my_int);
 //     return 0;
 // }
 
-void	ft_putchar(char c)
+void	ft_ft(int *nbr)
 {
-	write(1, &c, 1);
+	*nbr = 42;
 }
 
 //cc  -Wall -Wextra -Werror 

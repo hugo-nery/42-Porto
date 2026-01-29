@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_div_mod.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:57:42 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 19:04:10 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/01/29 19:19:56 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/01/29 21:37:12 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// void ft_putchar(char c);
+// #include <stdio.h>
+
+// void ft_div_mod(int a, int b, int *div, int *mod);
 
 // int main () {
 
-//     ft_putchar('H');
+//     int a = 10;
+//     int b = 7;
+
+//     int div = 0;
+//     int mod = 0;
+
+//     ft_div_mod(a, b, &div, &mod);
+
+//     printf("%d / %d = %d\n", a, b, div);
+//     printf("%d %c %d = %d\n", a, '%' ,b , mod);
 
 //     return 0;
 // }
 
-void	ft_putchar(char c)
+void	ft_div_mod(int a, int b, int *div, int *mod)
 {
-	write(1, &c, 1);
+	*div = a / b;
+	*mod = a % b;
 }
 
-//cc  -Wall -Wextra -Werror 
+// cc  -Wall -Wextra -Werror

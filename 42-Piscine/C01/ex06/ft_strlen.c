@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:57:42 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 19:04:10 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/01/29 22:32:39 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/01/29 22:54:04 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// void ft_putchar(char c);
+// #include <stdio.h>
+
+// int ft_strlen(char *str);
 
 // int main () {
 
-//     ft_putchar('H');
+//     char name[] = "Hugo Nery";
+
+//     printf("%i",ft_strlen(name));
 
 //     return 0;
 // }
 
-void	ft_putchar(char c)
+int	ft_strlen(char *str)
 {
-	write(1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
 
-//cc  -Wall -Wextra -Werror 
+// cc  -Wall -Wextra -Werror

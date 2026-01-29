@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 20:57:42 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 19:04:10 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/01/29 12:53:00 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/01/29 19:04:50 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+//brokennnnnnnnnnnnnn
+
+
+
 #include <unistd.h>
 
-// void ft_putchar(char c);
+void ft_print_comb(void);
 
-// int main () {
+int main () {
 
-//     ft_putchar('H');
+    ft_print_comb();
 
-//     return 0;
-// }
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
+    return 0;
 }
 
-//cc  -Wall -Wextra -Werror 
+void ft_print_comb(void) {
+
+    char a, b, c;
+
+}
