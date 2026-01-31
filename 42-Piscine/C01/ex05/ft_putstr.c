@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 21:40:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/01/29 22:50:04 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/01/30 10:30:30 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // void ft_putstr(char *str);
 
 // int main () {
-//     char name [] = "hugo-hugo-hugo";
+//     char name [] = "hugo de a s nery";
 // 	ft_putstr(name);
 
 //     return 0;
