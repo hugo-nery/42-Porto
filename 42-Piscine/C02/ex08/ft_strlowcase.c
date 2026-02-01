@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 22:44:22 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 23:04:36 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/01 23:26:07 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,5 @@ char	*ft_strlowcase(char *str)
 	}
 	return (str);
 }
+
+// cc -Wall -Wextra -Werror
