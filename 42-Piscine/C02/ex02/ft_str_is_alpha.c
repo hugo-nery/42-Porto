@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 16:26:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 22:22:52 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/01 22:43:25 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 int	ft_str_is_alpha(char *str)
 {
 	if (str == NULL)
+	{
 		return (1);
+	}
 	while (*str)
 	{
 		if ((*str < 'A' || *str > 'Z')

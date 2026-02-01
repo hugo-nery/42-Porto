@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 19:30:09 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 22:43:09 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/01 22:44:22 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/01 23:04:36 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,31 @@
 
 // #include <stdio.h>
 
-// int ft_str_is_uppercase(char *str);
+// char *ft_strlowcase(char *str);
 
 // int main () {
-
-//     char text[] = "ABCaD";
-
-//     printf("%d", ft_str_is_uppercase(text));
-
+// 	char text[] = "HUGO nery";
+// 	ft_strlowcase(text);
+// 	printf("%s",text);
 //     return 0;
 // }
 
-int	ft_str_is_uppercase(char *str)
+char	*ft_strlowcase(char *str)
 {
+	int	i;
+
 	if (str == NULL)
 	{
-		return (1);
+		return (NULL);
 	}
-	while (*str)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (*str < 'A' || *str > 'Z')
+		if (str[i] >= 'A' && str[i] <= 'Z')
 		{
-			return (0);
+			str[i] += 32;
 		}
-		str++;
+		i++;
 	}
-	return (1);
+	return (str);
 }
