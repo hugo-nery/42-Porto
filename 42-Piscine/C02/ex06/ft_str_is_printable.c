@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 21:40:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 22:28:58 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/01 19:36:56 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/01 22:28:25 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include <stdio.h>
+// #include <stdio.h>
 
-void ft_putstr(char *str);
+// int ft_str_is_printable(char *str);
 
-int main () {
-    char name [] = "hugo de a s nery";
-	ft_putstr(NULL);
+// int main () {
 
-    return 0;
-}
+//     char text[] = "cof sˆdf sf orwe sdf";
 
-void	ft_putstr(char *str)
+//     printf("%d", ft_str_is_printable(text));
+
+//     return 0;
+// }
+
+int	ft_str_is_printable(char *str)
 {
-	// if(str == NULL)
-	// 	return;
-
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	if (str != NULL)
 	{
-		write(1, &str[i], 1);
-		i++;
+		while (*str)
+		{
+			if ((int)*str < 32 || (int)*str > 127)
+			{
+				return (0);
+			}
+			str++;
+		}
 	}
+	return (1);
 }
 
 // cc -Wall -Wextra -Werror

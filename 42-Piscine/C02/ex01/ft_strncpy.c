@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/31 17:12:26 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 15:26:35 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/01 14:52:29 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/01 17:09:43 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,41 @@
 
 // #include <stdio.h>
 
-// char *ft_strcpy(char *dest, char *src);
+// char *ft_strncpy(char *dest, char *src, unsigned int n);
 
 // int main () {
-//     char name[] = "hugo nery";
-//     char my_arr[20];
-//     ft_strcpy(my_arr, name);
+//     char src[] = "42 Hugo";
+//     char dest[] = "Porto - Portugal!";
+//     printf("%s\n",src);
+//     printf("%s\n",dest);
+//     ft_strncpy(dest, src, 8);
+//     printf("%s\n",src);
+//     printf("%s\n",dest);
 //     return 0;
 // }
 
-char	*ft_strcpy(char *dest, char *src)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	int	i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (i < n && *dest)
 	{
-		dest[i] = src[i];
-		i++;
+		if (src[i] != '\0')
+		{
+			*dest = src[i];
+			dest++;
+			i++;
+		}
+		else
+		{
+			while (*dest)
+			{
+				*dest = '\0';
+				dest++;
+			}
+		}
 	}
-	dest[i] = '\0';
 	return (dest);
 }
 

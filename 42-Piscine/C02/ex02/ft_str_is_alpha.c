@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 21:40:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 22:28:58 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/01 16:26:08 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/01 22:22:52 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include <stdio.h>
+// #include <stdio.h>
 
-void ft_putstr(char *str);
+// int ft_str_is_alpha(char *str);
 
-int main () {
-    char name [] = "hugo de a s nery";
-	ft_putstr(NULL);
+// int main () {
 
-    return 0;
-}
+// 	char text[] = "BCdefdf";
 
-void	ft_putstr(char *str)
+// 	printf("\n%d\n\n",ft_str_is_alpha(text));
+
+//     return 0;
+// }
+
+int	ft_str_is_alpha(char *str)
 {
-	// if(str == NULL)
-	// 	return;
-
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	if (str == NULL)
+		return (1);
+	while (*str)
 	{
-		write(1, &str[i], 1);
-		i++;
+		if ((*str < 'A' || *str > 'Z')
+			&& ((*str < 'a' || *str > 'z')))
+		{
+			return (1);
+		}
+		str++;
 	}
+	return (0);
 }
+// A = 65 - Z = 90
+// a = 97 - z = 122
 
 // cc -Wall -Wextra -Werror

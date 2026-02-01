@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/29 21:40:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 22:28:58 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/01 17:25:44 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/01 22:14:54 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include <stdio.h>
+// #include <stdio.h>
 
-void ft_putstr(char *str);
+// int ft_str_is_numeric(char *str);
 
-int main () {
-    char name [] = "hugo de a s nery";
-	ft_putstr(NULL);
+// int main () {
+// 	// char text[] = "123";
+// 	printf("%d\n", ft_str_is_numeric(NULL));
+//     return 0;
+// }
 
-    return 0;
-}
-
-void	ft_putstr(char *str)
+int	ft_str_is_numeric(char *str)
 {
-	// if(str == NULL)
-	// 	return;
-
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	if (str != NULL)
 	{
-		write(1, &str[i], 1);
-		i++;
+		while (*str)
+		{
+			if (*str < '0' || *str > '9')
+			{
+				return (0);
+			}
+			str++;
+		}
 	}
+	return (1);
 }
 
 // cc -Wall -Wextra -Werror
