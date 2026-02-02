@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 14:52:29 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 17:09:43 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:08:58 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,35 @@
 
 // int main () {
 //     char src[] = "42 Hugo";
-//     char dest[] = "Porto - Portugal!";
+//     char dest[] = "10 Porto - Portugal!";
+
 //     printf("%s\n",src);
 //     printf("%s\n",dest);
-//     ft_strncpy(dest, src, 8);
+
+//     ft_strncpy(dest, src, 10);
+
 //     printf("%s\n",src);
 //     printf("%s\n",dest);
+
 //     return 0;
 // }
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (i < n && *dest)
+	if (src != NULL && dest != NULL)
 	{
-		if (src[i] != '\0')
+		while (i < n && src[i] != '\0')
 		{
-			*dest = src[i];
-			dest++;
+			dest[i] = src[i];
 			i++;
 		}
-		else
+		while (i < n)
 		{
-			while (*dest)
-			{
-				*dest = '\0';
-				dest++;
-			}
+			dest[i] = '\0';
+			i++;
 		}
 	}
 	return (dest);
