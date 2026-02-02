@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 22:31:17 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/02 15:44:55 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:31:33 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 // char *ft_strupcase(char *str);
 
 // int main () {
-//     char text[] = "hugo - Nery";
-//     ft_strupcase(text);
+//     char text[] = "huGo - Nery";
+//     ft_strupcase(NULL);
 //     printf("%s", text);
 //     return 0;
 // }
@@ -27,18 +27,17 @@ char	*ft_strupcase(char *str)
 {
 	int	i;
 
-	if (str == NULL)
+	if (str != NULL)
 	{
-		return (NULL);
-	}
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
+		i = 0;
+		while (str[i] != '\0')
 		{
-			str[i] -= 32;
+			if (str[i] >= 'a' && str[i] <= 'z')
+			{
+				str[i] -= 32;
+			}
+			i++;
 		}
-		i++;
 	}
 	return (str);
 }

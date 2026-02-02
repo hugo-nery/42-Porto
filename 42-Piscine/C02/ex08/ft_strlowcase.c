@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 22:44:22 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 23:26:07 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:33:06 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 // int main () {
 // 	char text[] = "HUGO nery";
-// 	ft_strlowcase(text);
+// 	ft_strlowcase(NULL);
 // 	printf("%s",text);
 //     return 0;
 // }
@@ -27,18 +27,17 @@ char	*ft_strlowcase(char *str)
 {
 	int	i;
 
-	if (str == NULL)
+	if (str != NULL)
 	{
-		return (NULL);
-	}
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
+		i = 0;
+		while (str[i] != '\0')
 		{
-			str[i] += 32;
+			if (str[i] >= 'A' && str[i] <= 'Z')
+			{
+				str[i] += 32;
+			}
+			i++;
 		}
-		i++;
 	}
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 16:26:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 22:43:25 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:21:22 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	ft_str_is_alpha(char *str)
 		if ((*str < 'A' || *str > 'Z')
 			&& ((*str < 'a' || *str > 'z')))
 		{
-			return (1);
+			return (0);
 		}
 		str++;
 	}
-	return (0);
+	return (1);
 }
 // A = 65 - Z = 90
 // a = 97 - z = 122
