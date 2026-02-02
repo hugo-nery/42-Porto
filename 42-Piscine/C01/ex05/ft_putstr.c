@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 21:40:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 22:28:58 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/02 11:09:40 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void ft_putstr(char *str);
 
 int main () {
-    char name [] = "hugo de a s nery";
+    char name [0];// = "hugo de a s nery";
 	ft_putstr(NULL);
 
     return 0;
@@ -25,8 +25,8 @@ int main () {
 
 void	ft_putstr(char *str)
 {
-	// if(str == NULL)
-	// 	return;
+	if(str == NULL)
+		return;
 
 	int	i;
 
