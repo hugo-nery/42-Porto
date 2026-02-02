@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 22:31:17 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/01 23:05:57 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/02 15:44:55 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 char	*ft_strupcase(char *str)
 {
 	int	i;
-	
+
 	if (str == NULL)
 	{
 		return (NULL);
