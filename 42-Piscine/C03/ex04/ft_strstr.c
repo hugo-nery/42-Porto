@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/02 19:27:36 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/03 15:41:08 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/04 11:45:07 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/04 12:32:24 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,43 @@
 
 // #include <stdio.h>
 
-// int ft_strcmp(char *s1, char *s2);
+// char *ft_strstr(char *str, char *to_find);
 
 // int main () {
 
-//     char text1[] = "ABC";
-//     char text2[] = "ABC";
+// 	char myStr[] = "The rain in Spain falls mainly on the plains";
 
-//     printf("%d", ft_strcmp(text1, text2));
+// 	char *myPtr = ft_strstr(myStr, NULL);
 
-//     return 0;
+//     printf("%s", myPtr);
+
+// 	return 0;
 // }
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
+	int	x;
 
-	if (s1 != NULL && s2 != NULL)
+	if (str != NULL && to_find != NULL)
 	{
 		i = 0;
-		while (s1[i] != '\0' && s2[i] != '\0')
+		while (str[i] != '\0')
 		{
-			if (s1[i] != s2[i])
-				return (s1[i] - s2[i]);
+			if (str[i] == to_find[0])
+			{
+				x = 1;
+				while (str[i + x] == to_find[x] && to_find[x] != '\0')
+				{
+					x++;
+				}
+				if (to_find[x] == '\0')
+				{
+					return (&str[i]);
+				}
+			}
 			i++;
 		}
-		return (s1[i] - s2[i]);
 	}
-	return (0);
+	return (NULL);
 }
-
-// cc -Wall -Wextra -Werror
-
-// hugo x hugo = 0
-// hugo x huga = 1
-// huga x hugo = -1
