@@ -6,27 +6,27 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 12:32:56 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/04 17:06:54 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/05 14:21:38 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// #include <stdio.h>
+#include <stdio.h>
 
-// unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
+unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
 
-// int main () {
+int main () {
 
-//     char dest[5] = "Full";
-//     char src[] = "Stack";
+    char dest[5] = "Full";
+    char src[] = "Stack";
 
-//     printf("t_%d", ft_strlcat(dest, src, 5));
+    printf("t_%d", ft_strlcat(dest, src, 5));
 
-//     printf("\n%s", dest);
+    printf("\n%s", dest);
 
-//     return 0;
-// }
+    return 0;
+}
 
 int	my_len(char *str)
 {
