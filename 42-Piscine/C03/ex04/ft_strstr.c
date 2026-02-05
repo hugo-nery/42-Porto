@@ -6,26 +6,26 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 11:45:07 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/05 15:25:24 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/05 21:02:12 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include <stdio.h>
+// #include <stdio.h>
 
-char *ft_strstr(char *str, char *to_find);
+// char *ft_strstr(char *str, char *to_find);
 
-int main () {
+// int main () {
 
-	char myStr[] = "The rain in Spain falls mainly on the plains.";
+// 	char myStr[] = "The rain in Spain falls mainly on the plains.";
 
-	char *myPtr = ft_strstr(myStr, "pra");
+// 	char *myPtr = ft_strstr(myStr, "pra");
 
-    printf("%s", myPtr);
+//     printf("%s", myPtr);
 
-	return 0;
-}
+// 	return 0;
+// }
 
 char	*ft_strstr(char *str, char *to_find)
 {
