@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 11:45:07 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/05 14:25:48 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:25:24 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ char	*ft_strstr(char *str, char *to_find)
 	int	i;
 	int	x;
 
-	if (str != NULL && to_find != NULL)
+	if (to_find == NULL)
+		return (str);
+	if (str != NULL)
 	{
 		i = 0;
 		while (str[i] != '\0')
