@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/02 20:54:22 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/05 12:24:51 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/04 19:22:47 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/04 19:37:47 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 // #include <stdio.h>
 
-// int ft_strncmp(char *s1, char *s2, unsigned int n);
+// int ft_strlen(char *str);
 
-// int main() {
+// int main () {
 
-// 	// char a[] = "Short";
-// 	char b[] = "Short";
+// 	char my_str[] = "hugo";
 
-//     printf("%d", ft_strncmp(NULL, b, 5));
+// 	printf("%d", ft_strlen(my_str));
 
-//     return 0;
+// 	return 0;
 // }
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+int	ft_strlen(char *str)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	while (i < n)
+	while (str[i] != '\0')
 	{
-		if (s1[i] != s2[i] || s1[i] == '\0' || s2[i] == '\0')
-			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (0);
+	return (i);
 }

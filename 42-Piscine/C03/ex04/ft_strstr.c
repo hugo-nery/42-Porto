@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 11:45:07 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/04 12:32:24 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/05 12:24:22 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ char	*ft_strstr(char *str, char *to_find)
 			i++;
 		}
 	}
-	return (NULL);
+	return (0);
 }
+//NULL

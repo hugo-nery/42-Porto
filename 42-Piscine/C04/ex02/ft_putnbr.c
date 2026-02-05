@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/02 20:54:22 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/05 12:24:51 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/04 20:08:30 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/04 20:14:02 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// #include <stdio.h>
+#include <stdio.h>
 
-// int ft_strncmp(char *s1, char *s2, unsigned int n);
+void ft_putnbr(int nb);
 
-// int main() {
+int main () {
 
-// 	// char a[] = "Short";
-// 	char b[] = "Short";
+    ft_putnbr(2);
 
-//     printf("%d", ft_strncmp(NULL, b, 5));
+    return 0;
+}
 
-//     return 0;
-// }
-
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+void ft_putnbr(int nb)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (s1[i] != s2[i] || s1[i] == '\0' || s2[i] == '\0')
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
+    if (nb > 10)
+    {
+        write (1, &nb, 1);
+        // ft_putnbr(nb / 10);
+    }
+    // else
+    // {
+    //     write (1, &nb, 1);
+    // }
 }

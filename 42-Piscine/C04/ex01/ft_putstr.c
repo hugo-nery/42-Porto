@@ -1,41 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/02 20:54:22 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/05 12:24:51 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/04 19:38:28 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/04 20:08:58 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// #include <stdio.h>
+// void ft_putstr(char *str);
 
-// int ft_strncmp(char *s1, char *s2, unsigned int n);
+// int main () {
 
-// int main() {
+// 	ft_putstr("hugo nery");
 
-// 	// char a[] = "Short";
-// 	char b[] = "Short";
-
-//     printf("%d", ft_strncmp(NULL, b, 5));
-
-//     return 0;
+// 	return 0;
 // }
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+void	ft_putstr(char *str)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (s1[i] != s2[i] || s1[i] == '\0' || s2[i] == '\0')
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
+	if (str)
+		while (*str)
+			write (1, &(*(str++)), 1);
 }
+
+// void ft_putstr(char *str)
+// {
+// 	int	i;
+
+// 	if (str != NULL)
+// 	{
+// 		i = 0;
+// 		while (str[i] != '\0')
+// 		{
+// 			write(1,&str[i],1);
+// 			i++;
+// 		}
+// 	}
+// }
