@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 12:32:56 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/05 15:27:25 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/06 11:11:19 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	{
 		sr_len = my_len(src);
 		ds_len = my_len(dest);
-		if (size <= 0 || size <= ds_len)
+		if (size != 0 || size <= ds_len)
 		{
 			return (size + sr_len);
 		}

@@ -6,14 +6,15 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 22:49:37 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/05 23:04:07 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/06 12:38:57 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
 #include <stdio.h>
 
+int ft_itohx(int nb);
+void ft_putnbr(int nb);
 int	ft_atoi(char *str);
 void ft_putnbr_base(int nbr, char *base);
 
@@ -29,9 +30,82 @@ int main (int argc, char *argv[]){
 
 void ft_putnbr_base(int nbr, char *base)
 {
-    printf("%d %s", nbr*5, base);
+	int i;
+	char octa[] = "poneyvif";
+	char hexa[] = "0123456789ABCDEF";
+	
+	i = 0;
+	while (base[i] == octa[i] && base[i] != '\0' && octa[i] != '\0')
+	{
+		i++;
+	}
+
+	if (base[i] == '\0' && octa[i] == '\0')
+		write(1, "octal", 5);
+	
+	else if (i == 0)
+	{
+		while (base[i] == hexa[i] && base[i] != '\0' && hexa[i] != '\0')
+		{
+			i++;
+		}
+
+		if (i == 2 && base[i] == '\0')
+			write(1, "binary", 6);
+		
+		else if (i == 10 && base[i] == '\0')
+			ft_putnbr(nbr);
+		
+		else if (i == 16 && base[i] == '\0')
+			ft_putnbr(ft_itohx(nbr));
+			//write(1, "hexadecimal", 11)	;
+
+		else
+			write(1, "", 1);
+	}
+	else
+		write(1, "", 1);
+
 }
 
+int ft_itohx(int nb)
+{
+	int res;
+	
+	res = 0;
+	if (nb < 10)
+		return (res += nb);
+	else
+		res = (res % 16) * 10;
+	
+	return (ft_itohx(res));
+}
+
+void ft_putnbr(int nb)
+{
+    char c;
+    
+    if (nb == -2147483648)
+        write (1, "-2147483648", 12);
+    else
+    {
+        if (nb < 0)
+        {
+            write(1, "-", 1);
+            nb = nb * -1;
+        }
+        if (nb < 10)
+        {
+            c = nb + '0';
+            write (1, &c, 1);
+        }
+        else
+        {
+            ft_putnbr(nb / 10);
+            ft_putnbr(nb % 10);
+        }
+    }
+}
 
 int	ft_atoi(char *str)
 {
@@ -40,7 +114,7 @@ int	ft_atoi(char *str)
 	int	total;
 
 	i = 0;
-	while (str[i] <= 32)
+	while (str[i] != '\0' && str[i] <= 32)
 		i++;
 	sinal = 0;
 	while (str[i] == '-' || str[i] == '+')
