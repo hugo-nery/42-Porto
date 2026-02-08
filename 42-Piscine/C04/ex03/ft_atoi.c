@@ -6,27 +6,27 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:37:16 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/06 12:19:09 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/08 21:56:46 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int ft_atoi(char *str);
+// int ft_atoi(char *str);
 
-int main (int argc, char *argv[]) {
+// int main (int argc, char *argv[]) {
 
-	// printf("%d", ft_atoi("        ---++---++--++-+1342834ab567"));
+// 	// printf("%d", ft_atoi("        ---++---++--++-+1342834ab567"));
 
-	if (argc > 1)
-		printf("%d", ft_atoi(argv[1]));
-	else
-		printf("Missing Argument!");
+// 	if (argc > 1)
+// 		printf("%d", ft_atoi(argv[1]));
+// 	else
+// 		printf("Missing Argument!");
 
-    return 0;
-}
+//     return 0;
+// }
 
 int	ft_atoi(char *str)
 {
@@ -56,5 +56,3 @@ int	ft_atoi(char *str)
 		total *= -1;
 	return (total);
 }
-
-// "\0123"
