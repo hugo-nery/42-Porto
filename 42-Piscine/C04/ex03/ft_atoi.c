@@ -6,11 +6,11 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 17:37:16 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/08 21:56:46 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:03:20 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+// #include <unistd.h>
 
 // #include <stdio.h>
 
@@ -39,20 +39,18 @@ int	ft_atoi(char *str)
 	{
 		i++;
 	}
-	sinal = 0;
+	sinal = 1;
 	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sinal++;
+			sinal *= -1;
 		i++;
 	}
 	total = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		total = (str[i] - '0') + total * 10;
+		total = (total * 10) + (str[i] - '0');
 		i++;
 	}
-	if (sinal % 2 != 0)
-		total *= -1;
-	return (total);
+	return (total * sinal);
 }
