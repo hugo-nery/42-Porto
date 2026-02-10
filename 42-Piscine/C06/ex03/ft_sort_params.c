@@ -6,59 +6,59 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 11:35:00 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/10 14:39:38 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/10 15:56:37 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
 void ft_printstr(char *str);
-void sort_args (char **dest, int args_count, char **args_list);
+void sort_args (int args_count, char **args_list);
 
 int main(int argc, char **argv)
 {
-    // char **my_args;
-
     if (argc <= 1)
         return (1);
     else
     {
-        int i;
+        char **my_args;
+        
+        my_args = argv;
+        sort_args(argc, my_args);
 
-        i = 1;
+        int i = 0;
         while (i < argc)
         {
-            write(1, &argv[i][0], 1);
-            write(1, "\n", 1);
-            i++;
+            ft_printstr(my_args[i]);
         }
-
-        // my_args = NULL;
-        // sort_args(my_args, argc, argv);
         
-        // int i;
-        
-        // i = 0;
-        // while (i < argc)
-        // {
-        //     ft_printstr(my_args[i]);
-        //     i++;
-        // }
     }
     return (0);
 }
 
-void sort_args (char **dest, int args_count, char **args_list)
+void sort_args (int args_count, char **args_list)
 {
     int i;
+    int x;
+    char *temp;
 
-    i = 0;
-    while (i < args_count)
+    x = 0;
+    while (x < args_count)
     {
-        /* code */
+        i = 1;
+        while (i < args_count - 1)
+        {
+            if (args_list[i][0] > args_list[i + 1][0])
+            {
+                temp = args_list[i];
+                args_list[i] = args_list[i + 1];
+                args_list[i + 1] = temp;
+            }
+            i++;
+        }
+        x++;
     }
-    
-    
+        
 }
 
 // hugo livia victor
