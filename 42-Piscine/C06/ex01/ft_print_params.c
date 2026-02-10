@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/04 19:22:47 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/09 21:06:16 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/10 11:19:53 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/10 11:25:07 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-// #include <stdio.h>
+void	ft_printstr(char *str);
 
-// int ft_strlen(char *str);
+int	main(int argc, char **argv)
+{
+	int	i;
 
-// int main () {
+	i = 1;
+	while (i < argc)
+	{
+		ft_printstr(argv[i]);
+		i++;
+	}
+	return (0);
+}
 
-// 	char my_str[] = "hugo";
-
-// 	printf("%d", ft_strlen(my_str));
-
-// 	return 0;
-// }
-
-int	ft_strlen(char *str)
+void	ft_printstr(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
+		write(1, &str[i], 1);
 		i++;
 	}
-	return (i);
+	write(1, "\n", 1);
 }
