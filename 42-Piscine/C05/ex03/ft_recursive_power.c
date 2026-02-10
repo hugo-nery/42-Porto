@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 22:34:30 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/08 22:39:16 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/10 22:47:53 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@
 
 // int main (){
 
-// 	printf("%d", ft_recursive_power(4, 3));
+// 	printf("%d", ft_recursive_power(5, 1));
 
 // 	return 0;
 // }
 
 int	ft_recursive_power(int nb, int power)
 {
-	if (nb <= 0)
+	if (nb < 0)
 		return (0);
+	if (power == 0)
+		return (1);
 	if (power == 1)
 		return (nb);
 	else
