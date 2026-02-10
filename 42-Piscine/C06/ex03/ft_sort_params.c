@@ -6,72 +6,93 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 11:35:00 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/10 15:56:37 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/10 21:21:26 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_printstr(char *str);
-void sort_args (int args_count, char **args_list);
+void	ft_printstr(char *str);
+int		ft_strcmp(char *s1, char *s2);
+void	ft_argsort(int arg_counts, char **args_list);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc <= 1)
-        return (1);
-    else
-    {
-        char **my_args;
-        
-        my_args = argv;
-        sort_args(argc, my_args);
+	int		i;
+	char	**my_args;
 
-        int i = 0;
-        while (i < argc)
-        {
-            ft_printstr(my_args[i]);
-        }
-        
-    }
-    return (0);
+	if (argc <= 1)
+		return (1);
+	else
+	{
+		my_args = argv;
+		ft_argsort(argc, my_args);
+		i = 1;
+		while (i < argc)
+		{
+			ft_printstr(my_args[i]);
+			i++;
+		}
+	}
+	return (0);
 }
 
-void sort_args (int args_count, char **args_list)
+void	ft_argsort(int arg_counts, char **args_list)
 {
-    int i;
-    int x;
-    char *temp;
+	int		i;
+	int		x;
+	char	*temp;
+	int		min_idx;
 
-    x = 0;
-    while (x < args_count)
-    {
-        i = 1;
-        while (i < args_count - 1)
-        {
-            if (args_list[i][0] > args_list[i + 1][0])
-            {
-                temp = args_list[i];
-                args_list[i] = args_list[i + 1];
-                args_list[i + 1] = temp;
-            }
-            i++;
-        }
-        x++;
-    }
-        
+	temp = NULL;
+	i = 1;
+	while (i < arg_counts - 1)
+	{
+		min_idx = i;
+		x = i + 1;
+		while (x < arg_counts)
+		{
+			if (ft_strcmp(args_list[min_idx], args_list[x]) > 0)
+				min_idx = x;
+			x++;
+		}
+		if (min_idx != i)
+		{
+			temp = args_list[i];
+			args_list[i] = args_list[min_idx];
+			args_list[min_idx] = temp;
+		}
+		i++;
+	}
 }
 
-// hugo livia victor
-
-void ft_printstr(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
-    write(1, "\n", 1);
+	if (s1 != NULL && s2 != NULL)
+	{
+		i = 0;
+		while (s1[i] != '\0' && s2[i] != '\0')
+		{
+			if (s1[i] != s2[i])
+				return (s1[i] - s2[i]);
+			i++;
+		}
+		return (s1[i] - s2[i]);
+	}
+	return (0);
+}
+
+void	ft_printstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
 }
