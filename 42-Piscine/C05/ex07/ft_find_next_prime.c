@@ -6,15 +6,15 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 21:25:45 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/09 22:05:33 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/11 13:36:24 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // #include <unistd.h>
 // #include <stdio.h>
 
-// int	ft_is_prime(int nb);
-// int ft_find_next_prime(int nb);
+int	ft_is_prime(int nb);
+int	ft_find_next_prime(int nb);
 
 // int main () {
 
