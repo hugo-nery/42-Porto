@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/08 22:21:44 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/10 22:47:59 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/12 16:35:19 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ int	ft_iterative_power(int nb, int power)
 
 	if (power < 0)
 		return (0);
+	if (power == 0)
+		return (1);
 	else
 	{
-		res = 1;
-		while (power >= 1)
+		res = nb;
+		while (power > 1)
 		{
 			res *= nb;
 			power--;
