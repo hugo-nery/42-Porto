@@ -5,39 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/11 19:42:07 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/12 12:53:07 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/12 17:19:36 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/12 19:34:06 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdlib.h>
-
 // #include <stdio.h>
 
-void	ft_strcat(int *pos, char *dest, char *src);
+int		ft_strlen(char *str);
 char	*ft_strjoin(int size, char **strs, char *sep);
+void	ft_super_strcat(int *pos, char *dest, char *src, char *sep);
 
-// int	main (int argc, char **argv)
-// {
+// int main (int argc, char **argv){
+
 //     if (argc <= 1)
 //         printf("Missing arguments!");
 
 //     else
-// 	{
-// 		char *mine;
+//     {
+//         printf("%s", ft_strjoin(argc, argv, ", "));
+//     }
 
-// 		// mine = ft_strjoin(argc, argv, ", ");
-// 		// printf ("%s", mine);
-// 		// free(mine);
-
-// 		mine = ft_strjoin(0, argv, ", ");
-// 		free(mine);
-// 		printf ("%s", mine);
-// 	}	
 //     return 0;
 // }
 
-void	ft_strcat(int *pos, char *dest, char *src)
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+void	ft_super_strcat(int *pos, char *dest, char *src, char *sep)
 {
 	int	i;
 
@@ -45,32 +49,43 @@ void	ft_strcat(int *pos, char *dest, char *src)
 	while (src[i] != '\0')
 	{
 		dest[*pos] = src[i];
-		i++;
 		(*pos)++;
+		i++;
+	}
+	i = 0;
+	while (sep[i] != '\0')
+	{
+		dest[*pos] = sep[i];
+		(*pos)++;
+		i++;
 	}
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
+	char	*text;
 	int		i;
 	int		str_len;
-	char	*text;
 
-	text = malloc(size * sizeof(strs[0]));
+	i = 1;
+	str_len = 0;
+	while (i < size)
+		str_len += ft_strlen(strs[i++]);
+	str_len += size * ft_strlen(sep);
+	text = (char *)malloc((str_len + 1) * sizeof(char));
 	if (text == NULL)
 		return (NULL);
-	if (size <= 0)
+	if (size == 0)
+		text = "\0";
+	else
 	{
-		text = NULL;
-		return (text);
-	}
-	str_len = 0;
-	i = 1;
-	while (i < size)
-	{
-		ft_strcat(&str_len, text, strs[i]);
-		ft_strcat(&str_len, text, sep);
-		i++;
+		i = 1;
+		str_len = 0;
+		while (i < size)
+		{
+			ft_super_strcat(&str_len, text, strs[i], sep);
+			i++;
+		}
 	}
 	return (text);
 }
