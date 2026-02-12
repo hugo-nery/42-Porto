@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 21:30:26 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/11 13:28:53 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/11 13:29:37 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/11 18:39:37 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
 
-// #include <stdio.h>
+#include <stdio.h>
 
-// char *ft_strdup(char *src);
+// int *ft_range(int min, int max);
 
-// int main (){
-
-//     char text[] = "hugo";
-
-//     char *new_str = ft_strdup(text);
-
-//     printf("%s", new_str);
+// int main ()
+// {
+// 	ft_range(-8, 5);
 
 //     return 0;
 // }
 
-char	*ft_strdup(char *src)
+int	*ft_range(int min, int max)
 {
-	int		i;
-	char	*new_str;
+	int	i;
+	int	*arr;
 
-	i = 0;
-	while (src[i] != '\0')
-		i++;
-	new_str = malloc((i + 1) * sizeof(src[0]));
-	if (new_str == NULL)
+	arr = malloc((max - min) * sizeof(max));
+	if (min >= max || arr == NULL)
 		return (NULL);
 	i = 0;
-	while (src[i] != '\0')
+	while (min + i < max)
 	{
-		new_str[i] = src[i];
+		arr[i] = min + i;
 		i++;
 	}
-	new_str[i] = '\0';
-	return (new_str);
+	return (arr);
 }
