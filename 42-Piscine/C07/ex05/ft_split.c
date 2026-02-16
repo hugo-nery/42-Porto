@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 21:55:41 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/13 14:00:19 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/16 12:20:50 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char **ft_split(char *str, char *charset)
     int x;
     int cs_count;
     int str_pos;
+    int str_len;
     char **split_str;
 
     if (str == NULL || charset == NULL)
@@ -48,31 +49,39 @@ char **ft_split(char *str, char *charset)
     split_str = (char **)malloc(cs_count * sizeof(char *));
     if (split_str == NULL)
         return (NULL);
+    str_len = ft_strlen(str);
     i = 0;
     x = 0;
     str_pos = 0;
     while (i < cs_count)
     {
-        while (str_pos < ft_strlen(str))
+        while (str_pos < str_len)
         {
-            if (!(ft_not_in(str[str_pos], charset)))
-                break;
             str_pos++;
-        }
-        printf("\n%d", str_pos);
-        split_str[i] = (char *)malloc(str_pos * sizeof(char));
-        if (split_str[i] != NULL)
-        {
-            x = 0;
-            while (x < str_pos)
+            if (!ft_not_in(str[str_pos - 1], charset))
             {
-                // printf("\nstr[%d] = %c", x, str[x]);
-                split_str[i][x] = str[x];
-                x++;
+                printf("\n");
+                break;
             }
-            split_str[i][x] = '\0';
-            // printf("\n%s", split_str[i]);
+            printf("\npos = %d  len = %d", str_pos, str_len);
+            // printf("\n[%d] = %c", str_pos, str[str_pos]);
         }
+        // printf("\n-----[%d] = %c", str_pos+1, str[str_pos]);
+        // str_pos++;
+        // printf("\nsep_pos = %d", str_pos);
+        // split_str[i] = (char *)malloc(str_pos * sizeof(char));
+        // if (split_str[i] != NULL)
+        // {
+        //     x = 0;
+        //     while (x < str_pos)
+        //     {
+        //         printf("\nstr[%d] = %c", x + str_pos, str[x + str_pos]);
+        //         split_str[i][x] = str[x + str_pos];
+        //         x++;
+        //     }
+        //     split_str[i][x] = '\0';
+        //     printf("\n%s", split_str[i]);
+        // }
         i++;
     }
 
@@ -83,9 +92,7 @@ int ft_cs_count (char *str, char *charset)
 {
     int i;
     int x;
-    int z;
     int cs_count;
-    int flag;
 
     i = 1;
     cs_count = 0;
@@ -103,13 +110,6 @@ int ft_cs_count (char *str, char *charset)
     if (ft_is_alpha(str[i - 1]))
         cs_count++;
     return (cs_count);
-}
-
-int ft_is_alpha(char c)
-{
-    if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
-        return (1);
-    return (0);
 }
 
 int ft_not_in(char c, char *str)
@@ -134,4 +134,11 @@ int ft_strlen(char *str)
     while (str[i] != '\0')
         i++;
     return (i);
+}
+
+int ft_is_alpha(char c)
+{
+    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+        return (1);
+    return (0);
 }

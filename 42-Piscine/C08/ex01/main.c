@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 11:12:14 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/14 12:44:41 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/16 12:43:34 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/16 14:26:06 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_boolean.h"
 
-void	ft_printstr(char *str);
+void ft_putstr(char *str);
+t_bool ft_is_even(int nbr);
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	ft_printstr(argv[argc - argc]);
-	return (0);
+    (void)argv;
+    if (ft_is_even(argc - 1) == TRUE)
+        ft_putstr(EVEN_MSG);
+    else
+        ft_putstr(ODD_MSG);
+    return (SUCCESS);
 }
 
-void	ft_printstr(char *str)
+void ft_putstr(char *str)
 {
-	int	i;
+    while (*str)
+        write(1, str++, 1);
+}
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+t_bool ft_is_even(int nbr)
+{
+    return ((EVEN(nbr)) ? TRUE : FALSE);
 }

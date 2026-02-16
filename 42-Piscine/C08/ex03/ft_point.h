@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 11:12:14 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/14 12:44:41 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/16 14:26:53 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/16 21:00:15 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-void	ft_printstr(char *str);
-
-int	main(int argc, char **argv)
+typedef struct s_point
 {
-	ft_printstr(argv[argc - argc]);
-	return (0);
-}
+	int	x;
+	int	y;
+}	t_point;
 
-void	ft_printstr(char *str)
-{
-	int	i;
+extern t_point	g_point;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
-}
+#endif

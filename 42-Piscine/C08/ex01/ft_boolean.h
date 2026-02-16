@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 11:12:14 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/14 12:44:41 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/16 12:42:56 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/16 14:23:52 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_BOOLEAN_H
+#define FT_BOOLEAN_H
+
 #include <unistd.h>
 
-void	ft_printstr(char *str);
+typedef enum{
+    FALSE = 0,
+    TRUE = 1
+} t_bool;
 
-int	main(int argc, char **argv)
-{
-	ft_printstr(argv[argc - argc]);
-	return (0);
-}
+#define EVEN(n) (n % 2 == 0)
+#define SUCCESS 0
 
-void	ft_printstr(char *str)
-{
-	int	i;
+#define EVEN_MSG "I have an even number of arguments."
+#define ODD_MSG "I have an odd number of arguments."
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
-}
+#endif

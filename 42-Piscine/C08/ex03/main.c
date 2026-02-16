@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 11:12:14 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/14 12:44:41 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/16 14:27:07 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/16 20:58:19 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include "ft_point.h"
 
-void	ft_printstr(char *str);
+void	set_point(t_point *point);
 
-int	main(int argc, char **argv)
+// int main(void)
+// {
+//     t_point point;
+//     set_point(&point);
+
+//     printf("%d", point.y);
+
+//     return (0);
+// }
+
+void	set_point(t_point *point)
 {
-	ft_printstr(argv[argc - argc]);
-	return (0);
-}
-
-void	ft_printstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+	point->x = 42;
+	(*point).y = 21;
 }

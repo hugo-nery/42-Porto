@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 11:12:14 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/14 12:44:41 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/16 16:10:30 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/16 20:56:33 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_STOCK_STR_H
+#define FT_STOCK_STR_H
+
 #include <unistd.h>
+#include <stdlib.h>
 
-void	ft_printstr(char *str);
-
-int	main(int argc, char **argv)
+typedef	struct	s_stock_str
 {
-	ft_printstr(argv[argc - argc]);
-	return (0);
-}
+	int		size;
+	char	*str;
+	char	*copy;
+}	t_stock_str;
 
-void	ft_printstr(char *str)
-{
-	int	i;
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
-}
+#endif
