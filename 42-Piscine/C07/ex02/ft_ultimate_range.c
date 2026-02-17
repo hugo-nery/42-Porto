@@ -6,46 +6,66 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 15:44:35 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/11 18:44:04 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 12:33:54 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 
-#include <stdio.h>
+void	ft_printnb(int num);
+int		ft_ultimate_range(int **range, int min, int max);
 
-int ft_ultimate_range(int **range, int min, int max);
+// int main ()
+// {
+//     int *my_arr;
+// 	int arr_len;
+// 	int i;
 
-int main ()
-{
-    int *my_arr;
+//     my_arr = 0;
+//     arr_len = ft_ultimate_range(&my_arr, -5, 10);
 
-    my_arr = NULL;
-    ft_ultimate_range(&my_arr, 6, 10);
-    return 0;
-}
+// 	i = 0;
+// 	while (i < arr_len)
+// 	{
+// 		ft_printnb (my_arr[i]);
+// 		write (1, "\n", 1);
+// 		i++;
+// 	}
+
+//     return 0;
+// }
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	i;
-	int	*arr;
 
+	*range = NULL;
 	if (min >= max)
-	{
-		*range = NULL;
 		return (0);
-	}
-	arr = malloc((max - min) * sizeof(max));
-	if (arr == NULL)
+	*range = malloc((max - min) * sizeof(int));
+	if (*range == NULL)
 		return (-1);
 	i = 0;
 	while (min + i < max)
 	{
-		arr[i] = min + i;
-		printf("%d, ", arr[i]);
+		(*range)[i] = min + i;
 		i++;
 	}
-	*range = arr;
 	return (max - min);
+}
+
+void	ft_printnb(int num)
+{
+	long	n;
+
+	n = num;
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
+	if (n > 9)
+		ft_printnb (n / 10);
+	write (1, &"0123456789"[n % 10], 1);
 }

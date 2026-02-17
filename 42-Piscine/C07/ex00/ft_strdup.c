@@ -6,16 +6,15 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:30:26 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/11 13:28:53 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 12:12:16 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
 
 // #include <stdio.h>
 
-// char *ft_strdup(char *src);
+char	*ft_strdup(char *src);
 
 // int main (){
 
