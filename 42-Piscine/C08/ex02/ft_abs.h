@@ -6,8 +6,13 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 14:21:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/16 15:42:30 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 10:28:03 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ABS(Value) ((Value < 0) ? -(Value) : (Value))
+#ifndef FT_ABS_H
+# define FT_ABS_H
+
+# define ABS(Value) ((Value < 0) ? -(Value) : (Value))
+
+#endif

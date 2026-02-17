@@ -6,17 +6,17 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:10:30 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/16 20:56:33 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 10:20:28 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STOCK_STR_H
-#define FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
-#include <unistd.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
 
-typedef	struct	s_stock_str
+typedef struct s_stock_str
 {
 	int		size;
 	char	*str;
