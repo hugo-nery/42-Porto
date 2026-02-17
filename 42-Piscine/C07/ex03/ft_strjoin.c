@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 17:19:36 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/17 13:58:13 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:57:41 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 // #include <stdio.h>
 
+char	*create_empty_str(void);
 int		ft_strlen(char *str);
 char	*ft_strjoin(int size, char **strs, char *sep);
 void	ft_super_strcat(int *pos, char *dest, char *src, char *sep);
@@ -22,10 +23,10 @@ void	ft_super_strcat(int *pos, char *dest, char *src, char *sep);
 // int main (int argc, char **argv){
 
 //     if (argc <= 1)
-//         printf("Missing arguments!");
+//         printf("Invalid nb of arguments!");
 
 //     else
-//         printf("%s", ft_strjoin(argc - 1, &argv[1], ", "));
+//         printf("%s", ft_strjoin(argc - 2, &argv[2], argv[1]));
 
 //     return 0;
 // }
@@ -36,25 +37,31 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		str_len;
 	char	*text;
 
-	i = 0;
-	*text = NULL;
 	if (size == 0)
-		return (text);
-	str_len = size + ft_strlen(sep);
+		return (create_empty_str());
+	str_len = ft_strlen(sep) * (size - 1);
+	i = 0;
 	while (i < size)
 		str_len += ft_strlen(strs[i++]);
-	text = malloc((str_len) * sizeof(char));
+	text = malloc((str_len + 1) * sizeof(char));
 	if (text == NULL)
-		return (NULL);
-	else
-	{
-		i = 0;
-		str_len = 0;
-		while (i < size - 1)
-			ft_super_strcat(&str_len, text, strs[i++], sep);
-		ft_super_strcat(&str_len, text, strs[i], "");
-	}
+		return (create_empty_str());
+	i = 0;
+	str_len = 0;
+	while (i < size - 1)
+		ft_super_strcat(&str_len, text, strs[i++], sep);
+	ft_super_strcat(&str_len, text, strs[i], "");
 	return (text);
+}
+
+char	*create_empty_str(void)
+{
+	char	*str;
+
+	str = malloc(1);
+	if (str != NULL)
+		str[0] = '\0';
+	return (str);
 }
 
 void	ft_super_strcat(int *pos, char *dest, char *src, char *sep)

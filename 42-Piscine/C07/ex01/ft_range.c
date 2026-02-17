@@ -6,11 +6,11 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 13:29:37 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/17 12:28:32 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:32:21 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+// #include <unistd.h>
 #include <stdlib.h>
 
 void	ft_printnb(int num);
@@ -54,17 +54,17 @@ int	*ft_range(int min, int max)
 	return (arr);
 }
 
-void	ft_printnb(int num)
-{
-	long	n;
+// void	ft_printnb(int num)
+// {
+// 	long	n;
 
-	n = num;
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		n = -n;
-	}
-	if (n > 9)
-		ft_printnb (n / 10);
-	write(1, &("0123456789"[n % 10]), 1);
-}
+// 	n = num;
+// 	if (n < 0)
+// 	{
+// 		write(1, "-", 1);
+// 		n = -n;
+// 	}
+// 	if (n > 9)
+// 		ft_printnb (n / 10);
+// 	write(1, &("0123456789"[n % 10]), 1);
+// }

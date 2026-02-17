@@ -6,12 +6,12 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 15:44:35 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/17 12:33:54 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:33:39 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
+// #include <unistd.h>
 
 void	ft_printnb(int num);
 int		ft_ultimate_range(int **range, int min, int max);
@@ -55,17 +55,17 @@ int	ft_ultimate_range(int **range, int min, int max)
 	return (max - min);
 }
 
-void	ft_printnb(int num)
-{
-	long	n;
+// void	ft_printnb(int num)
+// {
+// 	long	n;
 
-	n = num;
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		n = -n;
-	}
-	if (n > 9)
-		ft_printnb (n / 10);
-	write (1, &"0123456789"[n % 10], 1);
-}
+// 	n = num;
+// 	if (n < 0)
+// 	{
+// 		write(1, "-", 1);
+// 		n = -n;
+// 	}
+// 	if (n > 9)
+// 		ft_printnb (n / 10);
+// 	write (1, &"0123456789"[n % 10], 1);
+// }

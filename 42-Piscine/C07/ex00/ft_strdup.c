@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:30:26 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/17 12:12:16 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/17 16:58:30 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strdup(char *src)
 	i = 0;
 	while (src[i] != '\0')
 		i++;
-	new_str = malloc((i + 1) * sizeof(src[0]));
+	new_str = malloc((i + 1) * sizeof(char));
 	if (new_str == NULL)
 		return (NULL);
 	i = 0;
