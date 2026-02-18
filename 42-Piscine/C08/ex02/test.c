@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stock_str.h                                     :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/16 16:10:30 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/17 10:20:28 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/02/16 15:39:14 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/02/18 10:55:23 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STOCK_STR_H
-# define FT_STOCK_STR_H
+// #include "ft_abs.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+// #include <unistd.h>
 
-typedef struct s_stock_str
-{
-	int		size;
-	char	*str;
-	char	*copy;
-}	t_stock_str;
+// void	ft_printnb(int num);
 
-struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
+// int main (){
 
-#endif
+//     ft_printnb(ABS(-6548));
+
+//     return (0);
+// }
+
+// void	ft_printnb(int num)
+// {
+// 	long	n;
+
+// 	n = num;
+// 	if (n < 0)
+// 	{
+// 		write(1, "-", 1);
+// 		n = -n;
+// 	}
+// 	if (n > 9)
+// 		ft_printnb(n / 10);
+// 	write (1, &"0123456789"[n % 10], 1);
+// }

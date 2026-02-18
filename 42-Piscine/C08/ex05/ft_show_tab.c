@@ -6,14 +6,17 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 17:33:22 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/16 20:50:40 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/18 22:44:23 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ex04/ft_stock_str.h"
+#include "ft_stock_str.h"
 
-void	ft_printnum(int num);
-void	ft_printstr(char *str);
+# include <unistd.h>
+# include <stdlib.h>
+
+void	ft_print_num(int num);
+void	ft_print_str(char *str);
 void	ft_show_tab(struct s_stock_str *par);
 
 // int	main(int argc, char **argv)
@@ -21,10 +24,10 @@ void	ft_show_tab(struct s_stock_str *par);
 // 	t_stock_str	*tab;
 
 // 	if (argc <= 1)
-// 		ft_printstr("Not enough args");
+// 		ft_print_str("Not enough args");
 // 	else
 // 	{
-// 		tab = ft_strs_to_tab(argc, argv);
+// 		tab = ft_strs_to_tab(argc - 1, &argv[1]);
 // 		ft_show_tab (tab);
 // 	}
 // 	return (0);
@@ -35,23 +38,25 @@ void	ft_show_tab(struct s_stock_str *par)
 	int	i;
 
 	i = 0;
-	while (par[i].str != '\0')
+	while (par[i].str != NULL)
 	{
-		ft_printnum(par[i].size);
-		write (1, " - ", 3);
-		ft_printstr(par[i].str);
-		write(1, "\n", 1);
+		ft_print_str(par[i].str);
+		ft_print_str("\n");
+		ft_print_num(par[i].size);
+		ft_print_str("\n");
+		ft_print_str(par[i].copy);
+		ft_print_str("\n");
 		i++;
 	}
 }
 
-void	ft_printstr(char *str)
+void	ft_print_str(char *str)
 {
 	while (*str)
 		write(1, str++, 1);
 }
 
-void	ft_printnum(int num)
+void	ft_print_num(int num)
 {
 	long	n;
 
@@ -62,6 +67,6 @@ void	ft_printnum(int num)
 		n = -n;
 	}
 	if (n >= 10)
-		ft_printnum (n / 10);
+		ft_print_num (n / 10);
 	write(1, &"0123456789"[n % 10], 1);
 }

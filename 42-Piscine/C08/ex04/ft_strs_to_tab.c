@@ -6,12 +6,15 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 16:09:33 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/02/16 20:55:29 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/02/18 22:44:10 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "ft_stock_str.h"
+
+# include <stdlib.h>
+
+// #include <stdio.h>
 
 int					ft_strlen(char *str);
 char				*ft_strdup(char *str);
@@ -23,7 +26,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av);
 //         printf ("Not enough args");
 
 //     else
-//         ft_strs_to_tab(argc, argv);
+//         ft_strs_to_tab(argc - 1, &argv[1]);
 
 //     return 0;
 // }
@@ -36,15 +39,15 @@ struct	s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	stock = malloc((ac + 1) * sizeof(t_stock_str));
 	if (stock == NULL)
 		return (NULL);
-	i = 1;
+	i = 0;
 	while (i < ac)
 	{
-		stock[i - 1].size = ft_strlen(av[i]);
-		stock[i - 1].str = av[i];
-		stock[i - 1].copy = ft_strdup(av[i]);
+		stock[i].size = ft_strlen(av[i]);
+		stock[i].str = av[i];
+		stock[i].copy = ft_strdup(av[i]);
 		i++;
 	}
-	stock[i - 1].str = 0;
+	stock[i].str = 0;
 	return (stock);
 }
 
