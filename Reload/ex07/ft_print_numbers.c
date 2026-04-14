@@ -6,12 +6,13 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 16:59:06 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/13 17:03:00 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/14 15:40:21 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+// #include <unistd.h>
 
+// void ft_putchar (char c);
 // void ft_print_numbers(void);
 
 // int main ()
@@ -21,7 +22,16 @@
 //     return 0;
 // }
 
+// void ft_putchar (char c)
+// {
+// 	write (1, &c, 1);
+// }
+
 void	ft_print_numbers(void)
 {
-	write (1, "0123456789", 10);
+	char	n;
+
+	n = '0';
+	while (n <= '9')
+		ft_putchar(n++);
 }

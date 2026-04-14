@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_sort_params.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 21:53:34 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/14 15:43:38 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/14 10:01:43 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/14 15:44:49 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,42 @@
 
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int		j;
+	int		i;
+	int		min_idx;
+	char	*temp;
 
-	i = 1;
-	if (argc > 1)
+	j = 1;
+	while (j < argc)
+	{
+		i = j;
+		min_idx = i;
 		while (i < argc)
-			ft_putstr(argv[i++]);
+		{
+			if (ft_strcmp(argv[min_idx], argv[i]) > 0)
+				min_idx = i;
+			i++;
+		}
+		if (min_idx != i)
+		{
+			temp = argv[j];
+			argv[j] = argv[min_idx];
+			argv[min_idx] = temp;
+		}
+		ft_putstr(argv[j++]);
+	}
+	return (0);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	while (*s1 || *s2)
+		if (*(s1++) != *(s2++))
+			return (*(--s1) - *(--s2));
 	return (0);
 }
 
