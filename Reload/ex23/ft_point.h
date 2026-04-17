@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/15 13:38:01 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/15 13:38:07 by hde-albu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_POINT_H
 # define FT_POINT_H
 
-typedef struct t_point
+typedef struct s_point
 {
-	int x;
-	int y;
-} t_point;
+	int	x;
+	int	y;
+}	t_point;
 
 #endif

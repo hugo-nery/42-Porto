@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 21:02:30 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/15 13:35:37 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/15 10:12:42 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/15 10:23:16 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <unistd.h>
+#include "my_header.h"
 
-void	ft_putchar(char c);
-// void ft_putstr(char *str);
-
-// int main(){
-
-// 	ft_putstr("xixi");
-
-// 	return 0;
-// }
-
-// void ft_putchar (char c)
-// {
-// 	write (1, &c, 1);
-// }
-
-void	ft_putstr(char *str)
+int main ()
 {
-	while (*str)
-		ft_putchar(*(str++));
+	int my_nbs[] = {1,2,3,4,5,6,7,8,9,10};
+
+	ft_foreach (my_nbs, 10, &ft_evenodd);
+
+	return 0;
 }

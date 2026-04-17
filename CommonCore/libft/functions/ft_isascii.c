@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 21:02:30 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/15 13:35:37 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/16 17:40:22 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/17 15:36:15 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar(char c);
-// void ft_putstr(char *str);
-
-// int main(){
-
-// 	ft_putstr("xixi");
-
-// 	return 0;
-// }
-
-// void ft_putchar (char c)
-// {
-// 	write (1, &c, 1);
-// }
-
-void	ft_putstr(char *str)
+int	ft_isascii(int c)
 {
-	while (*str)
-		ft_putchar(*(str++));
+	if (c >= 0 && c <= 127)
+		return (1);
+	return (0);
 }

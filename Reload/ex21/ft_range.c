@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 14:55:55 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/14 15:14:46 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/16 12:57:43 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,12 @@ int	*ft_range(int min, int max)
 	int	*my_arr;
 
 	if (min >= max)
-		return (malloc (1 * sizeof(int)));
+		return (NULL);
 	my_arr = malloc ((max - min) * sizeof(int));
 	if (!my_arr)
 		return (NULL);
-	else
-	{
-		i = 0;
-		while (min < max)
-			my_arr[i++] = min++;
-	}
+	i = 0;
+	while (min < max)
+		my_arr[i++] = min++;
 	return (my_arr);
 }

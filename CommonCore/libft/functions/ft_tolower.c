@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 21:02:30 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/15 13:35:37 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/16 17:51:17 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/17 15:39:52 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar(char c);
-// void ft_putstr(char *str);
-
-// int main(){
-
-// 	ft_putstr("xixi");
-
-// 	return 0;
-// }
-
-// void ft_putchar (char c)
-// {
-// 	write (1, &c, 1);
-// }
-
-void	ft_putstr(char *str)
+char	ft_tolower(int c)
 {
-	while (*str)
-		ft_putchar(*(str++));
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }

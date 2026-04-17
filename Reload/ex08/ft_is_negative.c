@@ -6,9 +6,11 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 17:05:06 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/14 15:38:43 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/15 13:35:27 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+void	ft_putchar(char c);
 
 void	ft_is_negative(int n)
 {

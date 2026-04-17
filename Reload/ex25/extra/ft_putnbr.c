@@ -6,34 +6,11 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 16:56:43 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/14 17:14:28 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/15 10:20:26 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void ft_putnbr (int nb);
-void ft_foreach(int *tab, int length, void (*f)(int));
-
-int main ()
-{
-
-	int tab[] = {1, 2, 3, 4, 5};
-
-	ft_foreach(tab, 3, &ft_putnbr);
-
-	return 0;
-}
-
-void ft_foreach(int *tab, int length, void (*f)(int))
-{
-	int i;
-
-	i = 0;
-	while (i < length)
-		f(tab[i++]);
-	
-}
+#include "my_header.h"
 
 void ft_putnbr (int nb)
 {

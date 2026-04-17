@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/13 21:02:30 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/15 13:35:37 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/16 13:33:18 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/17 15:40:17 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <unistd.h>
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	ft_putchar(char c);
-// void ft_putstr(char *str);
+#include <unistd.h>
+int	ft_isalpha(int c);
+int	ft_isdigit(int c);
+int	ft_isalnum(int c);
+int	ft_isascii(int c);
+int	ft_isprint(int c);
+int	ft_strlen(const char *str);
+char ft_tolower(int c);
+char ft_toupper(int c);
+int	ft_strlcpy(char *dst, const char *src, size_t size);
+int	ft_strlcat(char *dst, const char *src, size_t size);
 
-// int main(){
 
-// 	ft_putstr("xixi");
-
-// 	return 0;
-// }
-
-// void ft_putchar (char c)
-// {
-// 	write (1, &c, 1);
-// }
-
-void	ft_putstr(char *str)
-{
-	while (*str)
-		ft_putchar(*(str++));
-}
+#endif

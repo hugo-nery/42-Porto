@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 19:04:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/14 12:16:16 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/15 13:36:39 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 int	ft_recursive_factorial(int nb)
 {
-	if (nb < 0  || nb > 12)
+	if (nb < 0 || nb > 12)
 		return (0);
 	if (nb <= 1)
 		return (1);
