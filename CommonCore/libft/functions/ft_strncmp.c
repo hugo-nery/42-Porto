@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/16 16:28:19 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/18 22:14:14 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/18 21:41:16 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/18 22:14:07 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int main(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (argc < 2)
-	{
-		printf("\nForgotX inputX\n");
-	}
-	else if (argc == 4)
-	{
-		printf("%d\n", ft_strncmp(argv[1], argv[2], atoi(argv[3])));
+	int	i;
 
-	}
-	else
-		printf("coco\n");
-
-	return 0;
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i <= (int)n)
+		i++;
+	return (s1[i] - s2[i]);
 }
