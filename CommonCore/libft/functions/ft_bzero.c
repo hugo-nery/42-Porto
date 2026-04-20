@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/16 17:46:11 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/20 13:40:05 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/20 22:28:53 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/20 22:51:34 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	// ft_memset(s, '\0', n);
 
+	size_t i;
+	unsigned char *ptr;
+
+	ptr = (unsigned char *) s;
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	while (i < n)
+		ptr[i++] = '\0';
 }

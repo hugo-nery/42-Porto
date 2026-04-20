@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/18 21:41:16 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/18 22:14:07 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/20 13:22:31 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i <= (int)n)
+	while (i < n)
+	{
+		if (s1[i] == '\0' || s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (0);
 }

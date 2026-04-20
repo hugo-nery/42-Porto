@@ -16,9 +16,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-# 		ar rcs $(NAME) $(OBJS)
 
-%.o:%.c libft.h
+%.o: %.c libft.h
 		$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
