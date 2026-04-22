@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 11:21:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/22 13:31:17 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/22 10:11:15 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/22 10:26:10 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned char	*dest_ptr;
-	unsigned char	*src_ptr;
+	char	*big;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	i;
 
-	if (!dest && !src)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	big = malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (!big)
 		return (NULL);
-	dest_ptr = (unsigned char *) dest;
-	src_ptr = (unsigned char *) src;
-	if (src_ptr > dest_ptr)
+	i = 0;
+	while (s1[i])
 	{
-		while ((n--) > 0)
-			*(dest_ptr++) = *(src_ptr++);
+		big[i] = s1[i];
+		i++;
 	}
-	else if (dest_ptr > src_ptr)
+	i = 0;
+	while (s2[i])
 	{
-		while ((n--) > 0)
-			dest_ptr[n] = src_ptr[n];
+		big[i + s1_len] = s2[i];
+		i++;
 	}
-	return (dest);
+	big[s1_len + s2_len] = '\0';
+	return (big);
 }

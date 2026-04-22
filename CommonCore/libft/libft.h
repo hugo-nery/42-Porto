@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 13:33:18 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/21 21:01:35 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/22 13:10:09 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,13 @@ char	*ft_strdup(const char *str);
 and return a pointer to the allocated memory. The memory is set to zero.*/
 void	*ft_calloc(size_t nmemb, size_t size);
 
-/**/
-char *ft_substr(char const *s, unsigned int start, size_t len);
-/**/
+/*Will return a new 'sub' string of length 'len' starting at 'start'.*/
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
+/*Will return a new string with '*s2' joint to '*s1'.*/
+char	*ft_strjoin(char const *s1, char const *s2);
+/**/
+char	*ft_strtrim(char const *s1, char const *set);
+/**/
+char **ft_split(char const *s, char c);
 
 #endif
