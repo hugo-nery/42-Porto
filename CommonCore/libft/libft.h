@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 13:33:18 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/22 13:10:09 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/22 18:10:50 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,19 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 /*Will return a new string with '*s2' joint to '*s1'.*/
 char	*ft_strjoin(char const *s1, char const *s2);
-/**/
+/*Will use char/s in '*set' to clean a string's left and right.*/
 char	*ft_strtrim(char const *s1, char const *set);
+/*Will return an **arr, from one single string separated by 'c'.*/
+char 	**ft_split(char const *s, char c);
+/*Will convert any 'int' to a string.*/
+char 	*ft_itoa(int n);
+/*Will apply the function 'f' to each character of the string 's',
+passing its index as the first argument and the character itself as the second.*/
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+/*UMA BOSTAAAAAA*/
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 /**/
-char **ft_split(char const *s, char c);
+
+
 
 #endif

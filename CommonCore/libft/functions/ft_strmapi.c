@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 20:30:08 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/22 15:22:11 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/22 17:32:40 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/22 17:45:50 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*sub;
+	char	*result;
+	size_t	len;
 	size_t	i;
 
-	sub = malloc((len + 1) * sizeof(char));
-	if (!sub)
+	len = ft_strlen(s);
+	result = malloc ((len + 1) * sizeof(char));
+	if (!result)
 		return (NULL);
 	i = 0;
-	while (i < len && s[i])
-		sub[i++] = s[start++];
-	sub[i] = '\0';
-	return (sub);
+	while (i < len)
+	{
+		result[i] = f(i, s[i]);
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
 }

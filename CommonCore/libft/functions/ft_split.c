@@ -6,25 +6,58 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 12:17:23 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/22 13:31:19 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/22 15:22:23 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **ft_split(char const *s, char c)
+static int	ft_wcount(char *str, char c);
+
+char	**ft_split(char const *s, char c)
 {
-	size_t w_count;
-	char **my_av;
+	char	**my_av;
+	size_t	w_count;
+	size_t	w_len;
+	size_t	i;
 
-	printf("%c", c);
-
-	my_av = NULL;
-	while (*s)
+	w_count = ft_wcount((char *)s, c);
+	my_av = malloc((w_count + 1) * sizeof(char *));
+	if (!my_av)
+		return (NULL);
+	i = 0;
+	while (i < w_count)
 	{
-		
-		printf("%c", *(s++));
+		w_len = 0;
+		while (s[w_len] == c)
+			s++;
+		while (s[w_len] != c && s[w_len] != '\0')
+			w_len++;
+		my_av[i] = malloc((w_len + 1) * sizeof(char));
+		if (!my_av[i])
+			return (NULL);
+		ft_strlcpy(my_av[i], s, w_len + 1);
+		s = &s[w_len];
+		i++;
 	}
+	return (my_av[w_count] = 0, my_av);
+}
 
-	return (my_av);
+static int	ft_wcount(char *str, char c)
+{
+	size_t	w_count;
+
+	w_count = 0;
+	if (*str != c)
+	{
+		w_count++;
+		str++;
+	}
+	while (*str)
+	{
+		if (*str == c && *(str + 1) != c && *(str + 1) != '\0')
+			w_count++;
+		str++;
+	}
+	return (w_count);
 }
