@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 19:45:55 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/23 17:13:40 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/24 14:21:14 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/24 17:04:41 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	unsigned char	*arr;
-	size_t			len;
+	t_list **new_lst;
+	t_list *new_node;
+	void *new_content;
 
-	if (__SIZE_MAX__ / nmemb < size)
+	if (!lst || !f || !del)
 		return (NULL);
-	len = nmemb * size;
-	arr = malloc(len);
-	if (!arr)
-		return (NULL);
-	while ((len--) > 0)
-		arr[len] = 0;
-	return ((void *)arr);
+
+	new_lst = NULL;
+
+	while (lst != NULL)
+	{
+		new_content = f(lst->content);
+		new_node = ft_lstnew(new_content);
+		if (new_node == NULL)
+		{
+			del(new_node);
+			ft_lstclear(new_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(new_lst, new_node);
+		lst = lst->next;
+	}
+	return (*new_lst);
 }

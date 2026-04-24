@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 13:33:18 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/22 18:10:50 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/24 15:54:34 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,31 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+
+typedef struct s_list
+{
+void			*content;
+struct s_list	*next;
+}				t_list;
+
+/*Will return the pointer to the new node.*/
+t_list	*ft_lstnew(void *content);
+/*Will add the 'new' node to the front of the list.*/
+void	ft_lstadd_front(t_list **lst, t_list *new);
+/*Receives the first node and will return the count of nodes in the list.*/
+int		ft_lstsize(t_list *lst);
+/*Receives the first node and will return the pointer to the last node in the list.*/
+t_list	*ft_lstlast(t_list *lst);
+/**/
+void ft_lstadd_back(t_list **lst, t_list *new);
+/*Will delete the content of */
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+/**/
+void	ft_lstclear(t_list **lst, void (*del)(void*));
+/**/
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+/**/
+
 
 /*Will return 1 if True, 0 if False.*/
 int		ft_isalpha(int c);
@@ -83,8 +108,14 @@ passing its index as the first argument and the character itself as the second.*
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 /*UMA BOSTAAAAAA*/
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+/*Will print the char 'c' to the specified file descriptor 'fd'.*/
+void	ft_putchar_fd(char c, int fd);
+/*Will output the string 's' to the specified file descriptor 'fd'.*/
+void	ft_putstr_fd(char *s, int fd);
+/*Will output the string 's' with a line break, to the specified file descriptor 'fd'.*/
+void	ft_putendl_fd(char *s, int fd);
+/*Will output the number 'n' to the specified file descriptor 'fd'.*/
+void	ft_putnbr_fd(int n, int fd);
 /**/
-
-
 
 #endif
