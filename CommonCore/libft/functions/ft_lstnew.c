@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 17:43:33 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/24 16:13:18 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/25 13:57:03 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstnew(void *content)
 	t_list	*new_node;
 
 	new_node = malloc(sizeof(t_list));
-	if (!new_node)
+	if (!new_node || !content)
 		return (NULL);
 	new_node->content = content;
 	(*new_node).next = NULL;

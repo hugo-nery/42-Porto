@@ -6,10 +6,11 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 16:28:19 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/24 17:44:10 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/25 17:27:10 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+# include <stdio.h>
 #include "libft.h"
 
 void ft_putstr(char *str)
@@ -26,11 +27,29 @@ void	ft_maiscula(unsigned int x, char *c)
 	write(1, &c[x], 1);
 }
 
-void ft_delnode(t_list *node)
+void *ft_strupper(void *content)
 {
-	printf("\nnode '%s' was deleted!\n", (char *)node->content);
-	node->content = "\0";
-	free (node);
+	size_t i;
+	char *str;
+
+	str = ft_strdup((char *) content);
+	if (!str)
+		return NULL;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] >= 'a' && str[i] <= 'z' )
+			str[i] = str[i] - 32;
+		i++;
+	}
+	return (str);
+}
+
+void ft_delcontent(void *content)
+{
+	printf("\nNode '%s' is being deleted!", (char *)content);
+	free(content);
 }
 
 
@@ -38,38 +57,15 @@ int main(int argc, char **argv)
 {
 	// char str[100];
 	char **av;
-	av = argv;
+	// av = argv;
 	
-	t_list *my_list;
-
-	my_list = ft_lstnew("ze");
-	ft_lstadd_back(&my_list, ft_lstnew("val"));
-	ft_lstadd_back(&my_list, ft_lstnew("hugo"));
-	ft_lstadd_back(&my_list, ft_lstnew("livia"));
-	ft_lstadd_back(&my_list, ft_lstnew("victor"));
-	
-	printf("%d nodes.\n", ft_lstsize(my_list));
-
-	ft_lstiter(my_list, (void *)&ft_putstr);
-	
-	ft_lstadd_front(&my_list, ft_lstnew("mavi"));
-	printf("%d nodes.\n", ft_lstsize(my_list));
-
-	ft_lstiter(my_list, (void *)&ft_putstr);
-
-
-	ft_lstdelone(ft_lstlast(my_list), (void *)&ft_delnode);
-
-	ft_lstiter(my_list, (void *)&ft_putstr);
-
-
 	if (argc < 2)
 	{
 		printf("\nForgotX inputX\n");
 
-		printf("%s\n", (char *)ft_calloc(5, sizeof(char)));
+		// printf("%s\n", (char *)ft_calloc(5, sizeof(char)));
 	}
-	else if (argc == 2)
+	else if (argc == 3)
 	{
 		// printf("%d\n", ft_strncmp(argv[1], argv[2], atoi(argv[3])));
 		// printf("%s\n", ft_strnstr(argv[1], argv[2], atoi(argv[3])));
@@ -105,9 +101,9 @@ int main(int argc, char **argv)
 
 		// printf("%s", ft_strtrim(argv[1], argv[2]));
 
-		// av = ft_split(argv[1], argv[2][0]);	
-		// while (*av)
-		// 	printf("%s\n", *(av++));
+		av = ft_split(argv[1], argv[2][0]);	
+		while (*av)
+			printf("%s\n", *(av++));
 		
 		// printf("%s\n", ft_itoa(ft_atoi(argv[1])));
 
@@ -179,7 +175,60 @@ int main(int argc, char **argv)
 
 	}
 	else
-		printf("coco\n\n");
+	{
+		t_list *my_list = NULL;
 
+		char *content = NULL;
+		char text[50];
+		int i = 0;
+		while (i < 5)
+		{
+			ft_strlcpy(text, "Node", 8);
+			ft_strlcat(text, ft_itoa(i), 10);
+			content = ft_strdup(text);
+			ft_lstadd_back(&my_list, ft_lstnew(content));
+			i++;
+		}
+		printf("\n - %d nodes at 'my_list'.\n", ft_lstsize(my_list));
+		ft_lstiter(my_list, (void *)&ft_putstr);
+
+		char *test = ft_strdup("test");
+		ft_lstadd_front(&my_list, ft_lstnew(test));
+
+		printf("\n - %d nodes at 'my_list'.\n", ft_lstsize(my_list));
+		ft_lstiter(my_list, (void *)&ft_putstr);
+
+		printf("\n-last node: %s\n", (char *)ft_lstlast(my_list)->content);
+
+		t_list *atual = my_list;
+		while (atual->next->next != NULL)
+			atual = atual->next;
+		
+		if(ft_lstlast(my_list) == atual->next)
+			printf ("\n%s == %s\n", (char *)ft_lstlast(my_list)->content, (char *)atual->next->content);
+		ft_lstdelone(atual->next, &ft_delcontent);
+		atual->next = NULL;
+
+		/* ft_lstdelone(ft_lstlast(my_list), &ft_delcontent);*/
+		//will delete the last, but the second to last will still point to it,
+		//so it'll seg fault because the address exist but the node is gone!
+
+		printf("\n\n - %d nodes at 'my_list'.\n", ft_lstsize(my_list));
+		ft_lstiter(my_list, (void *)&ft_putstr);
+
+		t_list *copy_lst;
+		copy_lst = ft_lstmap(my_list, &ft_strupper ,&ft_delcontent);
+		ft_lstadd_back(&copy_lst, ft_lstnew("hugo"));
+
+		ft_lstclear(&my_list, &ft_delcontent);
+
+		printf("\n\n - %d nodes at 'my_list'.\n", ft_lstsize(my_list));
+		ft_lstiter(my_list, (void *)&ft_putstr);
+
+		printf("\n - %d nodes at 'copy_lst'.\n", ft_lstsize(copy_lst));
+		ft_lstiter(copy_lst, (void *)&ft_putstr);
+
+		printf ("\n\nThat was Linked List, so maybe not enough args maybe!?\n");
+	}
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 13:11:29 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/24 14:15:27 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/25 15:34:22 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	while (*lst != NULL)
 	{
 		temp_next = (*lst)->next;
-		del((*lst)->content);
-		free (*lst);
+		ft_lstdelone(*lst, del);
 		*lst = temp_next;
 	}
 }
-/*ft_lstdelone(*lst, del);*/
