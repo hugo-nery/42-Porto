@@ -7,7 +7,7 @@ INCLUDES = -I .
 
 FUNC_DIR = ./functions/
 
-FILES = main.c $(wildcard $(FUNC_DIR)*.c)
+FILES = test.c $(wildcard $(FUNC_DIR)*.c)
 OBJS = $(FILES:.c=.o)
 
 RM = rm -f

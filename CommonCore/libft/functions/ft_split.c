@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 12:17:23 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/25 17:26:13 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/27 12:34:44 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_wcount(char *str, char c)
 	size_t	w_count;
 
 	w_count = 0;
-	if (*str != c)
+	if (*str != c && *str != '\0')
 	{
 		w_count++;
 		str++;

@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 19:45:55 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/23 17:13:40 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/27 12:34:53 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	unsigned char	*arr;
 	size_t			len;
 
-	if (__SIZE_MAX__ / nmemb < size)
+	if (size != 0 &&  nmemb > __SIZE_MAX__ / size)
 		return (NULL);
 	len = nmemb * size;
 	arr = malloc(len);
