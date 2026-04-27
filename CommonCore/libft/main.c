@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 16:28:19 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/25 17:27:10 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/27 16:19:21 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ int main(int argc, char **argv)
 
 		// printf("%s", ft_strtrim(argv[1], argv[2]));
 
-		av = ft_split(argv[1], argv[2][0]);	
-		while (*av)
-			printf("%s\n", *(av++));
+		// av = ft_split(argv[1], argv[2][0]);	
+		// while (*av)
+		// 	printf("%s\n", *(av++));
 		
 		// printf("%s\n", ft_itoa(ft_atoi(argv[1])));
 
@@ -151,9 +151,18 @@ int main(int argc, char **argv)
 
 		// printf("%s", ft_strtrim(argv[1], argv[2]));
 
-		// av = ft_split(argv[1], argv[2][0]);	
-		// while (*av)
-		// 	printf("%s\n", *(av++));
+		av = ft_split(argv[1], argv[2][0]);	
+		
+		while (*av)
+		{
+			while (**av)
+			{
+				printf("%c", ft_tolower(**av));
+				(*av)++;
+			}
+			printf("\n");
+			av++;
+		}			
 		
 		// printf("%s\n", ft_itoa(ft_atoi(argv[1])));
 
