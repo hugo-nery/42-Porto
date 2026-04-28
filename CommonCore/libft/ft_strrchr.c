@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:47:52 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/20 21:38:58 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/28 20:55:13 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 	last = NULL;
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == (char) c)
 			last = (char *) s;
 		s++;
 	}
