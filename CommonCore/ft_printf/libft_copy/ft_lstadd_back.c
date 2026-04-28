@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:04:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 14:01:14 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/23 18:39:17 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/24 13:38:56 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	num;
-	int	sinal;
+	t_list	*last_node;
 
-	num = 0;
-	sinal = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	if (!lst)
+		return ;
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		if (*str == '-')
-			sinal = -1;
-		str++;
+		last_node = ft_lstlast(*lst);
+		last_node->next = new;
 	}
-	while (ft_isdigit(*str))
-		num = (num * 10) + (*(str++) - '0');
-	return (num * sinal);
 }

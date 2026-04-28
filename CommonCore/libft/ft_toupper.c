@@ -6,13 +6,13 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 17:47:58 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/17 15:40:03 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:36:17 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z' )
 		return (c - 32);

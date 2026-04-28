@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:04:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 14:01:14 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/22 10:11:15 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/22 10:26:10 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	num;
-	int	sinal;
+	char	*big;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	i;
 
-	num = 0;
-	sinal = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	big = malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (!big)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		if (*str == '-')
-			sinal = -1;
-		str++;
+		big[i] = s1[i];
+		i++;
 	}
-	while (ft_isdigit(*str))
-		num = (num * 10) + (*(str++) - '0');
-	return (num * sinal);
+	i = 0;
+	while (s2[i])
+	{
+		big[i + s1_len] = s2[i];
+		i++;
+	}
+	big[s1_len + s2_len] = '\0';
+	return (big);
 }

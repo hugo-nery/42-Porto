@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:04:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 14:01:14 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/16 17:46:11 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/20 13:40:05 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	num;
-	int	sinal;
+	size_t	i;
 
-	num = 0;
-	sinal = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sinal = -1;
-		str++;
-	}
-	while (ft_isdigit(*str))
-		num = (num * 10) + (*(str++) - '0');
-	return (num * sinal);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

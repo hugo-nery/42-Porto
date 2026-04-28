@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:04:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 14:01:14 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/18 22:18:51 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/20 22:00:13 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strnstr(const char *big, const char *sub, size_t len)
 {
-	int	num;
-	int	sinal;
+	size_t	i;
+	size_t	x;
 
-	num = 0;
-	sinal = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	if (*sub == '\0')
+		return ((char *) big);
+	i = 0;
+	while (big[i] && i < len)
 	{
-		if (*str == '-')
-			sinal = -1;
-		str++;
+		x = 0;
+		while (big[i + x] == sub[x] && (i + x) < len)
+			x++;
+		if (sub[x] == '\0')
+			return ((char *) &big[i]);
+		i++;
 	}
-	while (ft_isdigit(*str))
-		num = (num * 10) + (*(str++) - '0');
-	return (num * sinal);
+	return (NULL);
 }

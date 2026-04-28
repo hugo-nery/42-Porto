@@ -11,4 +11,4 @@
 		-'re' will will delete everything and re-compile a new libft.a;
 
 -Resources:
-	For the conclucion of this project, besides the help of some colleagues, were also used references from Stack Overflow, W3Schools, Geek for Geeks, and AI tools like Gemini.
+	For the conclucion of this project, besides the help of some colleagues, were used references from Stack Overflow, W3Schools, Geek for Geeks, and AI tools like Gemini.

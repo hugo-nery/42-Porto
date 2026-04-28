@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:04:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 14:01:14 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/27 11:49:16 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int	ft_atoi(const char *str)
 
 	num = 0;
 	sinal = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
+	while (*str == 32 || (*str >= 7 && *str <= 13))
 		str++;
-	if (*str == '-' || *str == '+')
+	if (*str == '-')
 	{
-		if (*str == '-')
-			sinal = -1;
+		sinal = -1;
 		str++;
 	}
 	while (ft_isdigit(*str))

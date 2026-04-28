@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:04:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 14:01:14 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/21 11:21:28 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/22 13:31:17 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	num;
-	int	sinal;
+	unsigned char	*dest_ptr;
+	unsigned char	*src_ptr;
 
-	num = 0;
-	sinal = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	if (!dest && !src)
+		return (NULL);
+	dest_ptr = (unsigned char *) dest;
+	src_ptr = (unsigned char *) src;
+	if (src_ptr > dest_ptr)
 	{
-		if (*str == '-')
-			sinal = -1;
-		str++;
+		while ((n--) > 0)
+			*(dest_ptr++) = *(src_ptr++);
 	}
-	while (ft_isdigit(*str))
-		num = (num * 10) + (*(str++) - '0');
-	return (num * sinal);
+	else if (dest_ptr > src_ptr)
+	{
+		while ((n--) > 0)
+			dest_ptr[n] = src_ptr[n];
+	}
+	return (dest);
 }

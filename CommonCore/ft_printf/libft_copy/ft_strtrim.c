@@ -6,27 +6,43 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 10:26:41 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 18:33:16 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/22 12:16:41 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_isin(char *str, char c);
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trimmed;
-	size_t	len;
+	unsigned char	*s1_ptr;
+	char			*trimmed;
+	size_t			len;
 
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	len = ft_strlen(s1);
-	if (len == 0)
-		return (ft_strdup(""));
-	while (ft_strchr(set, s1[len - 1]))
+	s1_ptr = (unsigned char *)s1;
+	while (ft_isin((char *) set, *s1_ptr))
+		s1_ptr++;
+	len = ft_strlen((const char *) s1_ptr);
+	while (ft_isin((char *) set, s1_ptr[len - 1]))
 		len--;
 	trimmed = malloc((len + 1) * sizeof(char));
 	if (!trimmed)
 		return (NULL);
-	ft_strlcpy(trimmed, (char *)s1, len + 1);
+	ft_strlcpy(trimmed, (char *)s1_ptr, len + 1);
 	return (trimmed);
+}
+
+static int	ft_isin(char *str, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 17:51:17 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/17 15:39:52 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/04/28 17:36:01 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:04:28 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 14:01:14 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/04/21 10:48:11 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/04/21 11:22:37 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	num;
-	int	sinal;
+	unsigned char	*ptr_dest;
+	unsigned char	*ptr_src;
+	size_t			i;
 
-	num = 0;
-	sinal = 1;
-	while (*str == 32 || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	if (!dest && !src)
+		return (NULL);
+	ptr_dest = (unsigned char *) dest;
+	ptr_src = (unsigned char *) src;
+	i = 0;
+	while (i < n)
 	{
-		if (*str == '-')
-			sinal = -1;
-		str++;
+		ptr_dest[i] = (unsigned char) ptr_src[i];
+		i++;
 	}
-	while (ft_isdigit(*str))
-		num = (num * 10) + (*(str++) - '0');
-	return (num * sinal);
+	return (dest);
 }
