@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 19:23:57 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/28 20:59:12 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/01 14:45:17 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *) s);
 		s++;
 	}
-	if (c == '\0')
+	if ((char) c == '\0')
 		return ((char *) s);
 	return (NULL);
 }
