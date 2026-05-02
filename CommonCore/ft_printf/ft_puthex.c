@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 16:35:58 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/02 17:09:50 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/05/01 17:59:57 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/05/02 16:48:22 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include "unistd.h"
-#include <stdint.h>
+int	ft_puthex(size_t nbr)
+{
+	char *base = "0123456789abcdef";
+	size_t len;
 
-int	ft_printf(const char *str, ...);
-int	ft_putchr(int c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int nbr);
-int	ft_digitcount(int nbr);
-
-int ft_putuns(unsigned int nbr);
-int	ft_puthex(size_t nbr);
-
-//not yet
-int ft_putptr (uintptr_t p);
-
-
-
-
-#endif
+	len = 0;
+	if (nbr >= 16)
+	{
+		ft_putptr(nbr / 16);
+		ft_putptr(nbr % 16);
+	}
+	else
+	{
+		if (nbr >= 10)
+			len++;
+		len += ft_putchr((char)base[nbr]);
+	}
+	return (len);
+}

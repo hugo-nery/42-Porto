@@ -10,7 +10,14 @@ AR = ar rcs
 
 RM = rm -f
 
-FILES = .c
+FILES = ft_printf.c \
+        ft_putchr.c \
+		ft_putstr.c \
+		ft_putnbr.c \
+		ft_digitcount.c \
+		ft_putuns.c \
+		ft_puthex.c \
+		ft_putptr.c
 
 OBJS = $(FILES:.c=.o)
 
@@ -18,9 +25,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 		$(AR) $(NAME) $(OBJS)
-
-libft:
-    make -C ./libft
 
 %.o: %.c $(HEADER)
 		$(CC) $(CFLAGS) -c $< -o $@

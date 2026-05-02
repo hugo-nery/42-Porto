@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putuns.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/27 16:35:58 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/02 17:09:50 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/05/02 13:13:56 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/05/02 13:54:43 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include "unistd.h"
-#include <stdint.h>
-
-int	ft_printf(const char *str, ...);
-int	ft_putchr(int c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int nbr);
-int	ft_digitcount(int nbr);
-
-int ft_putuns(unsigned int nbr);
-int	ft_puthex(size_t nbr);
-
-//not yet
-int ft_putptr (uintptr_t p);
-
-
-
-
-#endif
+int ft_putuns(unsigned int nbr)
+{
+	return ((ft_putnbr(nbr)));
+}
