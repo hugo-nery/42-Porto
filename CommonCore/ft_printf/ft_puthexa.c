@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_digitcount.c                                    :+:      :+:    :+:   */
+/*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 13:15:22 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/02 13:54:49 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/05/01 17:59:57 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/05/04 20:06:23 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_digitcount(int nbr)
+int	ft_puthexa(uintptr_t p, char *base)
 {
-	long	n;
-	size_t	digits;
+	size_t len;
 
-	n = nbr;
-	digits = 1;
-	if (n < 0)
+	len = 0;
+	if (p >= 16)
 	{
-		n = -n;
-		digits++;
+		len += ft_puthexa(p / 16, base);
+		len += ft_puthexa(p % 16, base);
 	}
-	while (n > 9)
+	else
 	{
-		digits++;
-		n /= 10;
+		return (ft_putchr(base[p]));
 	}
-	return (digits);
+	return (len);
 }

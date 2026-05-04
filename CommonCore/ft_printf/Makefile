@@ -14,9 +14,8 @@ FILES = ft_printf.c \
         ft_putchr.c \
 		ft_putstr.c \
 		ft_putnbr.c \
-		ft_digitcount.c \
 		ft_putuns.c \
-		ft_puthex.c \
+		ft_puthexa.c \
 		ft_putptr.c
 
 OBJS = $(FILES:.c=.o)

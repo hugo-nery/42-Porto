@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 13:13:56 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/02 13:54:43 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/04 20:06:18 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int ft_putuns(unsigned int nbr)
 {
-	return ((ft_putnbr(nbr)));
+	return (ft_putnbr(nbr));
 }
