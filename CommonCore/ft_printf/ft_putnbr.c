@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 12:15:19 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/04 20:06:07 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:47:43 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putnbr(long n)
 {
-	size_t len;
+	int	len;
 
 	len = 0;
 	if (n < 0)

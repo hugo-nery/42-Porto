@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/01 12:13:26 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/05 17:47:52 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/05/05 20:19:27 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/05/05 20:21:02 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_putstr(char *str)
-{
-	int	i;
+# include <unistd.h>
 
-	i = 0;
-	if (!str)
-		str = "(null)";
-	while (str[i])
-		i += ft_putchr(str[i]);
-	return (i);
-}
+
+char *get_next_line(int fd);
+
+#endif

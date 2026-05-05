@@ -6,15 +6,27 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 17:55:13 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/05 16:51:00 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/05 17:49:05 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	ft_ptrtreat(uintptr_t p)
+{
+	int	len;
+
+	len = 0;
+	if (p != 0)
+		len += ft_putstr("0x") + ft_putptr(p);
+	else
+		len += ft_putstr("(nil)");
+	return (len);
+}
+
 int	ft_putptr(uintptr_t p)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	if (p >= 16)
