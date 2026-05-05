@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 12:13:26 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/02 13:01:34 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/05 15:57:23 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ int	ft_putstr(char *str)
 	if (!str)
 		str = "(null)";
 	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
+		i += ft_putchr(str[i]);
 	return (i);
 }
