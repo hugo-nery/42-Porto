@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:19:20 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/10 21:09:39 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/10 22:21:49 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void ft_update_text(int fd, char **texto);
 
-char	*get_next_line(int fd)
+char	*get_next_line_bonus(int fd)
 {
-	static char	*text;
+	static char	*text[1024];
 	char		*temp;
 	char		*line;
 	size_t		len;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!text)
-		text = ft_strdup("");
-	ft_update_text(fd, &text);
-	if (!text || text[0] == '\0')
-		return (free(text), text = NULL, NULL);
+	if (!text[fd])
+		text[fd] = ft_strdup("");
+	ft_update_text(fd, &text[fd]);
+	if (!text[fd] || text[fd][0] == '\0')
+		return (free(text[fd]), text[fd] = NULL, NULL);
 	len = 0;
-	while (text[len] && text[len] != '\n')
+	while (text[fd][len] && text[fd][len] != '\n')
 		len++;
-	if (text[len] == '\n')
+	if (text[fd][len] == '\n')
 		len++;
-	line = ft_substr(text, 0, len);
-	temp = ft_substr(text, len, ft_strlen(text) - len);
-	free(text);
-	text = temp;
+	line = ft_substr(text[fd], 0, len);
+	temp = ft_substr(text[fd], len, ft_strlen(text[fd]) - len);
+	free(text[fd]);
+	text[fd] = temp;
 	return (line);
 }
 
@@ -69,23 +69,23 @@ static void	ft_update_text(int fd, char **texto)
 int main()
 {
 	
-	int fd = open("text.txt", O_RDONLY);
+	int fd = open("outro_teste.txt", O_RDONLY);
 	
-	printf ("1 %s", get_next_line(fd));
-	printf ("2 %s", get_next_line(fd));
-	printf ("3 %s", get_next_line(fd));
-	printf ("4 %s", get_next_line(fd));
-	printf ("5 %s", get_next_line(fd));
-	printf ("6 %s", get_next_line(fd));
-	printf ("7 %s", get_next_line(fd));
-	printf ("8 %s", get_next_line(fd));
-	printf ("9 %s", get_next_line(fd));
-	// printf ("10 %s", get_next_line(fd));
-	// printf ("11 %s", get_next_line(fd));
-	// printf ("12 %s", get_next_line(fd));
-	// printf ("13 %s", get_next_line(fd));
-	// printf ("14 %s", get_next_line(fd));
-	// printf ("15 %s", get_next_line(fd));
+	printf ("1 %s", get_next_line_bonus(fd));
+	printf ("2 %s", get_next_line_bonus(fd));
+	printf ("3 %s", get_next_line_bonus(fd));
+	printf ("4 %s", get_next_line_bonus(fd));
+	printf ("5 %s", get_next_line_bonus(fd));
+	printf ("6 %s", get_next_line_bonus(fd));
+	printf ("7 %s", get_next_line_bonus(fd));
+	printf ("8 %s", get_next_line_bonus(fd));
+	printf ("9 %s", get_next_line_bonus(fd));
+	// printf ("10 %s", get_next_line_bonus(fd));
+	// printf ("11 %s", get_next_line_bonus(fd));
+	// printf ("12 %s", get_next_line_bonus(fd));
+	// printf ("13 %s", get_next_line_bonus(fd));
+	// printf ("14 %s", get_next_line_bonus(fd));
+	// printf ("15 %s", get_next_line_bonus(fd));
 
 	close(fd);
 	
