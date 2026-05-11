@@ -6,13 +6,13 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:19:20 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/10 21:09:39 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/11 13:56:17 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void ft_update_text(int fd, char **texto);
+static char*	ft_update_text(int fd, char **texto);
 
 char	*get_next_line(int fd)
 {
@@ -25,29 +25,28 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (!text)
 		text = ft_strdup("");
-	ft_update_text(fd, &text);
-	if (!text || text[0] == '\0')
-		return (free(text), text = NULL, NULL);
-	len = 0;
-	while (text[len] && text[len] != '\n')
-		len++;
-	if (text[len] == '\n')
-		len++;
+	if (ft_update_text(fd, &text) == NULL || *text == '\0')
+	{
+		free(text);
+		text = NULL;
+		return (NULL);
+	}
+	len = ft_strlen_vc(text, '\n');
 	line = ft_substr(text, 0, len);
-	temp = ft_substr(text, len, ft_strlen(text) - len);
+	temp = ft_substr(text, len, ft_strlen_vc(text, '\0') - len);
 	free(text);
 	text = temp;
 	return (line);
 }
 
-static void	ft_update_text(int fd, char **texto)
+static char*	ft_update_text(int fd, char **texto)
 {
 	char	*buff;
 	int		rd;
 
 	buff = malloc ((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
-		return ;
+		return NULL;
 	rd = 1;
 	while (rd > 0 && ft_strchr(*texto, '\n') == NULL)
 	{
@@ -62,6 +61,7 @@ static void	ft_update_text(int fd, char **texto)
 		*texto = ft_strjoin_free(*texto, buff);
 	}
 	free (buff);
+	return (*texto);
 }
 
 #include <stdio.h>
@@ -80,14 +80,9 @@ int main()
 	printf ("7 %s", get_next_line(fd));
 	printf ("8 %s", get_next_line(fd));
 	printf ("9 %s", get_next_line(fd));
-	// printf ("10 %s", get_next_line(fd));
-	// printf ("11 %s", get_next_line(fd));
-	// printf ("12 %s", get_next_line(fd));
-	// printf ("13 %s", get_next_line(fd));
-	// printf ("14 %s", get_next_line(fd));
-	// printf ("15 %s", get_next_line(fd));
 
 	close(fd);
 	
 	return (0);
 }
+

@@ -6,14 +6,14 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:21:19 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/10 22:22:25 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/11 12:19:08 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
 /*Will return the len of the string passed.*/
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_vc(const char *str, char c)
 {
 	size_t	i;
 
@@ -21,7 +21,11 @@ size_t	ft_strlen(const char *str)
 		return (0);
 	i = 0;
 	while (str[i])
+	{
+		if (str[i] == c)
+			return (i + 1);
 		i++;
+	}
 	return (i);
 }
 
@@ -30,14 +34,14 @@ char	*ft_strchr(const char *s, int c)
 {
 	if (!s)
 		return (NULL);
+	if ((char) c == '\0')
+		return ((char *) s);
 	while (*s)
 	{
 		if (*s == (char) c)
 			return ((char *) s);
 		s++;
 	}
-	if ((char) c == '\0')
-		return ((char *) s);
 	return (NULL);
 }
 
@@ -48,7 +52,7 @@ char	*ft_strdup(const char *str)
 	size_t	len;
 	size_t	i;
 
-	len = ft_strlen(str);
+	len = ft_strlen_vc(str, '\0');
 	dup = malloc((len + 1) * sizeof(char));
 	if (!dup)
 		return (NULL);
@@ -70,8 +74,8 @@ char	*ft_strjoin_free(char const *s1, char const *s2)
 	size_t	s2_len;
 	size_t	i;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
+	s1_len = ft_strlen_vc(s1, '\0');
+	s2_len = ft_strlen_vc(s2, '\0');
 	big = malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!big)
 		return (free((void *)s1), NULL);
@@ -92,14 +96,14 @@ char	*ft_strjoin_free(char const *s1, char const *s2)
 	return (big);
 }
 
-/*Will return a new string, copying 'len' chars from 'start'.*/
+/*Will return a new string, copying 'len' chars from the 'start' point.*/
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	i;
 	size_t	s_len;
 
-	s_len = ft_strlen(s);
+	s_len = ft_strlen_vc(s, '\0');
 	if (start > s_len)
 		len = 0;
 	else if (len > s_len - start)
