@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:19:27 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/11 14:02:01 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/12 18:46:27 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 char	*get_next_line(int fd);
 size_t	ft_strlen_vc(const char *str, char c);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *str);
 char	*ft_strjoin_free(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 

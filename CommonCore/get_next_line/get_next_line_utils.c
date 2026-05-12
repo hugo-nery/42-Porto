@@ -6,13 +6,14 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:21:19 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/11 13:37:41 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/12 20:12:03 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*Will return the len of the string passed.*/
+/*Will return the len of the string passed if c is '\0', 
+** or the when if find c (inclusive).*/
 size_t	ft_strlen_vc(const char *str, char c)
 {
 	size_t	i;
@@ -45,28 +46,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-/*Will return a new string copied the content of the one passed.*/
-char	*ft_strdup(const char *str)
-{
-	char	*dup;
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen_vc(str, '\0');
-	dup = malloc((len + 1) * sizeof(char));
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
-
-/*Will return a new string, copying 'len' chars from 'start'.*/
+/*Will return a new string, copying 'len' chars from the 'start' point.*/
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
@@ -101,19 +81,14 @@ char	*ft_strjoin_free(char const *s1, char const *s2)
 	big = malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (!big)
 		return (free((void *)s1), NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1 && s1[++i])
 		big[i] = s1[i];
-		i++;
-	}
-	i = 0;
-	while (s2[i])
-	{
+	i = -1;
+	while (s2 && s2[++i])
 		big[i + s1_len] = s2[i];
-		i++;
-	}
 	big[s1_len + s2_len] = '\0';
-	free ((void *)s1);
+	if (s1)
+		free ((void *)s1);
 	return (big);
 }

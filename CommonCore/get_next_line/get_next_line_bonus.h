@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 20:19:27 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/11 14:02:32 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/05/10 20:19:27 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/05/12 18:47:37 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-char	*get_next_line_bonus(int fd);
+char	*get_next_line(int fd);
 size_t	ft_strlen_vc(const char *str, char c);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *str);
 char	*ft_strjoin_free(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 
