@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 16:37:07 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/05 18:14:54 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/12 20:44:14 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_pholder(va_list args, char c)
 	else if (c == 'd' || c == 'i')
 		len += ft_putnbr(va_arg(args, int));
 	else if (c == 'p')
-		len += ft_ptrtreat(va_arg(args, uintptr_t));
+		len += ft_putptr(va_arg(args, uintptr_t));
 	else if (c == 'u')
 		len += ft_putuns(va_arg(args, unsigned int));
 	else if (c == 'x' || c == 'X')
@@ -62,8 +62,6 @@ int main ()
 {
 	char str[] = "test";
 	int nbr = -42;
-
-	ft_printf("%a");
 
 	//char
 	ft_printf("%d", ft_printf("%c-", '%'));
