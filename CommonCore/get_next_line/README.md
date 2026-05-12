@@ -6,7 +6,7 @@
 
 	- As per required by the project instructions, the file is read and processed after each time the read() was called, therefore treating the text already read before the end of the file (in case of a BUFFER smaller then the count of chars, of course). This way decreasing the amount of space the static variable will occupy in memory.
 
-	- The actual filtering is done using the ft_strchr() function that will return NULL until it finds a '\n' in the static variable 'text' where the content from the read() buffer is saved, if the static variable has no line ('\n') then the function read() is called again. This process will repeat until there's a '\n' (line breaker) or the end of the file (fd) passed, read() will return (0);
+	- The actual filtering is done using the ft_strchr() function that will return NULL until it finds a '\n' in the static variable 'text' where the content from the read() buffer is saved, if the static variable has no line ('\n') then the function read() is called again. To optimize running time, the variable 'pos' holds the count of char already in 'text' this way avoiding re-checking the portion of the string that was checked in the run before. This process will repeat until there's a '\n' (line breaker) or the end of the file (fd) passed, when read() returns 0;
 
 
 # Instructions:
@@ -33,6 +33,6 @@
 
 # Resources:
 
-	- For the conclusion of this project, besides the help of greatest QA in the campus ddias-fe (Diogo Dias Ferreira) to fix a segfault no one could find, the help of the campus colleagues, and the use of functions from previous projects, were also used references from Stack Overflow, W3Schools, Linux man page.
+	- For the conclusion of this project, besides the help of greatest QA in the campus ddias-fe (Diogo Dias Ferreira) to fix a segfault no one could find, the help of campus colleagues, and the use of functions from previous projects, were also used references from Stack Overflow, W3Schools, and Linux man page.
 	
 	- AI tools like Gemini, were used to help to identify edge cases for functions testing, a tutorial do use GDB so I could debug line by line, and also to clarify the issues from Memory Leak and the importance of avoiding/treating it.
