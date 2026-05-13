@@ -6,19 +6,53 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:49:16 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/13 12:05:11 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/13 23:30:25 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-void sa(t_item *stack_a)
+
+int	sa(t_list **stack_a)
 {
 	// sa (swap a): Swap the first two elements at the top of stack a.
 	// 	Do nothing if there is only one or no elements.
+	char *temp;
+	
+	if ((*stack_a)->next == NULL)
+		return (0);
+	
+	temp = (*stack_a)->content;
+	(*stack_a)->content = (*stack_a)->next->content;
+	(*stack_a)->next->content = temp;
+	return (1);
 }
 
+int pb(t_list **stack_a, t_list **stack_b)
+{
+// pb (push b): Take the first element at the top of a and put it at the top of b.
+// 	Do nothing if a is empty.
+	t_list *new;
+	char *ctt;
+	
+	if (!*stack_a)
+		return (0);
+
+	ctt = ft_strdup((*stack_a)->content);
+	new = ft_lstnew((void *)ctt);
+	ft_lstadd_front(stack_b, new);
+	return (1);
+
+}
+
+
+// void pa(t_list *stack_a)
+// {
+// // pa (push a): Take the first element at the top of b and put it at the top of a.
+// // 	Do nothing if b is empty.
+
+// }
+/*
 void sb(t_item *stack_b)
 {
 	// sb (swap b): Swap the first two elements at the top of stack b.
@@ -32,16 +66,8 @@ void ss(t_item *stack_a, t_item *stack_b)
 	sb(stack_b);
 }
 
-void pa(t_item *stack_a)
-{
-// pa (push a): Take the first element at the top of b and put it at the top of a.
-// 	Do nothing if b is empty.
-}
-void pb(t_item *stack_b)
-{
-// pb (push b): Take the first element at the top of a and put it at the top of b.
-// 	Do nothing if a is empty.
-}
+
+
 void ra(t_item *stack_a)
 {
 // ra (rotate a): Shift up all elements of stack a by one.

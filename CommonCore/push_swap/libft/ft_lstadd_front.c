@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 17:53:56 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/04/25 15:32:41 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/13 23:22:07 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!lst || !new)
+	if (!new)
 		return ;
-	new->next = *lst;
+	if (lst)
+		new->next = *lst;
 	*lst = new;
 }
