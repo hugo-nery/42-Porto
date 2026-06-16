@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 12:17:23 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/06/12 18:06:38 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/06/16 16:56:16 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	**ft_split(char const *s, char c)
 		s = &s[w_len];
 		i++;
 	}
-	return (my_av[w_count] = 0, my_av);
+	return (my_av[w_count] = NULL, my_av);
 }
 
 void	ft_free(int i, char **arr)
