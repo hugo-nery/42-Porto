@@ -1,4 +1,4 @@
-NAME = ps_comb.a
+NAME = lib_comb.a
 HEADER = push_swap.h
 
 CC = cc
@@ -11,7 +11,8 @@ RM = rm -rf
 LIBFT = libft/libft.a
 PRINTF = ft_printf/ft_printf.a
 
-FILES = push_swap.c
+FILES = push_swap.c \
+        utils.c
 
 OBJS =	$(FILES:.c=.o)
 

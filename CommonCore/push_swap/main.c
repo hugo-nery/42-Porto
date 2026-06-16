@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:54:56 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/05/13 23:29:58 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/05/16 12:03:31 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,7 @@ void ft_putcontent(void *ptr)
 	ft_putstr("\n");
 }
 
-int ft_compare_n_content(t_list **stack_a, t_list **stack_b)
-{
-	int a;
-	int b;
-	
-	a = ft_atoi((*stack_a)->content);
-	b = ft_atoi((*stack_a)->next->content);
-	
-	if (a > b)
-	{
-		sa(stack_a);
-		ft_printf("troquei\n");
-		
-		pb(stack_a, stack_b);
-		ft_printf("copiei de A pra B\n");
 
-	}
-	return (0);
-}
 
 int main (int argc, char **argv)
 {
@@ -58,10 +40,17 @@ int main (int argc, char **argv)
 			ft_lstadd_back(&stack_a, node);
 			argv++;
 		}
-		
-		ft_printf("\n\npassed:\n");
+
+		ft_printf("\nstack_a:\n");
+		ft_lstiter(stack_a, ft_putcontent);
+
+		ft_printf("\nmin = %d\n", ft_find_smaller(stack_a));
+
+		ra(&stack_a);
+		ft_printf("\nra - stack_a:\n");
 		ft_lstiter(stack_a, ft_putcontent);
 		
+		/*
 		ft_compare_n_content(&stack_a, &stack_b);
 		ft_printf("\n\ndepois:\n");
 
@@ -69,6 +58,8 @@ int main (int argc, char **argv)
 
 		ft_printf("\n\nstack_b:\n");
 		ft_lstiter(stack_b, ft_putcontent);
+
+		*/
 
 	
 	}
