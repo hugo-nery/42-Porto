@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   swap_bits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 17:43:03 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/06/17 11:51:05 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/06/17 11:50:30 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/06/17 12:23:31 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Write a function that takes a byte, and prints it in binary WITHOUT A NEWLINE
-// AT THE END.
+// Write a function that takes a byte, swaps its halves (like the example) and
+// returns the result.
 
 // Your function must be declared as follows:
-// void	print_bits(unsigned char octet);
+// unsigned char	swap_bits(unsigned char octet);
 
-// Example, if you pass 2 to print_bits, it will print "00000010"
+// Example:
 
+//   1 byte
+// _____________
+//  0100 | 0001
+//      \ /
+//      / \
+//  0001 | 0100
 
 #include <unistd.h>
 
@@ -28,14 +34,25 @@ void	print_bits(unsigned char octet)
 	i = 8;
 	while (i--)
 	{
-		if ((octet >> i) & 1)
-			write(1, "1", 1);
+		if (((octet >> i) & 1) == 1)
+			write (1, "1", 1);
 		else
-			write(1, "0", 1);
+			write (1, "0", 1);
 	}
+	write(1, "\n", 1);
+}
+
+unsigned char	swap_bits(unsigned char octet)
+{
+	return (octet >> 4 | octet << 4);
 }
 
 int main()
 {
-	print_bits(3);
+	int num;
+
+	num = 65;
+	print_bits(num);
+	num = swap_bits(num);
+	print_bits(num);
 }

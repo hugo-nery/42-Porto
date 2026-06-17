@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 17:43:03 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/06/17 11:51:05 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/06/17 13:11:52 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/06/17 13:19:15 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Write a function that takes a byte, and prints it in binary WITHOUT A NEWLINE
-// AT THE END.
-
-// Your function must be declared as follows:
-// void	print_bits(unsigned char octet);
-
-// Example, if you pass 2 to print_bits, it will print "00000010"
-
-
 #include <unistd.h>
 
-void	print_bits(unsigned char octet)
+void ft_putnbr(int nbr)
 {
-	int i;
+	long n;
 
-	i = 8;
-	while (i--)
+	n = nbr;
+	
+	if (n < 0)
 	{
-		if ((octet >> i) & 1)
-			write(1, "1", 1);
-		else
-			write(1, "0", 1);
+		write(1, "-", 1);
+		n = -n;
 	}
+	if (n > 9)
+	{
+		ft_putnbr(n / 10);
+		write(1, &"0123456789"[n % 10], 1);
+	}
+	else
+		write(1, &"0123456789"[n], 1);
 }
 
-int main()
+int main ()
 {
-	print_bits(3);
+	ft_putnbr(-19234);
+
+	return 0;
 }

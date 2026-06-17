@@ -6,7 +6,7 @@
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 18:08:12 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/06/16 18:24:06 by hde-albu         ###   ########.fr       */
+/*   Updated: 2026/06/17 10:49:57 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 
 #include <unistd.h>
 
-int ft_isalpha(char c)
+int ft_isspace(char c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+	if ((c >= 9 && c <= 13) || c == 32)
 		return (1);
 	return (0);
 }
@@ -33,15 +33,15 @@ void ft_expand_str(const char *str)
 {
 	while (*str)
 	{
-		while (*str && !ft_isalpha(*str))
+		while (*str && ft_isspace(*str))
 			str++;
 
-		while (*str && ft_isalpha(*str))
+		while (*str && !ft_isspace(*str))
 			write(1, &*(str++), 1);
 		
-		while (*str && !ft_isalpha(*str))
+		while (*str && ft_isspace(*str))
 			str++;
-		
+
 		if(*str != '\0')
 			write(1, "   ", 3);
 	}
@@ -51,9 +51,7 @@ int main(int argc, char **argv)
 {
 	char *str;
 	
-	if (argc != 2)
-		return (write(1 , "\n", 1));
-	if (argv[1][0] == '\0')
+	if (argc != 2 || argv[1][0] == '\0')
 		return (write(1 , "\n", 1));	
 	ft_expand_str(argv[1]);
 	return (0);

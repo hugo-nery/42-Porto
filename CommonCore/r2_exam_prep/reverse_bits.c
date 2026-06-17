@@ -1,41 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 17:43:03 by hde-albu          #+#    #+#             */
-/*   Updated: 2026/06/17 11:51:05 by hde-albu         ###   ########.fr       */
+/*   Created: 2026/06/17 12:25:21 by hde-albu          #+#    #+#             */
+/*   Updated: 2026/06/17 12:39:56 by hde-albu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Write a function that takes a byte, and prints it in binary WITHOUT A NEWLINE
-// AT THE END.
-
-// Your function must be declared as follows:
-// void	print_bits(unsigned char octet);
-
-// Example, if you pass 2 to print_bits, it will print "00000010"
-
-
 #include <unistd.h>
 
-void	print_bits(unsigned char octet)
+void print_bits(unsigned char octet)
 {
 	int i;
 
 	i = 8;
 	while (i--)
 	{
-		if ((octet >> i) & 1)
+		if (((octet >> i) & 1) == 1)
 			write(1, "1", 1);
 		else
 			write(1, "0", 1);
 	}
+	write(1, "\n", 2);
 }
+
+unsigned char	reverse_bits(unsigned char octet)
+{
+	unsigned char rev;
+	int i;
+
+	rev = 0;
+	i = 8;
+	while (i--)
+	{
+		rev = (rev << 1) | (octet & 1);
+		octet = octet >> 1;
+	}
+	return (rev);
+}
+#include <stdio.h>
 
 int main()
 {
-	print_bits(3);
+	int num = 5;
+	print_bits(num);
+	num = reverse_bits(num);
+	print_bits(num);
 }
