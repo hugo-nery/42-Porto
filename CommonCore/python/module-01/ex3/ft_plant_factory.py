@@ -1,40 +1,37 @@
 # *************************************************************************** #
 #                                                                             #
 #                                                         :::      ::::::::   #
-#   ft_plant_growth.py                                  :+:      :+:    :+:   #
+#   ft_plant_factory.py                                 :+:      :+:    :+:   #
 #                                                     +:+ +:+         +:+     #
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
-#   Created: 2026/06/17 17:47:04 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/19 10:54:01 by hde-albu          ###   ########.fr       #
+#   Created: 2026/06/18 14:01:59 by hde-albu           #+#    #+#             #
+#   Updated: 2026/06/19 10:53:53 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
 class Plant:
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name.capitalize()
         self.height = height
         self.age = age
+        print("Created:", end=" ")
+        self.show()
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self.name}: {self.height:.1f}cm, {self.age} days old")
 
-    def ft_age(self):
+    def ft_age(self) -> None:
         self.age += 1
 
-    def ft_grow(self):
+    def ft_grow(self) -> None:
         self.height = self.height * 1.028
 
 
 if __name__ == "__main__":
+    print("=== Plant Factory Output ===")
     rose = Plant("Rose", 25, 30)
-    print("=== Garden Plant Growth ===")
-    print(f"{rose.name}: {rose.height:.2f}cm, {rose.age} days old")
-    start = rose.height
-    for i in range(1, 8):
-        print(f"=== Day {i} ===")
-        rose.ft_grow()
-        rose.ft_age()
-        print(f"{rose.name}: {rose.height:.2f}cm, {rose.age} days old")
-
-    print(f"Growth this week: {(rose.height - start):.2f}cm")
+    oak = Plant("Oak", 200, 365)
+    cactus = Plant("Cactus", 5, 90)
+    sunflower = Plant("Sunflower", 80, 45)
+    fern = Plant("Fern", 15, 120)
