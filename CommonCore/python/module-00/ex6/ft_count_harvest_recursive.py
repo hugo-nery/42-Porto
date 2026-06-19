@@ -1,25 +1,22 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_count_harvest_recursive.py                      :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/13 21:37:09 by hde-albu          #+#    #+#              #
-#    Updated: 2026/06/17 17:03:48 by hde-albu         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# *************************************************************************** #
+#                                                                             #
+#                                                         :::      ::::::::   #
+#   ft_count_harvest_recursive.py                       :+:      :+:    :+:   #
+#                                                     +:+ +:+         +:+     #
+#   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
+#                                                 +#+#+#+#+#+   +#+           #
+#   Created: 2026/06/18 18:02:53 by hde-albu           #+#    #+#             #
+#   Updated: 2026/06/19 13:24:01 by hde-albu          ###   ########.fr       #
+#                                                                             #
+# *************************************************************************** #
 
-def less_days(i: int, days: int):
-	print("Day", i)
-	if (i < days):
-		less_days(i + 1, days)
-	else:
-		print("Harvest time!")
+def less_days(i: int, days: int) -> None:
+    if (days > 0 and i <= days):
+        print("Day", i)
+        less_days(i + 1, days)
+    else:
+        print("Harvest time!\n")
 
-def ft_count_harvest_recursive():
-	days = int(input("Days until harvest: "))
-	i = 1
-	less_days(i, days)
-
-ft_count_harvest_recursive()
+def ft_count_harvest_recursive() -> None:
+    days = int(input("Days until harvest: "))
+    less_days(1, days)

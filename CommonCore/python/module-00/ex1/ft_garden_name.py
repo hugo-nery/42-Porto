@@ -1,16 +1,16 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_garden_name.py                                  :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hde-albu <hde-albu@student.42porto.com>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/13 20:39:52 by hde-albu          #+#    #+#              #
-#    Updated: 2026/06/14 21:55:13 by hde-albu         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+# *************************************************************************** #
+#                                                                             #
+#                                                         :::      ::::::::   #
+#   ft_garden_name.py                                   :+:      :+:    :+:   #
+#                                                     +:+ +:+         +:+     #
+#   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
+#                                                 +#+#+#+#+#+   +#+           #
+#   Created: 2026/06/18 17:56:51 by hde-albu           #+#    #+#             #
+#   Updated: 2026/06/18 18:03:51 by hde-albu          ###   ########.fr       #
+#                                                                             #
+# *************************************************************************** #
 
-def ft_garden_name():
-	g_name = input("Enter garden name: ")
-	print("Garden: " + g_name)
-	print("Status: Growing well!")
+def ft_garden_name() -> None:
+    g_name = input("Enter garden name: ")
+    print("Garden: " + g_name)
+    print("Status: Growing well!")
