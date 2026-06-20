@@ -6,7 +6,7 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/19 15:51:11 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/19 18:03:54 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/20 15:49:14 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
@@ -32,9 +32,9 @@ class Plant:
             print(f"Age was called {self.__age_calls} time(s).")
             print(f"Show was called {self.__show_calls} time(s).")
 
-    def __init__(self, name: str, height: int = 0, age: int = 0) -> None:
+    def __init__(self, name: str, height: float = 0.0, age: int = 0) -> None:
         self.name = name.capitalize()
-        self.height = 0
+        self.height = 0.0
         self.set_height(height)
         self.age = 0
         self.set_age(age)

@@ -6,14 +6,14 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/19 12:02:23 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/19 15:47:39 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/20 15:48:25 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
 class Plant:
-    def __init__(self, name: str, height: int = 0, age: int = 0) -> None:
+    def __init__(self, name: str, height: float = 0.0, age: int = 0) -> None:
         self.name = name.capitalize()
-        self.height = 0
+        self.height = 0.0
         self.set_height(height)
         self.age = 0
         self.set_age(age)
@@ -23,13 +23,7 @@ class Plant:
     def show(self) -> None:
         print(f"{self.name}: {self.height:.1f}cm, {self.age} days old")
 
-    def get_age(self) -> int:
-        return self.age
-
-    def get_height(self) -> int:
-        return self.height
-
-    def set_age(self, age) -> bool:
+    def set_age(self, age: int) -> bool:
         if(age < 0):
             if (self.age == 0):
                 print(f"Error: Plant age cannot be negative! Defaulting to 0.")
@@ -43,7 +37,7 @@ class Plant:
             self.age = age
             return True
 
-    def set_height(self, height) -> bool:
+    def set_height(self, height: float) -> bool:
         if(height < 0):
             if (self.height == 0):
                 print(f"Error: Plant height cannot be negative! Defaulting to 0.")
@@ -105,7 +99,7 @@ class Tree(Plant):
         # shade_area = 3.14 * pow(crown_radius, 2)
         # print(f"Tree {self.name} now produces a shade area of {shade_area:.2f}m2.")
 
-    def show(self):
+    def show(self) -> None:
         Plant.show(self)
         print(f"- Trunk diameter: {self.trunk_diameter:.1f}cm")
 
@@ -121,7 +115,7 @@ class Vegetable(Plant):
         self.harvest_season = harvest_season.capitalize()
         self.nutritional_value = nutritional_value
 
-    def show(self):
+    def show(self) -> None:
         Plant.show(self)
         print(f"- Harvest Season: {self.harvest_season}")
         print(f"- Nutritional Value: {self.nutritional_value}")

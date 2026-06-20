@@ -6,12 +6,12 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/18 14:01:59 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/19 10:53:53 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/20 15:43:05 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
 class Plant:
-    def __init__(self, name: str, height: int, age: int) -> None:
+    def __init__(self, name: str, height: float, age: int) -> None:
         self.name = name.capitalize()
         self.height = height
         self.age = age
