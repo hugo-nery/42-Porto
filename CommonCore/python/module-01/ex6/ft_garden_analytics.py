@@ -6,7 +6,7 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/23 14:26:08 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/23 19:04:38 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/23 19:06:00 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
@@ -205,3 +205,5 @@ if __name__ == "__main__":
     sunflower.show()
     
     display_stats(sunflower)
+    
+	#falta o seeds
