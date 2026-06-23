@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # *************************************************************************** #
 #                                                                             #
 #                                                         :::      ::::::::   #
@@ -6,7 +8,7 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/18 18:23:19 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/20 15:52:26 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/23 11:45:04 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
@@ -18,6 +20,6 @@ if __name__ == "__main__":
     
     print("=== Welcome to My Garden ===")
     print(f"Plant: {name}")
-    print(f"Height: {height:.1f}cm")
+    print(f"Height: {height:.0f}cm")
     print(f"Age: {age} days\n")
     print("=== End of Program ===")
