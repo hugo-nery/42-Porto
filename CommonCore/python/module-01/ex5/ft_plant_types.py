@@ -6,7 +6,7 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/19 12:02:23 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/23 16:23:38 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/24 14:07:35 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
@@ -17,17 +17,15 @@ class Plant:
         self.set_height(height)
         self._age = 0
         self.set_age(age)
-        # print("Plant created:", end=" ")
-        # self.show()
 
     def show(self) -> None:
         print(f"{self.name}: {self._height:.1f}cm, {self._age} days old")
 
     def set_age(self, age: int) -> bool:
-        if(age < 0):
+        if (age < 0):
             print(f"{self.name}: Error, age cannot be negative!")
             return False
-        elif(age <= self._age):
+        elif (age <= self._age):
             print(f"{self.name}: Error, age cannot be equal or smaller "
                   "than current age!")
             return False
@@ -36,7 +34,7 @@ class Plant:
             return True
 
     def set_height(self, height: float) -> bool:
-        if(height < 0):
+        if (height < 0):
             print(f"{self.name}: Error, height can't be negative!")
             return False
         else:
@@ -94,10 +92,6 @@ class Tree(Plant):
         print("\n[asking the tree to produce shade]\n")
         print(f"Tree {self.name} now produces a shade of {self._height:.1f}cm"
               f" long and {self.trunk_diameter:.1f}cm wide.\n")
-        # crown_radius = self.trunk_diameter * 0.15
-        # shade_area = 3.14 * pow(crown_radius, 2)
-        # print(f"Tree {self.name} now produces a shade area"
-        #       f" of {shade_area:.2f}m2.")
 
     def show(self) -> None:
         super().show()
@@ -130,7 +124,7 @@ class Vegetable(Plant):
 
 if __name__ == "__main__":
     print("=== Garden Plant Types ===\n")
-    
+
     rose = Flower("Rose", 15, 10, "red", False)
     print("=== Flower")
     rose.show()

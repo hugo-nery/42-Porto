@@ -6,7 +6,7 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/19 10:54:12 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/23 14:22:45 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/24 14:06:43 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
@@ -24,18 +24,19 @@ class Plant:
         print(f"{self.name}: {self._height:.1f}cm, {self._age} days old")
 
     def set_age(self, age: int) -> bool:
-        if(age < 0):
+        if (age < 0):
             print(f"{self.name}: Error, age cannot be negative!")
             return False
-        elif(age <= self._age):
-            print(f"{self.name}: Error, age cannot be equal or smaller than current age!")
+        elif (age <= self._age):
+            print(f"{self.name}: Error, age cannot be equal or smaller"
+                  "than current age!")
             return False
         else:
             self._age = age
             return True
 
     def set_height(self, height: float) -> bool:
-        if(height < 0):
+        if (height < 0):
             print(f"{self.name}: Error, height can't be negative!")
             return False
         else:
@@ -59,10 +60,10 @@ if __name__ == "__main__":
     print("=== Garden Security System ===")
     rose = Plant("Rose", 15, 10)
 
-    while(not rose.set_height(float(input("\nUpdate height to: ")))):
+    while (not rose.set_height(float(input("\nUpdate height to: ")))):
         print("Height update rejected! Try again!\n")
 
-    while(not rose.set_age(int(input("Update age to: ")))):
+    while (not rose.set_age(int(input("Update age to: ")))):
         print("Age update rejected! Try again!\n")
 
     print("\nCurrent state:", end=" ")
