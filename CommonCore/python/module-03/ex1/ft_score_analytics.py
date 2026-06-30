@@ -6,14 +6,11 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/26 12:08:44 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/26 13:11:02 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/30 17:24:41 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
 import sys
-
-def ft_atoi(str_num: str) -> int:
-    return (int(str_num))
 
 if __name__ == "__main__":
     print("=== Player Score Analytics ===")
@@ -26,10 +23,10 @@ if __name__ == "__main__":
         i = 1
         while (i < len(sys.argv)):
             try:
-                n = ft_atoi(sys.argv[i])
+                n = int(sys.argv[i])
                 points_lst.append(n)
                 total_score += n
-            except:
+            except ValueError:
                 print(f"Invalid parameter: '{sys.argv[i]}'")
             i += 1
 
@@ -43,5 +40,5 @@ if __name__ == "__main__":
             print(f"Lowest score: {min(points_lst)}")
             print(f"Score range: {max(points_lst) - min(points_lst)}\n")
         else:
-            print("No scores provided."
-                  " Usage: python3 ft_score_analytics.py <score1> <score2> ...\n")
+            print("No scores provided. Usage: python3 ft_score_analytics.py"
+                  " <score1> <score2> ...\n")

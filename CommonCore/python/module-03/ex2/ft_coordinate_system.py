@@ -6,22 +6,25 @@
 #   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
 #                                                 +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/26 12:57:18 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/26 18:03:30 by hde-albu          ###   ########.fr       #
+#   Updated: 2026/06/30 17:36:46 by hde-albu          ###   ########.fr       #
 #                                                                             #
 # *************************************************************************** #
 
 import math
 
-def get_player_pos() -> tuple:
-    while(True):
+
+def get_player_pos() -> tuple[float, float, float]:
+    my_tp: tuple[float, float, float] = (0.0, 0.0, 0.0)
+    while (True):
         tp = input("- Enter new coordinates as"
                    " floats in format 'x,y,z': ").replace(" ", "")
         try:
             x, y, z = tp.split(",")
-            x = float(x)
-            y = float(y)
-            z = float(z)
-            return (x, y, z)
+            x_f = float(x)
+            y_f = float(y)
+            z_f = float(z)
+            my_tp = (x_f, y_f, z_f)
+            return my_tp
         except Exception as e:
             if ("unpack" in str(e)):
                 print("- Invalid syntax")
@@ -30,7 +33,9 @@ def get_player_pos() -> tuple:
                 print(f"- Error on parameter {str(e)[p+2:]}: "
                       f"could not convert string to float: {str(e)[p+2:]}")
 
-def distance_to_center(tp_b: tuple, tp_a: tuple = (0,0,0)) -> int:
+
+def distance_to_center(tp_b: tuple[float, float, float],
+                       tp_a: tuple[float, float, float] = (0, 0, 0)) -> float:
     x = math.pow((tp_b[0] - tp_a[0]), 2)
     y = math.pow((tp_b[1] - tp_a[1]), 2)
     z = math.pow((tp_b[2] - tp_a[2]), 2)
