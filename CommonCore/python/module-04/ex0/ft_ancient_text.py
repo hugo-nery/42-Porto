@@ -2,7 +2,7 @@ import sys
 
 if __name__ == "__main__":
 
-    if (len(sys.argv) > 1):
+    if (len(sys.argv) == 1):
         print("=== Cyber Archives Recovery ===")
         print(f"Accessing file '{sys.argv[1]}'")
 

@@ -2,7 +2,7 @@ import sys
 
 if __name__ == "__main__":
 
-	if (len(sys.argv) > 1):
+	if (len(sys.argv) == 2):
 		sys.stdout.write("=== Cyber Archives Recovery & Preservation ===\n")
 		sys.stdout.write(f"Accessing file '{sys.argv[1]}'\n")
 		content: str = ""
@@ -16,7 +16,8 @@ if __name__ == "__main__":
 
 		except Exception as e:
 			sys.stderr.write(f"[STDERR] Error opening file '{sys.argv[1]}': {e}\n")
-	
+			sys.exit(0)
+
 		sys.stdout.write("Transform data:")
 		content = content.replace("\n", "#\n")
 		sys.stdout.write(f"\n---\n\n{content}\n---\n")
@@ -34,3 +35,6 @@ if __name__ == "__main__":
 		except Exception as e:
 			sys.stderr.write(f"[STDERR] Error opening file '{new_file}': {e}\n")
 			sys.stderr.write("Data not saved.\n")
+
+	else:
+		print(f"Usage: {sys.argv[0]} <file>")
