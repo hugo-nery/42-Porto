@@ -1,9 +1,9 @@
 
 def validate_ingredients(ingredients: str) -> str:
-	from .light_spellbook import light_spell_allowed_ingredients
+    from .light_spellbook import light_spell_allowed_ingredients
 
-	for ing in light_spell_allowed_ingredients():
-		if ing.casefold() in ingredients.casefold():
-			return f"{ingredients} - VALID"
-	
-	return f"{ingredients} - INVALID"
+    for ing in light_spell_allowed_ingredients():
+        if ing.casefold() in ingredients.casefold():
+            return f"{ingredients} - VALID"
+
+    return f"{ingredients} - INVALID"
