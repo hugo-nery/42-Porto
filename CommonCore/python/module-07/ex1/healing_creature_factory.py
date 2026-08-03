@@ -7,8 +7,8 @@ from .bloomelle import Bloomelle
 
 class HealingCreatureFactory(CreatureFactory):
 
-	def create_base(self) -> Creature:
-		return (Sproutling())
+    def create_base(self) -> Creature:
+        return (Sproutling())
 
-	def create_evolved(self) -> Creature:
-		return (Bloomelle())
+    def create_evolved(self) -> Creature:
+        return (Bloomelle())

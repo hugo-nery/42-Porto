@@ -1,10 +1,11 @@
 import abc
 import typing
 
+
 class DataProcessor(abc.ABC):
     def __init__(self):
         super().__init__()
-        self.stored_data :list[str] = []
+        self.stored_data: list[str] = []
         self.rank = 0
 
     @abc.abstractmethod
@@ -14,24 +15,24 @@ class DataProcessor(abc.ABC):
     @abc.abstractmethod
     def ingest(self, in_data: any) -> None:
         pass
-    
+
     def output(self) -> tuple[int, str]:
         if (len(self.stored_data) >= 1):
             rk, txt = self.stored_data.pop(0).split(":", 1)
             return (int(rk), txt)
-        return (-1,"")
+        return (-1, "")
 
 
 class DataStream():
     def __init__(self):
         self.processors: list[DataProcessor] = []
         self.stats_dict: dict[DataProcessor, int] = {}
-    
+
     def register_processor(self, proc: DataProcessor) -> None:
         if (isinstance(proc, DataProcessor)):
             self.processors.append(proc)
             self.stats_dict[proc] = 0
-    
+
     def process_stream(self, stream: list[typing.Any]) -> None:
         for item in stream:
             flag: bool = False
@@ -45,8 +46,9 @@ class DataStream():
                     flag = True
                     break
             if (not flag):
-                print(f"-DataStream error - Can't process element in stream: {item}")
-        
+                print("-DataStream error - Can't process element in stream: "
+                      f"{item}")
+
     def print_processors_stats(self) -> None:
         print("\n== DataStream statistics ==")
         if (len(self.stats_dict.keys()) == 0):
@@ -65,9 +67,10 @@ class DataStream():
             name += text[i]
         return name
 
+
 class NumericProcessor(DataProcessor):
 
-    def validate(self, in_data: any) -> bool:		
+    def validate(self, in_data: any) -> bool:
         if (isinstance(in_data, (float, int, list))):
             if (isinstance(in_data, list)):
                 for i in in_data:
@@ -79,7 +82,7 @@ class NumericProcessor(DataProcessor):
 
     def ingest(self, in_data: int | float | list[int | float]) -> None:
         if (not self.validate(in_data)):
-            raise Exception ("Improper numeric data!\n")
+            raise Exception("Improper numeric data!\n")
 
         print(f"-Processing data: {in_data}")
         if (isinstance(in_data, list)):
@@ -106,8 +109,8 @@ class TextProcessor(DataProcessor):
 
     def ingest(self, in_data: str | list[str]) -> None:
         if (not self.validate(in_data)):
-            raise ValueError ("Improper text data!\n")
-        
+            raise ValueError("Improper text data!\n")
+
         print(f"-Processing data: {in_data}")
         if (isinstance(in_data, list)):
             for s in in_data:
@@ -141,17 +144,17 @@ class LogProcessor(DataProcessor):
         else:
             return False
 
-    def ingest(self, in_data: list[dict[str,str]] | dict[str,str]) -> None:
+    def ingest(self, in_data: list[dict[str, str]] | dict[str, str]) -> None:
         if (not self.validate(in_data)):
-            raise ValueError ("Improper log data!\n")
-        
+            raise ValueError("Improper log data!\n")
+
         print(f"-Processing data: {in_data}")
         if (isinstance(in_data, dict)):
             msg = ": ".join(val for val in in_data.values())
             self.stored_data.append(f"{self.rank}:{msg}")
             self.rank += 1
-        
-        else: #if (isinstance(in_data, list)):
+
+        else:
             for i in in_data:
                 msg = ": ".join(val for val in i.values())
                 self.stored_data.append(f"{self.rank}:{msg}")
@@ -170,12 +173,12 @@ if __name__ == "__main__":
     data_streamer.register_processor(num_proc)
 
     my_var = ['Hello world',
-                [3.14, -1, 2.71],
-                [{'log_level': 'WARNING', 'log_message': 'Telnet access! Use ssh instead'},
-                     {'log_level': 'INFO', 'log_message': 'User wil is connected'}],
-                42,
-                ['Hi', 'five']]
-    
+              [3.14, -1, 2.71],
+              [{'log_level': 'WARNING', 'log_message':
+                'Telnet access! Use ssh instead'},
+               {'log_level': 'INFO', 'log_message': 'User wil is connected'}],
+              42, ['Hi', 'five']]
+
     print(f"\nFirst batch of data to stream:\n{my_var}\n")
     data_streamer.process_stream(my_var)
     data_streamer.print_processors_stats()
@@ -186,13 +189,13 @@ if __name__ == "__main__":
     log_proc = LogProcessor()
     data_streamer.register_processor(log_proc)
 
-
     print(f"\nSend first batch of data on stream AGAIN...\n{my_var}\n")
     data_streamer.process_stream(my_var)
 
     data_streamer.print_processors_stats()
 
-    print("\n\nConsuming elements from the data processors: Numeric 3, Text 2, Log 1")
+    print("\n\nConsuming elements from the data processors: "
+          "Numeric 3, Text 2, Log 1")
     print("\nExtracting 3 Numeric...")
     for i in range(3):
         tup = num_proc.output()
@@ -202,11 +205,11 @@ if __name__ == "__main__":
     for i in range(2):
         tup = txt_proc.output()
         print(f"-Text value {tup[0]}: {tup[1]}")
-    
+
     print("\nExtracting 1 Log...")
     tup = log_proc.output()
     print(f"-Log value {tup[0]}: {tup[1]}")
-    
+
     data_streamer.print_processors_stats()
 
     print()
