@@ -6,8 +6,9 @@ from .pyrodon import Pyrodon
 
 
 class FlameFactory(CreatureFactory):
+
     def create_base(self) -> Creature:
-        return Flameling()
+        return (Flameling())
 
     def create_evolved(self) -> Creature:
-        return Pyrodon()
+        return (Pyrodon())

@@ -6,8 +6,9 @@ from .torragon import Torragon
 
 
 class AquaFactory (CreatureFactory):
+
     def create_base(self) -> Creature:
-        return Aquabub()
+        return (Aquabub())
 
     def create_evolved(self) -> Creature:
-        return Torragon()
+        return (Torragon())
