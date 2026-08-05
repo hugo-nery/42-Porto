@@ -7,7 +7,7 @@ if __name__ == "__main__":
         print(f"Accessing file '{sys.argv[1]}'")
 
         try:
-            f = open(sys.argv[1], "rt")
+            f = open(sys.argv[1], "r")
             print(f"---\n\n{f.read()}\n---")
             f.close()
             print(f"File '{sys.argv[1]}' closed.")

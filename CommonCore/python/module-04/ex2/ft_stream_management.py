@@ -8,7 +8,7 @@ if __name__ == "__main__":
         content: str = ""
 
         try:
-            f = open(sys.argv[1], "rt")
+            f = open(sys.argv[1], "r")
             content = f.read()
             sys.stdout.write(f"---\n\n{content}\n---\n")
             f.close()
@@ -28,7 +28,7 @@ if __name__ == "__main__":
         new_file = sys.stdin.readline()[:-1]
         sys.stdout.write(f"Saving data to '{new_file}'\n")
         try:
-            f = open(new_file, "wt")
+            f = open(new_file, "w")
             f.write(content)
             sys.stdout.write(f"Data saved in file '{new_file}'.\n")
             f.close()

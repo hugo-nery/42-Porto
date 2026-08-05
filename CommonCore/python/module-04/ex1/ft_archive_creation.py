@@ -7,7 +7,7 @@ if __name__ == "__main__":
         print(f"Accessing file '{sys.argv[1]}'")
         content: str = ""
         try:
-            f = open(sys.argv[1], "rt")
+            f = open(sys.argv[1], "r")
             content = f.read()
             print(f"---\n\n{content}\n---")
             f.close()
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         else:
             try:
                 print(f"Saving data to '{new_file}'")
-                f = open(new_file, "wt")
+                f = open(new_file, "w")
                 f.write(content)
                 print(f"Data saved in file '{new_file}'.")
                 f.close()

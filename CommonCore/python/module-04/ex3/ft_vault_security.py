@@ -34,13 +34,6 @@ if __name__ == "__main__":
     my_tp = secure_archive("ancient_fragment.txt")
     print(my_tp)
 
-    print("\nUsing 'secure_archive' to write content to a new file:")
-    f_name = input("New file name: ")
-    text = input(f"Data to be writen at '{f_name}': ") + "\n"
-    my_tp = secure_archive(f_name, "w", text)
-    print(my_tp)
-
-    print("\nUsing 'secure_archive' to read from a regular file:")
-    f_name = input("File name: ")
-    my_tp = secure_archive(f_name, "r")
+    print("\nUsing 'secure_archive' to write previous content to a new file:")
+    my_tp = secure_archive("new_file.txt", "w", my_tp[1])
     print(my_tp)
