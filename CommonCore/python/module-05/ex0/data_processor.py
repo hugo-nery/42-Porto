@@ -1,29 +1,31 @@
 import abc
+from typing import Any
 
 
 class DataProcessor(abc.ABC):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.stored_data: list[str] = []
         self.rank = 0
 
     @abc.abstractmethod
-    def validate(self, in_data: any) -> bool:
+    def validate(self, in_data: Any) -> bool:
         pass
 
     @abc.abstractmethod
-    def ingest(self, in_data: any) -> None:
+    def ingest(self, in_data: Any) -> None:
         pass
 
     def output(self) -> tuple[int, str]:
         if (len(self.stored_data) >= 1):
             rk, txt = self.stored_data.pop(0).split(":", 1)
             return (int(rk), txt)
-        return (-1, "")
+        return (-1, "None")
 
 
 class NumericProcessor(DataProcessor):
-    def validate(self, in_data: any) -> bool:
+
+    def validate(self, in_data: Any) -> bool:
         if (isinstance(in_data, (float, int, list))):
             if (isinstance(in_data, list)):
                 for i in in_data:
@@ -50,7 +52,7 @@ class NumericProcessor(DataProcessor):
 
 class TextProcessor(DataProcessor):
 
-    def validate(self, in_data: any) -> bool:
+    def validate(self, in_data: Any) -> bool:
         if (isinstance(in_data, (str, list))):
             if (isinstance(in_data, list)):
                 for s in in_data:
@@ -76,14 +78,16 @@ class TextProcessor(DataProcessor):
 
 
 class LogProcessor(DataProcessor):
-    def validate(self, in_data: any) -> bool:
+
+    def validate(self, in_data: Any) -> bool:
         if (isinstance(in_data, list)):
             for i in in_data:
                 if (not isinstance(i, dict)):
                     return False
                 else:
                     for k in i.keys():
-                        if (not isinstance(k, str) or not isinstance(i[k], str)):
+                        if (not isinstance(k, str) or
+                           not isinstance(i[k], str)):
                             return False
             return True
 
@@ -105,7 +109,6 @@ class LogProcessor(DataProcessor):
             self.stored_data.append(f"{self.rank}:{msg}")
             self.rank += 1
 
-        # if (isinstance(in_data, list)):
         else:
             for i in in_data:
                 msg = ": ".join(val for val in i.values())
@@ -120,11 +123,10 @@ if __name__ == "__main__":
     test_num = NumericProcessor()
 
     print(f"-Trying to validate input '{42}': {test_num.validate(42)}")
-    print(f"-Trying to validate input '{[1, 2, "0"]}': "
-          f"{test_num.validate([1, 2, "0"])}")
+    print(f"-Trying to validate input 'Hello': {test_num.validate('Hello')}")
 
     try:
-        print("-Testing invalid ingestion of string 'foo'"
+        print("-Testing invalid ingestion of string 'foo' "
               "without prior validation:")
         test_num.ingest("foo")
     except Exception as e:
@@ -145,14 +147,6 @@ if __name__ == "__main__":
     test_text = TextProcessor()
 
     print(f"-Trying to validate input '{42}': {test_text.validate(42)}")
-    print(f"-Trying to validate input '{["a", "b", "c"]}': "
-          f"{test_text.validate(["a", "b", "c"])}")
-
-    try:
-        test_text.ingest([1, 2, 3, 4, 5])
-    except Exception as e:
-        print(f"-Got exception: {e}")
-
     try:
         test_text.ingest(["Hello", "Nexus", "World"])
 
@@ -166,14 +160,9 @@ if __name__ == "__main__":
     print("\n\nTesting Log Processor...")
     test_log = LogProcessor()
 
-    print(f"-Trying to validate input '{42}': {test_log.validate(42)}")
-    print(f"-Trying to validate input '{"Hello"}': "
-          f"{test_log.validate("Hello")}")
-    my_var = [{"a": "amor", "b": "bola"}, {"c": "carro"}]
-    print(f"-Trying to validate input '{my_var}': {test_log.validate(my_var)}")
-
+    print(f"-Trying to validate input 'Hello': {test_log.validate('Hello')}")
     try:
-        print("\n-Processing data: [{'log_level': 'NOTICE', 'log_message':"
+        print("\n-Processing data: [{'log_level': 'NOTICE', 'log_message': "
               "'Connection to server'}, {'log_level': 'ERROR',"
               "'log_message': 'Unauthorized access!!'}]")
 

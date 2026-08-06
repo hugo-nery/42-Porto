@@ -1,19 +1,19 @@
 import abc
-import typing
+from typing import Any
 
 
 class DataProcessor(abc.ABC):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.stored_data: list[str] = []
         self.rank = 0
 
     @abc.abstractmethod
-    def validate(self, in_data: any) -> bool:
+    def validate(self, in_data: Any) -> bool:
         pass
 
     @abc.abstractmethod
-    def ingest(self, in_data: any) -> None:
+    def ingest(self, in_data: Any) -> None:
         pass
 
     def output(self) -> tuple[int, str]:
@@ -24,7 +24,7 @@ class DataProcessor(abc.ABC):
 
 
 class DataStream():
-    def __init__(self):
+    def __init__(self) -> None:
         self.processors: list[DataProcessor] = []
         self.stats_dict: dict[DataProcessor, int] = {}
 
@@ -33,7 +33,7 @@ class DataStream():
             self.processors.append(proc)
             self.stats_dict[proc] = 0
 
-    def process_stream(self, stream: list[typing.Any]) -> None:
+    def process_stream(self, stream: list[Any]) -> None:
         for item in stream:
             flag: bool = False
             for proc in self.processors:
@@ -50,7 +50,6 @@ class DataStream():
                       f"{item}")
 
     def print_processors_stats(self) -> None:
-        print("\n== DataStream statistics ==")
         if (len(self.stats_dict.keys()) == 0):
             print("No processor found, no data")
         else:
@@ -70,7 +69,7 @@ class DataStream():
 
 class NumericProcessor(DataProcessor):
 
-    def validate(self, in_data: any) -> bool:
+    def validate(self, in_data: Any) -> bool:
         if (isinstance(in_data, (float, int, list))):
             if (isinstance(in_data, list)):
                 for i in in_data:
@@ -84,7 +83,7 @@ class NumericProcessor(DataProcessor):
         if (not self.validate(in_data)):
             raise Exception("Improper numeric data!\n")
 
-        print(f"-Processing data: {in_data}")
+        print(f"Processed data: {in_data}")
         if (isinstance(in_data, list)):
             for i in in_data:
                 self.stored_data.append(f"{self.rank}:{i}")
@@ -97,7 +96,7 @@ class NumericProcessor(DataProcessor):
 
 class TextProcessor(DataProcessor):
 
-    def validate(self, in_data: any) -> bool:
+    def validate(self, in_data: Any) -> bool:
         if (isinstance(in_data, (str, list))):
             if (isinstance(in_data, list)):
                 for s in in_data:
@@ -111,7 +110,7 @@ class TextProcessor(DataProcessor):
         if (not self.validate(in_data)):
             raise ValueError("Improper text data!\n")
 
-        print(f"-Processing data: {in_data}")
+        print(f"Processed data: {in_data}")
         if (isinstance(in_data, list)):
             for s in in_data:
                 self.stored_data.append(f"{self.rank}:{s}")
@@ -124,14 +123,15 @@ class TextProcessor(DataProcessor):
 
 class LogProcessor(DataProcessor):
 
-    def validate(self, in_data: any) -> bool:
+    def validate(self, in_data: Any) -> bool:
         if (isinstance(in_data, list)):
             for i in in_data:
                 if (not isinstance(i, dict)):
                     return False
                 else:
                     for k in i.keys():
-                        if (not isinstance(k, str) or not isinstance(i[k], str)):
+                        if (not isinstance(k, str) or
+                           not isinstance(i[k], str)):
                             return False
             return True
 
@@ -148,7 +148,7 @@ class LogProcessor(DataProcessor):
         if (not self.validate(in_data)):
             raise ValueError("Improper log data!\n")
 
-        print(f"-Processing data: {in_data}")
+        print(f"Processed data: {in_data}")
         if (isinstance(in_data, dict)):
             msg = ": ".join(val for val in in_data.values())
             self.stored_data.append(f"{self.rank}:{msg}")
@@ -166,6 +166,8 @@ if __name__ == "__main__":
 
     print("\nInitialize Data Stream...")
     data_streamer = DataStream()
+
+    print("\n== DataStream statistics ==")
     data_streamer.print_processors_stats()
 
     print("\nRegistering Numeric Processor...\n")
@@ -179,8 +181,10 @@ if __name__ == "__main__":
                {'log_level': 'INFO', 'log_message': 'User wil is connected'}],
               42, ['Hi', 'five']]
 
-    print(f"\nFirst batch of data to stream:\n{my_var}\n")
+    print(f"\nFirst batch of data on stream:\n{my_var}\n")
     data_streamer.process_stream(my_var)
+
+    print("\n== DataStream statistics ==")
     data_streamer.print_processors_stats()
 
     print("\n\nRegistering other data processors...\n")
@@ -189,9 +193,10 @@ if __name__ == "__main__":
     log_proc = LogProcessor()
     data_streamer.register_processor(log_proc)
 
-    print(f"\nSend first batch of data on stream AGAIN...\n{my_var}\n")
+    print(f"\nFirst batch of data on stream AGAIN...\n{my_var}\n")
     data_streamer.process_stream(my_var)
 
+    print("\n== DataStream statistics ==")
     data_streamer.print_processors_stats()
 
     print("\n\nConsuming elements from the data processors: "
@@ -210,6 +215,7 @@ if __name__ == "__main__":
     tup = log_proc.output()
     print(f"-Log value {tup[0]}: {tup[1]}")
 
+    print("\n== DataStream statistics ==")
     data_streamer.print_processors_stats()
 
     print()

@@ -1,15 +1,3 @@
-# *************************************************************************** #
-#                                                                             #
-#                                                         :::      ::::::::   #
-#   ft_inventory_system.py                              :+:      :+:    :+:   #
-#                                                     +:+ +:+         +:+     #
-#   By: hde-albu <hde-albu@student.42porto.com>     +#+  +:+       +#+        #
-#                                                 +#+#+#+#+#+   +#+           #
-#   Created: 2026/06/29 14:22:21 by hde-albu           #+#    #+#             #
-#   Updated: 2026/06/30 17:35:24 by hde-albu          ###   ########.fr       #
-#                                                                             #
-# *************************************************************************** #
-
 import sys
 
 
@@ -29,7 +17,7 @@ def clean_kv(args: list[str]) -> dict[str, int]:
             else:
                 print(
                     f"Quantity error for '{key}': invalid literal for int() "
-                    f"with base 10: '{val}'")
+                    f"with base 10: '{val}'") 
     return (temp_dict)
 
 
@@ -43,6 +31,10 @@ if __name__ == "__main__":
     else:
         print("\n=== Inventory System Analysis ===\n")
         my_dict = clean_kv(sys.argv)
+
+        if (len(my_dict.keys()) == 0):
+            print("\nNo valid parameter. Inventory is empty.\n")
+            sys.exit(1)
 
         print(f"\nGot inventory: {my_dict}")
         key_lst = list(my_dict.keys())
