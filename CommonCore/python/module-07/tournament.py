@@ -4,22 +4,17 @@ from ex2 import BattleStrategy, NormalStrategy, AggressiveStrategy, DefensiveStr
 
 
 def battle(oponents_lst: list[(CreatureFactory, BattleStrategy)]):
-	pass
+	print("\n*** Tournament ***")
+	print(f"{len(oponents_lst)} opponents involved")
+
+	
 
 
 if __name__ == "__main__":
 
-	aqua_factory = AquaFactory()
-	print(f"\n{aqua_factory.create_base().describe()}")
+	print("Tournament 0 (basic)")
+	print(" [ (Flameling+Normal), (Healing+Defensive) ]")
 
-	flame_factory = FlameFactory()
-	print(f"\n{flame_factory.create_base().describe()}")
-
-	healing_factory = HealingCreatureFactory()
-	print(f"\n{healing_factory.create_base().describe()}")
-
-	transform_factory = TransformCreatureFactory()
-	print(f"\n{transform_factory.create_base().describe()}")
-
-
+	
+	battle([(FlameFactory, NormalStrategy), (TransformCreatureFactory, AggressiveStrategy)])
 

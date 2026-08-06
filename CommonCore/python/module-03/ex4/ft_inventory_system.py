@@ -45,20 +45,20 @@ if __name__ == "__main__":
             sum += val
         print(f"Total quantity of the {len(key_lst)} items: {sum}")
         item: str = ""
+
         max = max(my_dict.values())
         for p in my_dict:
             print(f"Item {p} represents {(my_dict[p] * 100 / sum):.1f}%")
             if (my_dict[p] == max):
                 item = p
                 break
+        print(f"Item most abundant: {item} with quantity {max}")
 
         min = min(my_dict.values())
         for p in my_dict:
             if (my_dict[p] == min):
                 item = p
                 break
-
-        print(f"Item most abundant: {item} with quantity {max}")
         print(f"Item least abundant: {item} with quantity {min}")
 
         my_dict["magic_item"] = 1

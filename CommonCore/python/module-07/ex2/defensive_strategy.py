@@ -1,4 +1,4 @@
-from battle_strategy import BattleStrategy
+from .battle_strategy import BattleStrategy
 
 
 class DefensiveStrategy(BattleStrategy):
