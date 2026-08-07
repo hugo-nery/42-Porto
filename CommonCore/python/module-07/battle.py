@@ -25,7 +25,7 @@ def base_battle(factory_a: CreatureFactory,
         creature_a = factory_a.create_base()
         creature_b = factory_b.create_base()
 
-        print(f"{creature_a.describe()}\n\t\tvs.\n"
+        print(f"{creature_a.describe()}\n vs.\n"
               f"{creature_b.describe()}\n\n!! FIGHT !!\n")
         print(f"{creature_a.attack()}\n{creature_b.attack()}")
 

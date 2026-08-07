@@ -4,4 +4,9 @@ from .aggressive_strategy import AggressiveStrategy
 from .defensive_strategy import DefensiveStrategy
 
 
-__all__ = ["BattleStrategy", "NormalStrategy", "AggressiveStrategy", "DefensiveStrategy"]
+__all__ = [
+    "BattleStrategy",
+    "NormalStrategy",
+    "AggressiveStrategy",
+    "DefensiveStrategy"
+    ]

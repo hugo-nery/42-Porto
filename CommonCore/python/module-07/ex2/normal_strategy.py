@@ -4,8 +4,8 @@ from ex0 import Creature
 
 class NormalStrategy(BattleStrategy):
 
-	def act(self, creature: Creature) -> str:
-		return creature.attack()
+    def act(self, creature: Creature) -> str:
+        return creature.attack()
 
-	def is_valid(self, creature: Creature) -> bool:
-		return (isinstance(creature, Creature))
+    def is_valid(self, creature: Creature) -> bool:
+        return (isinstance(creature, Creature))

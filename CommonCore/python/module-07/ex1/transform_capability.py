@@ -10,7 +10,9 @@ class TransformCapability(abc.ABC):
     @abc.abstractmethod
     def transform(self) -> str:
         self.transform_state = True
+        return ""
 
     @abc.abstractmethod
     def revert(self) -> str:
         self.transform_state = False
+        return ""
