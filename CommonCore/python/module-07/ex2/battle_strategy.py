@@ -4,10 +4,20 @@ from ex0 import Creature
 
 class BattleStrategy(abc.ABC):
 
+    name: str
+
     @abc.abstractmethod
-    def act(self, creature: Creature) -> str:
+    def act(self, creature: Creature) -> None:
         pass
 
     @abc.abstractmethod
     def is_valid(self, creature: Creature) -> bool:
         pass
+
+
+class BattleError(Exception):
+
+    def __init__(self, creature: Creature) -> None:
+        message = (f"Invalid Creature '{creature.__class__.__name__}' "
+                   "for this aggressive strategy")
+        super().__init__(message)

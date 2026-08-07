@@ -11,4 +11,4 @@ class Sproutling(Creature, HealCapability):
         return ("Sproutling uses Vine Whip!")
 
     def heal(self) -> str:
-        return ("Sproutling heals itself for a small amount")
+        return ("Sproutling heals itself for a small amount.")

@@ -1,5 +1,4 @@
 from .creature_factory import CreatureFactory
-from .creature import Creature
 
 from .aquabub import Aquabub
 from .torragon import Torragon
@@ -7,8 +6,10 @@ from .torragon import Torragon
 
 class AquaFactory (CreatureFactory):
 
-    def create_base(self) -> Creature:
+    name = "Aquabub"
+
+    def create_base(self) -> Aquabub:
         return (Aquabub())
 
-    def create_evolved(self) -> Creature:
+    def create_evolved(self) -> Torragon:
         return (Torragon())

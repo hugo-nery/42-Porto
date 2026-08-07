@@ -1,17 +1,18 @@
-from .battle_strategy import BattleStrategy
 from ex0 import Creature
-from ex1.sproutling import Sproutling
-from ex1.bloomelle import Bloomelle
+from ex1 import HealCapability
+from ex2 import BattleStrategy, BattleError
 
 
 class DefensiveStrategy(BattleStrategy):
 
-    def act(self, creature: Creature) -> str:
-        if (self.is_valid(creature)):
-            return (f"{creature.attack()}\n"
-                    f"{creature.heal()}")
+    name = "Defensive"
+
+    def act(self, creature: Creature) -> None:
+        if (isinstance(creature, HealCapability)):
+            print(f"{creature.attack()}\n"
+                  f"{creature.heal()}")
         else:
-            return ("Error")
+            raise BattleError(creature)
 
     def is_valid(self, creature: Creature) -> bool:
-        return (isinstance(creature, (Sproutling, Bloomelle)))
+        return (isinstance(creature, HealCapability))

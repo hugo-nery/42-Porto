@@ -1,5 +1,4 @@
 from .creature_factory import CreatureFactory
-from .creature import Creature
 
 from .flameling import Flameling
 from .pyrodon import Pyrodon
@@ -7,8 +6,10 @@ from .pyrodon import Pyrodon
 
 class FlameFactory(CreatureFactory):
 
-    def create_base(self) -> Creature:
+    name = "Flameling"
+
+    def create_base(self) -> Flameling:
         return (Flameling())
 
-    def create_evolved(self) -> Creature:
+    def create_evolved(self) -> Pyrodon:
         return (Pyrodon())

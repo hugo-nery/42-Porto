@@ -1,18 +1,19 @@
-from .battle_strategy import BattleStrategy
 from ex0 import Creature
-from ex1.shiftling import Shiftling
-from ex1.morphagon import Morphagon
+from ex1 import TransformCapability
+from ex2 import BattleStrategy, BattleError
 
 
 class AggressiveStrategy(BattleStrategy):
 
-    def act(self, creature: Creature) -> str:
-        if (self.is_valid(creature)):
-            return (f"{creature.transform()}\n"
-                    f"{creature.attack()}\n"
-                    f"{creature.revert()}\n")
+    name = "Aggressive"
+
+    def act(self, creature: Creature) -> None:
+        if (isinstance(creature, TransformCapability)):
+            print(f"{creature.transform()}\n"
+                  f"{creature.attack()}\n"
+                  f"{creature.revert()}\n")
         else:
-            return ("Error")
+            raise BattleError(creature)
 
     def is_valid(self, creature: Creature) -> bool:
-        return (isinstance(creature, (Shiftling, Morphagon)))
+        return (isinstance(creature, TransformCapability))
