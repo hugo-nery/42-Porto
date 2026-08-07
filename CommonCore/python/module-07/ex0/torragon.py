@@ -3,8 +3,8 @@ from .creature import Creature
 
 class Torragon(Creature):
 
-    def __init__(self) -> None:
-        super().__init__("Water")
+    name = "Torragon"
+    creature_type = "Water"
 
     def attack(self) -> str:
         return ("Torragon uses Hydro Pump!")

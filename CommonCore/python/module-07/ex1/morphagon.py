@@ -4,9 +4,8 @@ from . import TransformCapability
 
 class Morphagon(Creature, TransformCapability):
 
-    def __init__(self) -> None:
-        Creature.__init__(self, "Normal/Dragon")
-        TransformCapability.__init__(self)
+    name = "Morphagon"
+    creature_type = "Normal/Dragon"
 
     def attack(self) -> str:
         if (self.transform_state):
@@ -15,9 +14,9 @@ class Morphagon(Creature, TransformCapability):
             return ("Morphagon attacks normally.")
 
     def transform(self) -> str:
-        TransformCapability.transform(self)
+        self.transform_state = True
         return ("Morphagon morphs into a dragonic battle form!")
 
     def revert(self) -> str:
-        TransformCapability.revert(self)
+        self.transform_state = False
         return ("Morphagon stabilizes its form.")

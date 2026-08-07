@@ -4,8 +4,8 @@ from . import HealCapability
 
 class Sproutling(Creature, HealCapability):
 
-    def __init__(self) -> None:
-        Creature.__init__(self, "Grass")
+    name = "Sproutling"
+    creature_type = "Grass"
 
     def attack(self) -> str:
         return ("Sproutling uses Vine Whip!")

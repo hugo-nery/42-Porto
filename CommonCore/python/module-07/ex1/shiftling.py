@@ -4,9 +4,8 @@ from . import TransformCapability
 
 class Shiftling(Creature, TransformCapability):
 
-    def __init__(self) -> None:
-        Creature.__init__(self, "Normal")
-        TransformCapability.__init__(self)
+    name = "Shiftling"
+    creature_type = "Normal"
 
     def attack(self) -> str:
         if (self.transform_state):
@@ -15,9 +14,9 @@ class Shiftling(Creature, TransformCapability):
             return ("Shiftling attacks normally.")
 
     def transform(self) -> str:
-        TransformCapability.transform(self)
+        self.transform_state = True
         return ("Shiftling shifts into a sharper form!")
 
     def revert(self) -> str:
-        TransformCapability.revert(self)
+        self.transform_state = False
         return ("Shiftling returns to normal.")

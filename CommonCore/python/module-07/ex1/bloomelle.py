@@ -4,8 +4,8 @@ from . import HealCapability
 
 class Bloomelle(Creature, HealCapability):
 
-    def __init__(self) -> None:
-        Creature.__init__(self, "Grass/Fairy")
+    name = "Bloomelle"
+    creature_type = "Grass/Fairy"
 
     def attack(self) -> str:
         return ("Bloomelle uses Petal Dance!")

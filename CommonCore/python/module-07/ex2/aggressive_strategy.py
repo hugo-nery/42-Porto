@@ -1,6 +1,7 @@
 from ex0 import Creature
 from ex1 import TransformCapability
 from ex2 import BattleStrategy, BattleError
+from typing import cast
 
 
 class AggressiveStrategy(BattleStrategy):
@@ -8,12 +9,13 @@ class AggressiveStrategy(BattleStrategy):
     name = "Aggressive"
 
     def act(self, creature: Creature) -> None:
-        if (isinstance(creature, TransformCapability)):
-            print(f"{creature.transform()}\n"
-                  f"{creature.attack()}\n"
-                  f"{creature.revert()}\n")
-        else:
+        if (not self.is_valid(creature)):
             raise BattleError(creature)
 
+        print(f"{cast(TransformCapability, creature).transform()}\n"
+              f"{creature.attack()}\n"
+              f"{cast(TransformCapability, creature).revert()}\n")
+
     def is_valid(self, creature: Creature) -> bool:
-        return (isinstance(creature, TransformCapability))
+        return (isinstance(creature, Creature)
+                and isinstance(creature, TransformCapability))

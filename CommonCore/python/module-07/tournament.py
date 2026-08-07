@@ -11,9 +11,13 @@ def battle(oponents_lst: list[tuple[CreatureFactory, BattleStrategy]]) -> None:
               "BattleStrategy)'")
         return
 
-    for factory, strategy in oponents_lst:
-        if (not isinstance(factory, CreatureFactory) or
-           not isinstance(strategy, BattleStrategy)):
+    for tp in oponents_lst:
+        if (
+            not isinstance(tp, tuple)
+            or len(tp) != 2
+            or not isinstance(tp[0], CreatureFactory)
+            or not isinstance(tp[1], BattleStrategy)
+           ):
             print("\nBattle error: Expected list of 'tuple(CreatureFactory, "
                   "BattleStrategy)'")
             return

@@ -18,6 +18,6 @@ class BattleStrategy(abc.ABC):
 class BattleError(Exception):
 
     def __init__(self, creature: Creature) -> None:
-        message = (f"Invalid Creature '{creature.__class__.__name__}' "
+        message = (f"Invalid Creature '{creature.name}' "
                    "for this aggressive strategy")
         super().__init__(message)
