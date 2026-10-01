@@ -1,30 +1,38 @@
+#sys, os, site modules, print()
+
 import sys
+import os
 import site
 
-
 if __name__ == "__main__":
-	print("=== Environment detection ===\n")
-	print("Which environment am I at?")
-	if (sys.prefix == sys.base_prefix):
-		print(" - Global system environment.\n")
-		
-		print("\n== Virtual Environment Instructions ==")
-		print("On your terminal:")
-		print("\nTo Create a environment, execute:\n 'python3 -m venv .venv'")
-		print("\nTo Activate the environment, execute:\n 'source .venv/bin/activate'")
-		print("\nAfter the previuos command you're using the virtual environment.")
-		print("\nWhenever you're done, to exit the VE, execute:\n 'deactivate'")
+
+	print("\nMATRIX STATUS: ", end="")
+	if (sys.base_prefix == sys.prefix):
+		print("You're still plugged in.")
+
+		print(f"\nCurrent Python: {os.path.realpath(sys.executable)}"
+				"\nVirtual Environment: None detected")
+
+		print(f"\nWARNING: You're in the global environment!"
+				"\nThe machines can see everything you install.\n")
+
+		print(f"To enter the construct, run:"
+				"\n   python3 -m venv matrix_env"
+				"\n   source matrix_env/bin/activate # On Unix"
+				"\n   matrix_env\\Scripts\\activate # On Windows"
+				"\n\nThen run this program again.")
 
 	else:
-		print(" - Virtual environment.\n")
+		print("Welcome to the construct.\n")
 
-	print(f"Your current environment sits at: '{sys.prefix}'")
+		print(f"Current Python: {sys.executable}")
+		print(f"Virtual Environment: {os.path.basename(sys.prefix)}")
+		print(f"Environment Path: {sys.prefix}")
 
-	print("\ndir's from site.getsitepackages():")
-	for dir in site.getsitepackages():
-		print(f"{dir}\n")
+		print(f"\nSUCCESS: You're in an isolated environment!"
+				"\nSafe to install packages without affecting"
+				"\nthe global system.")
 
-	# print(f"sys.base_prefix = {sys.base_prefix}\n")
-
+		print(f"\nPackage installation path:\n{site.getsitepackages()[0]}")
 
 
