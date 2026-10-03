@@ -3,24 +3,42 @@
 safe = True
 
 try:
-    import numpy
+    print("\nLOADING STATUS: Loading programs...\n")
+
     import pandas
+    print(f"[OK] pandas ({pandas.__version__}) - Data manipulation ready")
+
+    import numpy
+    print(f"[OK] numpy ({numpy.__version__}) - Numerical computation ready")
+
     import matplotlib
+    import matplotlib.pyplot as plt
+    print(f"[OK] matplotlib ({matplotlib.__version__}) - Visualization ready")
 
 except ImportError as ie:
     safe = False
-    print(f"\nError: '{ie.name}' is missing in this environment.\n")
+    print(f"Error: '{ie.name}' doesn't exist in this environment.\n")
 
 if (safe):
-    print("\nVersion:")
-    print(f"- Numpy {numpy.__version__}")
-    print(f"- Pandas {pandas.__version__}")
-    print(f"- Matplotlib {matplotlib.__version__}")
+    print(f"\nAnalyzing Matrix data..."
+            "\nProcessing 1000 data points...")
+    
+    np_matrix = numpy.random.randint(27, 41, size=(4, 3))
+    pds_df = pandas.DataFrame(np_matrix, columns=["2024", "2025", "2026"])
+    pds_df.index = range(6, len(pds_df) + 6)
+    pds_df.plot(marker='o')
 
-    print("\nAll good so far!!\n")
+    print("Generating visualization...")
+    # print(f"{pds_df}\n")
+    plt.legend()
+    plt.grid(True)
+    plt.xticks(pds_df.index)
+    plt.yticks(range(0, 51, 5))
+    plt.title('Portugal - Jun/Sep')
+    plt.xlabel('Month')
+    plt.ylabel('Temperature')
 
-    numpy_matrix = numpy.random.randint(1, 101, size=(2, 2))
+    plt.savefig('matrix_analysis.png')
+    print(f"\nAnalysis complete!"
+            "\nResults saved to: 'matrix_analysis.png'")
 
-    data_frame = pandas.DataFrame(numpy_matrix, columns=['A', 'B'])
-    print(data_frame)
-    print(data_frame.describe())
