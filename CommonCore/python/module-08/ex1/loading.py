@@ -1,44 +1,82 @@
-#Authorized: pandas, requests, matplotlib, numpy, sys, importlib
+def print_versions(modules_list: list) -> None:
+    print("Checking dependencies:")
+    for m in modules_list:
+        if (m.__name__ == "pandas"):
+            print(f"[OK] pandas ({pandas.__version__}) "
+                  "- Data manipulation ready")
 
-safe = True
+        elif (m.__name__ == "numpy"):
+            print(f"[OK] numpy ({numpy.__version__}) "
+                  "- Numerical computation ready")
 
+        elif (m.__name__ == "matplotlib"):
+            print(f"[OK] matplotlib ({matplotlib.__version__}) "
+                  "- Visualization ready")
+
+        else:
+            pass
+
+
+safe_list: list = []
 try:
     print("\nLOADING STATUS: Loading programs...\n")
-
     import pandas
-    print(f"[OK] pandas ({pandas.__version__}) - Data manipulation ready")
+    safe_list.append(pandas)
 
     import numpy
-    print(f"[OK] numpy ({numpy.__version__}) - Numerical computation ready")
+    safe_list.append(numpy)
 
     import matplotlib
-    import matplotlib.pyplot as plt
-    print(f"[OK] matplotlib ({matplotlib.__version__}) - Visualization ready")
+    from matplotlib import pyplot
+    safe_list.append(matplotlib)
 
 except ImportError as ie:
-    safe = False
-    print(f"Error: '{ie.name}' doesn't exist in this environment.\n")
+    print_versions(safe_list)
+    print(f"Error: Missing '{ie.name}' in this environment. ")
 
-if (safe):
-    print(f"\nAnalyzing Matrix data..."
-            "\nProcessing 1000 data points...")
-    
+    if (len(safe_list) <= 1):
+        print("\n-To install dependencies with 'pip + requirements':"
+              "\n  pip install -r 'your_requirements_file.txt'")
+    else:
+        print("\n-To install missing dependencies with 'pip':"
+              "\n  pip install 'missing_package_name'")
+
+    print("\n-To install dependecies with 'Poetry + *.toml file':"
+          "\n  pip install poetry"
+          "\n  poetry install")
+
+    print("\nThen run the program again.\n")
+
+if (len(safe_list) == 3):
+    print_versions(safe_list)
+
+    print("\nAnalyzing Matrix data..."
+          "\nProcessing 1000 data points...")
+
     np_matrix = numpy.random.randint(27, 41, size=(4, 3))
     pds_df = pandas.DataFrame(np_matrix, columns=["2024", "2025", "2026"])
-    pds_df.index = range(6, len(pds_df) + 6)
+    pds_df.index = pandas.Index(range(6, len(pds_df) + 6))
     pds_df.plot(marker='o')
 
     print("Generating visualization...")
     # print(f"{pds_df}\n")
-    plt.legend()
-    plt.grid(True)
-    plt.xticks(pds_df.index)
-    plt.yticks(range(0, 51, 5))
-    plt.title('Portugal - Jun/Sep')
-    plt.xlabel('Month')
-    plt.ylabel('Temperature')
+    pyplot.legend()
+    pyplot.grid(True)
+    pyplot.xticks(pds_df.index)
+    pyplot.yticks(range(0, 51, 5))
+    pyplot.title('Portugal - Jun/Sep')
+    pyplot.xlabel('Month')
+    pyplot.ylabel('Temperature')
 
-    plt.savefig('matrix_analysis.png')
-    print(f"\nAnalysis complete!"
-            "\nResults saved to: 'matrix_analysis.png'")
+    pyplot.savefig('matrix_analysis.png')
+    print("\nAnalysis complete!"
+          "\nResults saved to: 'matrix_analysis.png'")
 
+    print("\n\n----------------------------------")
+    print("-- Dependencies (Pip vs Poetry) --")
+    print("Pip:\n Flat text file, commonly 'requirements.txt';"
+          "\n Environment is a bunch of loose folders;"
+          "\n Package removal doesn't clean sub-dependencies.")
+    print("\nPoetry:\n Structured project file, e.g. 'pyproject.toml';"
+          "\n Environment package's and sub-dependencies are mapped;"
+          "\n Package removal cleans the exclusive sub-dependencies.\n")
