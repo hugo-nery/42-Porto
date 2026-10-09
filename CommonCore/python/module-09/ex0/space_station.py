@@ -13,8 +13,6 @@ class SpaceStation (BaseModel):
     notes: str = None
 
 
-
-
 def main():
     print("Space Station Data Validation\n"
           "========================================")
