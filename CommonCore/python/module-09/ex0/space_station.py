@@ -23,7 +23,7 @@ def print_station(ss: SpaceStation):
 
 
 def main():
-    
+
     good_data = {
         "station_id": "ISS001",
         "name": "Internation Space Station",
@@ -61,5 +61,5 @@ def main():
         print()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()

@@ -25,13 +25,18 @@ class AlienContact(BaseModel):
     def validation_rules(self):
         errors_list: list[str] = []
         if self.contact_id[0:2] != "AC":
-            errors_list.append("Contact ID must start with 'AC' (Alien Contact)")
+            errors_list.append("Contact ID must start with "
+                               "'AC' (Alien Contact)")
         if self.contact_type == ContactType.physical and not self.is_verified:
             errors_list.append("Physical contact reports must be verified")
-        if self.contact_type == ContactType.telepathic and self.witness_count < 3:
-            errors_list.append("Telepathic contact requires at least 3 witnesses")
-        if self.signal_strength > 7 and (self.message_received is None or self.message_received == ""):
-            errors_list.append("Strong signals (> 7.0) should include received messages")
+        if (self.contact_type == ContactType.telepathic and
+           self.witness_count < 3):
+            errors_list.append("Telepathic contact requires at least "
+                               "3 witnesses")
+        if self.signal_strength > 7 and (self.message_received is None or
+                                         self.message_received == ""):
+            errors_list.append("Strong signals (> 7.0) should "
+                               "include received messages")
         if len(errors_list) > 0:
             raise ValueError("\n".join(errors_list))
         return self
@@ -90,5 +95,5 @@ def main() -> None:
             print(dic_error['msg'].removeprefix('Value error, '))
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()

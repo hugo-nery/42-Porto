@@ -26,7 +26,7 @@ class SpaceMission(BaseModel):
     mission_name: str = Field(min_length=3, max_length=100)
     destination: str = Field(min_length=3, max_length=50)
     launch_date: datetime
-    duration_days: int = Field(ge=1,le=3650)
+    duration_days: int = Field(ge=1, le=3650)
     crew: list[CrewMember] = Field(min_length=1, max_length=12)
     mission_status: str = "planned"
     budget_millions: float = Field(ge=1.0, le=10000.0)
@@ -38,7 +38,8 @@ class SpaceMission(BaseModel):
             error_list.append("Mission ID must start with 'M'")
 
         mission_rank_list = [c.rank.name for c in self.crew]
-        if Rank.captain.name not in mission_rank_list and Rank.commander.name not in mission_rank_list:
+        if (Rank.captain.name not in mission_rank_list and Rank.commander.name
+           not in mission_rank_list):
             error_list.append("Must have at least one Commander or Captain")
 
         if self.duration_days > 365:
@@ -47,15 +48,16 @@ class SpaceMission(BaseModel):
                 if c.years_experience >= 5:
                     experienced_count += 1
             if experienced_count < len(self.crew)/2:
-                error_list.append("Long missions (> 365 days) need 50%% experienced crew (5+ years)")
-        
+                error_list.append("Long missions (> 365 days) need 50%% "
+                                  "experienced crew (5+ years)")
+
         for c in self.crew:
             if not c.is_active:
                 error_list.append("All crew members must be active")
                 break
 
         if len(error_list) > 0:
-            raise ValueError ("\n".join(error_list))
+            raise ValueError("\n".join(error_list))
         return self
 
 
@@ -68,11 +70,13 @@ def print_mission(sm: SpaceMission) -> None:
           f"Crew size: {len(sm.crew)}\n"
           f"Crew members:")
     for member in sm.crew:
-        print(f"- {member.name} ({member.rank.name}) - {member.specialization}")
+        print(f"- {member.name} ({member.rank.name}) - "
+              f"{member.specialization}")
     print()
 
+
 def main():
-    
+
     crew_list: list[CrewMember] = []
     try:
         sarah = CrewMember(member_id="001",
@@ -83,13 +87,10 @@ def main():
                            years_experience=12,
                            is_active=True)
         crew_list.append(sarah)
-        
-        john = CrewMember(member_id="002",
-                           name="John Smith",
-                           rank=Rank.lieutenant,
-                           age=27,
-                           specialization="Navigation",
-                           years_experience=9)
+
+        john = CrewMember(member_id="002", name="John Smith",
+                          rank=Rank.lieutenant, age=27,
+                          specialization="Navigation", years_experience=9)
         crew_list.append(john)
 
         alice = CrewMember(member_id="003",
@@ -100,13 +101,9 @@ def main():
                            years_experience=5)
         crew_list.append(alice)
 
-        hugo = CrewMember(member_id="007",
-                           name="Hugo Nery",
-                           rank=Rank.captain,
-                           age=34,
-                           specialization="Robotics",
-                           years_experience=1,
-                           is_active=False)
+        hugo = CrewMember(member_id="007", name="Hugo Nery", rank=Rank.captain,
+                          age=34, specialization="Robotics",
+                          years_experience=1, is_active=False)
         crew_list.append(hugo)
 
     except ValidationError as ve:
@@ -148,8 +145,10 @@ def main():
 
     except ValidationError as ve:
         for error_dict in ve.errors():
-            print(f"{str(error_dict['loc']).strip('(),')} {(error_dict['msg']).removeprefix('Value error, ')}")
+            print(f"{str(error_dict['loc']).strip('(),')} "
+                  f"{(error_dict['msg']).removeprefix('Value error, ')}")
         print()
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
