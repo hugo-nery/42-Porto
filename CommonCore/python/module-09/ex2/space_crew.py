@@ -32,7 +32,7 @@ class SpaceMission(BaseModel):
     budget_millions: float = Field(ge=1.0, le=10000.0)
 
     @model_validator(mode='after')
-    def mission_validation(self):
+    def mission_validation(self) -> "SpaceMission":
         error_list: list[str] = []
         if self.mission_id[0] != "M":
             error_list.append("Mission ID must start with 'M'")
@@ -75,7 +75,7 @@ def print_mission(sm: SpaceMission) -> None:
     print()
 
 
-def main():
+def main() -> None:
 
     crew_list: list[CrewMember] = []
     try:
@@ -110,37 +110,33 @@ def main():
         for error_dict in ve.errors():
             print(f"{str(error_dict['loc']).strip('(),')} {error_dict['msg']}")
 
-    good_data = {
-        "mission_id": "M2024_MARS",
-        "mission_name": "Mars Colony Establishment",
-        "destination": "Mars",
-        "launch_date": "2024-02-20",
-        "duration_days": 900,
-        "crew": crew_list[:3],
-        "budget_millions": 2500
-    }
-
-    bad_data = {
-        "mission_id": "M2029_MARS",
-        "mission_name": "Mars Colony Visit",
-        "destination": "Mars",
-        "launch_date": "2029-02-20",
-        "duration_days": 450,
-        "crew": crew_list[1:],
-        "budget_millions": 1500
-    }
-
     print("Space Mission Crew Validation")
 
     try:
         print("=========================================")
         print("Valid mission created:")
-        valid_mission = SpaceMission(**good_data)
+        valid_mission = SpaceMission(
+            mission_id="M2024_MARS",
+            mission_name="Mars Colony Establishment",
+            destination="Mars",
+            launch_date=datetime.fromisoformat("2024-02-20"),
+            duration_days=900,
+            crew=crew_list[:3],
+            mission_status="planned",
+            budget_millions=2500)
         print_mission(valid_mission)
 
         print("=========================================")
         print("Expected validation error:")
-        invalid_mission = SpaceMission(**bad_data)
+        invalid_mission = SpaceMission(
+            mission_id="M2029_MARS",
+            mission_name="Mars Colony Visit",
+            destination="Mars",
+            launch_date=datetime.fromisoformat("2029-02-20"),
+            duration_days=450,
+            crew=crew_list[1:],
+            budget_millions=1500
+        )
         print_mission(invalid_mission)
 
     except ValidationError as ve:

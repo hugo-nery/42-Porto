@@ -10,10 +10,10 @@ class SpaceStation (BaseModel):
     oxygen_level: float = Field(ge=0.0, le=100.0)
     last_maintenance: date
     is_operational: bool = True
-    notes: str = Field(None, max_length=200)
+    notes: str = Field(max_length=200)
 
 
-def print_station(ss: SpaceStation):
+def print_station(ss: SpaceStation) -> None:
     print(f"ID: {ss.station_id}\n"
           f"Name: {ss.name}\n"
           f"Crew: {ss.crew_size} people\n"
@@ -22,37 +22,35 @@ def print_station(ss: SpaceStation):
           f"Status: {'Operational' if ss.is_operational else 'Off'}\n")
 
 
-def main():
-
-    good_data = {
-        "station_id": "ISS001",
-        "name": "Internation Space Station",
-        "crew_size": "6",
-        "power_level": 85.5,
-        "oxygen_level": "92.3",
-        "last_maintenance": "2026-06-26"
-    }
-
-    bad_data = {
-        "station_id": "ISS002",
-        "name": "Internation Space Station",
-        "crew_size": 21,
-        "power_level": 85.5,
-        "oxygen_level": 41.3,
-        "last_maintenance": "2026-06-26",
-        "is_operational": False
-    }
+def main() -> None:
 
     print("\nSpace Station Data Validation")
     try:
         print("========================================")
         print("Valid station created:")
-        valid_station = SpaceStation(**good_data)
+        valid_station = SpaceStation(
+            station_id="ISS001",
+            name="Internation Space Station",
+            crew_size=6,
+            power_level=85.5,
+            oxygen_level=92.3,
+            last_maintenance=date.fromisoformat("2026-06-26"),
+            notes=""
+        )
         print_station(valid_station)
 
         print("========================================")
         print("Expected validation error:")
-        invalid_station = SpaceStation(**bad_data)
+        invalid_station = SpaceStation(
+            station_id="ISS002",
+            name="Internation Space Station",
+            crew_size=21,
+            power_level=85.5,
+            oxygen_level=41.3,
+            last_maintenance=date.fromisoformat("2026-06-26"),
+            is_operational=False,
+            notes=""
+        )
         print_station(invalid_station)
 
     except ValidationError as ve:

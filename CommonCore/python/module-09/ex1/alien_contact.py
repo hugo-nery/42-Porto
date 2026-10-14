@@ -18,11 +18,11 @@ class AlienContact(BaseModel):
     signal_strength: float = Field(ge=0.0, le=10.0)
     duration_minutes: int = Field(ge=1, le=1440)
     witness_count: int = Field(ge=1, le=100)
-    message_received: str = Field(None, max_length=500)
+    message_received: str = Field(max_length=500)
     is_verified: bool = False
 
     @model_validator(mode='after')
-    def validation_rules(self):
+    def validation_rules(self) -> "AlienContact":
         errors_list: list[str] = []
         if self.contact_id[0:2] != "AC":
             errors_list.append("Contact ID must start with "
@@ -54,40 +54,36 @@ def print_contact(ac: AlienContact) -> None:
 
 def main() -> None:
 
-    good_data = {
-        "contact_id": "AC_2024_001",
-        "timestamp": "1990-03-15",
-        "location": "Area 51, Nevada",
-        "contact_type": 1,
-        "signal_strength": 8.5,
-        "duration_minutes": 45,
-        "witness_count": 1,
-        "message_received": "Greetings from Zeta Reticuli",
-        "is_verified": True
-    }
-
-    bad_data = {
-        "contact_id": "AT_2024_001",
-        "timestamp": "1990-03-15",
-        "location": "Area 51, Nevada",
-        "contact_type": 4,
-        "signal_strength": 8.5,
-        "duration_minutes": 500,
-        "witness_count": 2,
-        "message_received": "",
-        "is_verified": False
-    }
-
     print("\nAlien Contact Log Validation")
     try:
         print("======================================")
         print("Valid contact report:")
-        et = AlienContact(**good_data)
+        et = AlienContact(
+            contact_id="AC_2024_001",
+            timestamp=datetime.fromisoformat("1990-03-15"),
+            location="Area 51, Nevada",
+            contact_type=ContactType.radio,
+            signal_strength=8.5,
+            duration_minutes=45,
+            witness_count=1,
+            message_received="Greetings from Zeta Reticuli",
+            is_verified=True
+        )
         print_contact(et)
 
         print("======================================")
         print("Expected validation error:")
-        dolly = AlienContact(**bad_data)
+        dolly = AlienContact(
+            contact_id="AT_2024_001",
+            timestamp=datetime.fromisoformat("1990-03-15"),
+            location="Area 51, Nevada",
+            contact_type=ContactType.telepathic,
+            signal_strength=8.5,
+            duration_minutes=500,
+            witness_count=2,
+            message_received="",
+            is_verified=False
+        )
         print_contact(dolly)
 
     except ValidationError as ve:
