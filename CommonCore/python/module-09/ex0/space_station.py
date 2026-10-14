@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, ValidationError
-from datetime import date
+from datetime import datetime
 
 
 class SpaceStation (BaseModel):
@@ -8,7 +8,7 @@ class SpaceStation (BaseModel):
     crew_size: int = Field(ge=1, le=20)
     power_level: float = Field(ge=0.0, le=100.0)
     oxygen_level: float = Field(ge=0.0, le=100.0)
-    last_maintenance: date
+    last_maintenance: datetime
     is_operational: bool = True
     notes: str = Field(max_length=200)
 
@@ -19,7 +19,8 @@ def print_station(ss: SpaceStation) -> None:
           f"Crew: {ss.crew_size} people\n"
           f"Power: {ss.power_level}%\n"
           f"Oxygen: {ss.oxygen_level}%\n"
-          f"Status: {'Operational' if ss.is_operational else 'Off'}\n")
+          f"Status: {'Operational' if ss.is_operational else 'Off'}\n", end="")
+    print("Notes: " + ss.notes + "\n" if ss.notes else "")
 
 
 def main() -> None:
@@ -34,7 +35,7 @@ def main() -> None:
             crew_size=6,
             power_level=85.5,
             oxygen_level=92.3,
-            last_maintenance=date.fromisoformat("2026-06-26"),
+            last_maintenance=datetime.fromisoformat("2026-06-26"),
             notes=""
         )
         print_station(valid_station)
@@ -47,7 +48,7 @@ def main() -> None:
             crew_size=21,
             power_level=85.5,
             oxygen_level=41.3,
-            last_maintenance=date.fromisoformat("2026-06-26"),
+            last_maintenance=datetime.fromisoformat("2026-06-26"),
             is_operational=False,
             notes=""
         )

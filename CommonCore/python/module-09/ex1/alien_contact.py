@@ -25,17 +25,17 @@ class AlienContact(BaseModel):
     def validation_rules(self) -> "AlienContact":
         errors_list: list[str] = []
         if self.contact_id[0:2] != "AC":
-            errors_list.append("Contact ID must start with "
+            errors_list.append("- Contact ID must start with "
                                "'AC' (Alien Contact)")
         if self.contact_type == ContactType.physical and not self.is_verified:
-            errors_list.append("Physical contact reports must be verified")
+            errors_list.append("- Physical contact reports must be verified")
         if (self.contact_type == ContactType.telepathic and
            self.witness_count < 3):
-            errors_list.append("Telepathic contact requires at least "
+            errors_list.append("- Telepathic contact requires at least "
                                "3 witnesses")
         if self.signal_strength > 7 and (self.message_received is None or
                                          self.message_received == ""):
-            errors_list.append("Strong signals (> 7.0) should "
+            errors_list.append("- Strong signals (> 7.0) should "
                                "include received messages")
         if len(errors_list) > 0:
             raise ValueError("\n".join(errors_list))
@@ -60,12 +60,12 @@ def main() -> None:
         print("Valid contact report:")
         et = AlienContact(
             contact_id="AC_2024_001",
-            timestamp=datetime.fromisoformat("1990-03-15"),
+            timestamp=datetime.fromisoformat("2024-03-15"),
             location="Area 51, Nevada",
             contact_type=ContactType.radio,
             signal_strength=8.5,
             duration_minutes=45,
-            witness_count=1,
+            witness_count=5,
             message_received="Greetings from Zeta Reticuli",
             is_verified=True
         )
@@ -74,8 +74,8 @@ def main() -> None:
         print("======================================")
         print("Expected validation error:")
         dolly = AlienContact(
-            contact_id="AT_2024_001",
-            timestamp=datetime.fromisoformat("1990-03-15"),
+            contact_id="AT_2024_002",
+            timestamp=datetime.fromisoformat("2024-03-15"),
             location="Area 51, Nevada",
             contact_type=ContactType.telepathic,
             signal_strength=8.5,
@@ -88,7 +88,7 @@ def main() -> None:
 
     except ValidationError as ve:
         for dic_error in ve.errors():
-            print(dic_error['msg'].removeprefix('Value error, '))
+            print(dic_error['msg'].removeprefix('Value error, '), end="\n\n")
 
 
 if __name__ == "__main__":

@@ -35,25 +35,26 @@ class SpaceMission(BaseModel):
     def mission_validation(self) -> "SpaceMission":
         error_list: list[str] = []
         if self.mission_id[0] != "M":
-            error_list.append("Mission ID must start with 'M'")
+            error_list.append("- Mission ID must start with 'M'")
 
         mission_rank_list = [c.rank.name for c in self.crew]
         if (Rank.captain.name not in mission_rank_list and Rank.commander.name
            not in mission_rank_list):
-            error_list.append("Must have at least one Commander or Captain")
+            error_list.append("- Must have at least one Commander or Captain")
 
         if self.duration_days > 365:
             experienced_count: int = 0
             for c in self.crew:
                 if c.years_experience >= 5:
                     experienced_count += 1
-            if experienced_count < len(self.crew)/2:
-                error_list.append("Long missions (> 365 days) need 50%% "
+
+            if experienced_count < len(self.crew) / 2:
+                error_list.append("- Long missions (> 365 days) need 50% "
                                   "experienced crew (5+ years)")
 
         for c in self.crew:
             if not c.is_active:
-                error_list.append("All crew members must be active")
+                error_list.append("- All crew members must be active")
                 break
 
         if len(error_list) > 0:
@@ -77,41 +78,58 @@ def print_mission(sm: SpaceMission) -> None:
 
 def main() -> None:
 
+    print("\nCrew Member Validation")
+    print("=========================================")
     crew_list: list[CrewMember] = []
+    crew_error_list: list[str] = []
     try:
-        sarah = CrewMember(member_id="001",
-                           name="Sarah Connor",
-                           rank=Rank.commander,
-                           age=35,
+        sarah = CrewMember(member_id="001", name="Sarah Connor",
+                           rank=Rank.commander, age=30,
                            specialization="Mission Command",
-                           years_experience=12,
-                           is_active=True)
+                           years_experience=12, is_active=True)
         crew_list.append(sarah)
+    except ValidationError as ve:
+        for error_dict in ve.errors():
+            crew_error_list.append(f"{str(error_dict['loc']).strip('(),')} "
+                                   f"{error_dict['msg']}")
 
+    try:
         john = CrewMember(member_id="002", name="John Smith",
                           rank=Rank.lieutenant, age=27,
                           specialization="Navigation", years_experience=9)
         crew_list.append(john)
+    except ValidationError as ve:
+        for error_dict in ve.errors():
+            crew_error_list.append(f"{str(error_dict['loc']).strip('(),')} "
+                                   f"{error_dict['msg']}")
 
-        alice = CrewMember(member_id="003",
-                           name="Alice Johnson",
-                           rank=Rank.officer,
-                           age=25,
+    try:
+        alice = CrewMember(member_id="003", name="Alice Johnson",
+                           rank=Rank.officer, age=25,
                            specialization="Engineering",
-                           years_experience=5)
+                           years_experience=3)
         crew_list.append(alice)
+    except ValidationError as ve:
+        for error_dict in ve.errors():
+            crew_error_list.append(f"{str(error_dict['loc']).strip('(),')} "
+                                   f"{error_dict['msg']}")
 
+    try:
         hugo = CrewMember(member_id="007", name="Hugo Nery", rank=Rank.captain,
                           age=34, specialization="Robotics",
                           years_experience=1, is_active=False)
         crew_list.append(hugo)
-
     except ValidationError as ve:
         for error_dict in ve.errors():
-            print(f"{str(error_dict['loc']).strip('(),')} {error_dict['msg']}")
+            crew_error_list.append(f"{str(error_dict['loc']).strip('(),')} "
+                                   f"{error_dict['msg']}")
 
-    print("Space Mission Crew Validation")
+    if len(crew_error_list) > 0:
+        print("\n".join(crew_error_list))
+    else:
+        print("Success.")
 
+    print("\n\nSpace Mission Crew Validation")
     try:
         print("=========================================")
         print("Valid mission created:")
@@ -141,7 +159,8 @@ def main() -> None:
 
     except ValidationError as ve:
         for error_dict in ve.errors():
-            print(f"{str(error_dict['loc']).strip('(),')} "
+            my_loc: str = str(error_dict['loc'])
+            print(f"{str(error_dict['loc']).strip('-(),') if my_loc else ''}"
                   f"{(error_dict['msg']).removeprefix('Value error, ')}")
         print()
 
