@@ -1,10 +1,12 @@
 from ex0 import Creature
 from ex1 import HealCapability
-from ex2 import BattleStrategy, BattleError
+from ex2 import *
 from typing import cast
 
 
 class DefensiveStrategy(BattleStrategy):
+
+    test = BattleError()
 
     name = "Defensive"
 
